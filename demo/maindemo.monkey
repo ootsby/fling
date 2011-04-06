@@ -52,7 +52,7 @@ class MainDemo Extends App
 		stopped = false
 		setDemo(New TitleDemo())
 		SetUpdateRate(20)
-		Print("Press 1-6 to change demo scene. Mouse click fires block.")
+		Print("Press 1-8 to change demo scene. Mouse click fires block.")
 	End 
 	
 	Method OnUpdate () 
@@ -93,6 +93,7 @@ class MainDemo Extends App
 		   fd.drawWorld(world)
 		End
 	End 
+	
 	Method CheckKeys() 
 	
 		If( KeyHit(32) )'SPACE
@@ -126,9 +127,9 @@ class MainDemo Extends App
 		If( KeyHit(55) )'7
 			setDemo(new PentagonRain())
 		End
-		'If( KeyHit(56) )'8
-		'	setDemo(new SegmentDemo())
-		'End		
+		If( KeyHit(56) )'8
+			setDemo(new SegmentDemo())
+		End		
 		'If( KeyHit(57) )'9
 		'	setDemo(new demo.Test())
 		'End

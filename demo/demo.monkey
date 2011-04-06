@@ -58,7 +58,7 @@ class Demo
 		return addBody(x,y, Shape.makeBox(w,h,Constants.NaN,Constants.NaN,mat))
 	End 
 	
-	Method addBody:Body( x : Float, y : Float, shape : Polygon,  props : Properties = Null  ) 
+	Method addBody:Body( x : Float, y : Float, shape : Shape,  props : Properties = Null  ) 
 		Local b  := New Body(x,y)
 		b.addShape(shape)
 		if( Not( props = null ) ) 

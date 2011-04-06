@@ -30,16 +30,17 @@
 import fling.allfling
 
 class Segment extends Shape 
-	 Field a : Vector
-	 Field b : Vector
-	 Field n : Vector
-	 Field r : Float
-	 Field tA : Vector
-	 Field tB : Vector
-	 Field tN : Vector
-	 Field tNneg : Vector
-	 Method New( a : Vector, b : Vector, r : Float,  material : Material = Null  ) 
 
+	Field a : Vector
+	Field b : Vector
+	Field n : Vector
+	Field r : Float
+	Field tA : Vector
+	Field tB : Vector
+	Field tN : Vector
+	Field tNneg : Vector
+	 
+	Method New( a : Vector, b : Vector, r : Float,  material : Material = Null  ) 
 		Super.New(Shape.SEGMENT, material)
 		segment = Self
 		offset = New Vector(0,0)
@@ -48,7 +49,7 @@ class Segment extends Shape
 		Self.r = r
 		Local delta  := b.minus(a)
 		n = Vector.normal(delta.x,delta.y)
-		area = r * delta.Length()()
+		area = r * delta.length()
 		tA = New Vector(0,0)
 		tB = New Vector(0,0)
 		tN = New Vector(0,0)

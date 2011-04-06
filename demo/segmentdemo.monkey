@@ -27,21 +27,26 @@
  '*/
 #end
 
+import fling.demo.alldemo
+import fling.haxetypes.haxetypes
+import fling.allfling
+
 class SegmentDemo extends Demo 
-	Field bodies : HaxeArray<Body>
+	
+	Field bodies : HaxeFastList<Body>
 	Field numBodies : Int
 	Field refreshDelay : Int
 	Field lastRefresh : Int
-	 Method New() 
-
+	
+	Method New() 
 		Super.New()
-		bodies = New HaxeArray<Body>()
+		bodies = New HaxeFastList<Body>()
 		numBodies = 200
 		refreshDelay = 9
 		lastRefresh = 50
 	End 
-	  Method init() 
 
+	Method init() 
 		world.gravity.set(0, 0.3125)
 		world.addStaticShape( New Segment( New Vector(0, 0), New Vector(220, 200), 4))
 		world.addStaticShape( New Segment( New Vector(600, 0), New Vector(380, 200), 4))
@@ -49,20 +54,24 @@ class SegmentDemo extends Demo
 		world.addStaticShape( New Segment( New Vector(400, 350), New Vector(300, 300), 4))
 		world.addStaticShape( New Segment( New Vector(100, 400), New Vector(200, 500), 2))
 		world.addStaticShape( New Segment( New Vector(500, 400), New Vector(400, 500), 2))
-		Local material  := New Material(0.0, 0.2, 1)
-		For Local i := 0 Until numBodies  
 
+		Local material := New Material(0.0, 0.2, 1)
+
+		For Local i := 0 Until numBodies  
 			Local s : Shape
-			if( rand(0,2) > 0 )
+			
+			If( rand(0,2) > 0 )
 				s = createConvexPoly(Int(rand(3, 4)),rand(12, 20),0, material)
 			Else  
 				s = New Circle(rand(8,20),New Vector(0,0))
 			End 
-			Local b  := addBody( 300 + rand(-200, 200), rand(-50,-150), s )
-			bodies.Push(b)
+			Local b := addBody( 300 + rand(-200, 200), rand(-50,-150), s )
+			'Local b := addBody( 300, 0, s )
+			bodies.Add(b)
 		End 
 	End 
-	  Method Update( dt : Float ) 
+
+	Method Update( dt : Float ) 
 
 		lastRefresh += 1
 		if( lastRefresh < refreshDelay ) 
