@@ -32,15 +32,15 @@ Import fling.allfling
 
 Class TitleDemo extends Demo
  
-	Method init() 
-		createWord("fling!", 180, 180, 20, 0)
+	Method Init() 
+		CreateWord("fling!", 180, 180, 20, 0)
 		Local material  := New Material(0.1, 0.7, 3)
-		Local stick1  := addRectangle( -100, 0, 100, 20, material )
-		stick1.setSpeed( 2, 1, 0.075 )
-		Local stick2  := addRectangle( 700, 600, 100, 20, material )
-		stick2.setSpeed( -2, -1, -0.025 )
-		Local stick3  := addBody( 290, 750, createConvexPoly(3,30,0,material) )
-		stick3.setSpeed( 0.25, -1.25, 0.005 )
+		Local stick1  := AddRectangle( -100, 0, 100, 20, material )
+		stick1.SetSpeed( 2, 1, 0.075 )
+		Local stick2  := AddRectangle( 700, 600, 100, 20, material )
+		stick2.SetSpeed( -2, -1, -0.025 )
+		Local stick3  := AddBody( 290, 750, CreateConvexPoly(3,30,0,material) )
+		stick3.SetSpeed( 0.25, -1.25, 0.005 )
 	End 
 End 
 

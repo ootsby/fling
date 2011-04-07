@@ -41,7 +41,7 @@ Class IAABB
 		Self.b = bottom
 	End
 
-	Method toString() 
+	Method ToString() 
 
 		Return"[l=" + l + " b=" + b + " r=" + r + " t=" + t + "]"
 	End 

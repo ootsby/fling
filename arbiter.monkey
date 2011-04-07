@@ -47,7 +47,7 @@ Class Arbiter
 		allocator = alloc
 	End 
 
-	Method assign( s1 : Shape, s2 : Shape ) 
+	Method Assign( s1 : Shape, s2 : Shape ) 
 		Self.s1 = s1
 		Self.s2 = s2
 		Local m1  := s1.material
@@ -78,7 +78,7 @@ Class Arbiter
 		End 
 	End 
 
-	Method injectContact( p : Vector, n : Vector, nCoef : Float, dist : Float, hash : Int ) 
+	Method InjectContact( p : Vector, n : Vector, nCoef : Float, dist : Float, hash : Int ) 
 		Local c  := contacts
 		While( Not( c = null ) ) 
 
@@ -91,7 +91,7 @@ Class Arbiter
 
 		If( c = null ) 
 
-			c = allocator.allocContact()
+			c = allocator.AllocContact()
 			c.hash = hash
 			c.jnAcc = 0
 			c.jtAcc = 0
@@ -108,7 +108,7 @@ Class Arbiter
 		c.updated = true
 	End
 
-	Method bodyImpulse( c : Contact, b1 : Body, b2 : Body, cjTx : Float, cjTy : Float ) 
+	Method BodyImpulse( c : Contact, b1 : Body, b2 : Body, cjTx : Float, cjTy : Float ) 
 
 		b1.v.x -= cjTx * b1.invMass
 		b1.v.y -= cjTy * b1.invMass
@@ -118,7 +118,7 @@ Class Arbiter
 		b2.w += b2.invInertia * (c.r2x * cjTy - c.r2y * cjTx)
 	End
 
-	Method preStep( dt : Float ) 
+	Method PreStep( dt : Float ) 
 
 		Local b1  := s1.body
 		Local b2  := s2.body
@@ -131,7 +131,7 @@ Class Arbiter
 
 				Local old  := c
 				c = c.nextItem
-				allocator.freeContact(old)
+				allocator.FreeContact(old)
 				If( prev = null )
 					contacts = c
 				Else  
@@ -177,13 +177,13 @@ Class Arbiter
 			'// apply impulse
 			Local cjTx  : Float = (c.nx * c.jnAcc) + (tx * c.jtAcc)
 			Local cjTy  : Float = (c.ny * c.jnAcc) + (ty * c.jtAcc)
-			bodyImpulse(c,b1,b2,cjTx,cjTy)
+			BodyImpulse(c,b1,b2,cjTx,cjTy)
 			prev = c
 			c = c.nextItem
 		End 
 	End
 
-	Method applyImpulse() 
+	Method ApplyImpulse() 
 
 		Local b1  := s1.body
 		Local b2  := s2.body
@@ -241,7 +241,7 @@ Class Arbiter
 			'// apply the impulse
 			Local cjTx2  : Float = c.nx * jn - c.ny * jt
 			Local cjTy2  : Float = c.ny * jn + c.nx * jt
-			bodyImpulse(c,b1,b2,cjTx2,cjTy2)
+			BodyImpulse(c,b1,b2,cjTx2,cjTy2)
 			c = c.nextItem
 		End 
 	End 

@@ -37,7 +37,7 @@ Class Allocator
 	Method New() 
 	End 
 	
-	Method allocIsland : Island  (w:World)
+	Method AllocIsland : Island  (w:World)
 		Local i  := islandPool
 		If( i = null )
 		Return New Island(w)
@@ -48,7 +48,7 @@ Class Allocator
 		End 
 	End 
 
-	Method freeIsland( i : Island ) 
+	Method FreeIsland( i : Island ) 
 		i.bodies.Clear()
 		i.ClearArbiters()
 		i.joints.Clear()
@@ -57,14 +57,14 @@ Class Allocator
 		islandPool = i
 	End 
 
-	Method allocArbiter : Arbiter  ()
+	Method AllocArbiter : Arbiter  ()
 		Return New Arbiter(Self)
 	End 
 
-	Method freeArbiter( a : Arbiter ) 
+	Method FreeArbiter( a : Arbiter ) 
 	End 
 
-	Method allocContact : Contact  ()
+	Method AllocContact : Contact  ()
 		Local c  := contactPool
 
 		If( c = null )
@@ -75,12 +75,12 @@ Class Allocator
 		End 
 	End 
 
-	Method freeContact( c : Contact ) 
+	Method FreeContact( c : Contact ) 
 		c.nextItem = contactPool
 		contactPool = c
 	End 
 
-	Method freeAllContacts( c : Contact ) 
+	Method FreeAllContacts( c : Contact ) 
 		While( Not( c = null ) ) 
 			Local nextItem  := c.nextItem
 			c.nextItem = contactPool

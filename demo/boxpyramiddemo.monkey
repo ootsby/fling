@@ -31,18 +31,18 @@ Import fling.demo.alldemo
 
 Class BoxPyramidDemo extends Demo 
 
-	Method init() 
-		createFloor()
-		world.gravity.set(0,0.09375)
-		Local box  := Shape.makeBox( 30, 30, Constants.NaN, Constants.NaN, New Material(0.01,1,0.8) )
+	Method Init() 
+		CreateFloor()
+		world.gravity.Set(0,0.09375)
+		Local box  := Shape.MakeBox( 30, 30, Constants.NaN, Constants.NaN, New Material(0.01,1,0.8) )
 		Local cirBody  := New Body( 300, floor-30 )
 		Local circ  := New Circle( 14, New Vector(0,0), New Material(0.0,0.9,1) )
-		cirBody.addShape(circ)
-		world.addBody(cirBody)
+		cirBody.AddShape(circ)
+		world.AddBody(cirBody)
 	
 		For Local y := 0 Until 14  
 			For Local x := 0 Until y  
-				createPoly( 300 + (x * 32) - (y*16), 70 + y*32, 0, box )
+				CreatePoly( 300 + (x * 32) - (y*16), 70 + y*32, 0, box )
             End 
         End 
 	End 

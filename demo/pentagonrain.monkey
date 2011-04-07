@@ -46,8 +46,8 @@ Class PentagonRain extends Demo
 		lastRefresh = 0
 	End 
 
-	Method init() 
-		world.gravity.set(0,0.0625)
+	Method Init() 
+		world.gravity.Set(0,0.0625)
 		Updates = 1
 		Local triangle  := New HaxeArray<Vector>()
 		triangle.Push(New Vector(-15,15))
@@ -60,14 +60,14 @@ Class PentagonRain extends Demo
 			For Local j := 0 Until 7  
 				Local stagger  := (j Mod 2)*40
 				Local offset  := New Vector(i * 80 + stagger, 80 + j * 70 )
-				world.addStaticShape( New Polygon(triangle, offset, mat) )
+				world.AddStaticShape( New Polygon(triangle, offset, mat) )
 			End 
 		End 
 
 		mat  = New Material(0.2, 0, 1)
 
 		For Local i := 0 Until numPentagons  
-			Local p  := addBody( 300 + rand(-300,300), rand(-50,-150), createConvexPoly(5, 10, 0, mat) )
+			Local p  := AddBody( 300 + Rand(-300,300), Rand(-50,-150), CreateConvexPoly(5, 10, 0, mat) )
 			pentagons.Add(p)
 		End 
 	End 
@@ -82,8 +82,8 @@ Class PentagonRain extends Demo
 
 			If( (p.y > size.y + 20) Or (p.x < -20) Or (p.y > size.x + 20) ) 
 
-				p.setPos( 300 + rand(-280,280), rand(-50,-100) )
-				p.setSpeed( rand(-10,10)/40, rand(10,100)/40 )
+				p.SetPos( 300 + Rand(-280,280), Rand(-50,-100) )
+				p.SetSpeed( Rand(-10,10)/40, Rand(10,100)/40 )
 			End 
 		End 
 	End 

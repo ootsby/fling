@@ -42,10 +42,10 @@ Class Polygon extends Shape
 		Super.New(Shape.POLYGON, material)
 		polygon = Self
 		Self.offset = offset
-		initVertexes(vl)
+		InitVertexes(vl)
 	End 
 	
-	Method initVertexes( vl : HaxeArray<Vector> ) 
+	Method InitVertexes( vl : HaxeArray<Vector> ) 
 		Local l_verts : Vector = null
         Local l_tVerts : Vector = null
         Local l_axes : Axis = null
@@ -62,13 +62,13 @@ Class Polygon extends Shape
 			area += v1.x * (v0.y - v2.y)
 			Local v  :=  v0
 			If( off  ) 
-			    v =  v0.plus(offset) 
+			    v =  v0.Plus(offset) 
 			End 
 
-			Local n  := Vector.normal(v1.x - v0.x,v1.y - v0.y)
-			Local a  := New Axis(n, n.dot(v))
-			Local vt  := v.clone()
-			Local at  := a.clone()
+			Local n  := Vector.Normal(v1.x - v0.x,v1.y - v0.y)
+			Local a  := New Axis(n, n.Dot(v))
+			Local vt  := v.Clone()
+			Local at  := a.Clone()
 			'// enqueue
 			If( i = 0 ) 
 
@@ -93,7 +93,7 @@ Class Polygon extends Shape
 		area *= 0.5
 	End 
 
-	Method update() 
+	Method Update() 
 
 		Local v  := verts
 		Local tv  := tVerts
@@ -142,7 +142,7 @@ Class Polygon extends Shape
 		End 
 	End 
 	
-	Method calculateInertia : Float() 
+	Method CalculateInertia : Float() 
 
 		'// not very optimized (using a tmp array)
 		'// but simplifying the maths is not easy here
@@ -160,8 +160,8 @@ Class Polygon extends Shape
 
 			Local v0  := tVertsTemp.Get(i)
 			Local v1  := tVertsTemp.Get((i + 1) Mod vcount)
-			Local a  : Float = v1.cross(v0)
-			Local b  : Float = v0.dot(v0) + v0.dot(v1) + v1.dot(v1)
+			Local a  : Float = v1.Cross(v0)
+			Local b  : Float = v0.Dot(v0) + v0.Dot(v1) + v1.Dot(v1)
 			sum1 += a * b
 			sum2 += a
 		End 

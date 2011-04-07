@@ -39,23 +39,23 @@ Class BruteForce Extends BroadPhase
 
 	End
 
-	Method init : Void ( bounds : AABB, cb : BroadCallback, staticBody : Body ) 
+	Method Init : Void ( bounds : AABB, cb : BroadCallback, staticBody : Body ) 
 
 		Self.callb = callb
 		shapes = New  HaxeFastList< Shape > ()
 	End
 
-	Method addShape: Void( s : Shape ) 
+	Method AddShape: Void( s : Shape ) 
 
 		shapes.Add(s)
 	End
 
-	Method removeShape: Void( s : Shape ) 
+	Method RemoveShape: Void( s : Shape ) 
 
 		shapes.Remove(s)
 	End
 
-	Method collide: Void() 
+	Method Collide: Void() 
 
 		Local s1  := shapes.head
 		While( Not( s1 = null ) ) 
@@ -64,8 +64,8 @@ Class BruteForce Extends BroadPhase
 			Local s2  := s1.nextItem
 			While( Not( s2 = null ) ) 
 
-				If( box1.intersects2(s2.elt.aabb) ) 
-				   callb.onCollide(s1.elt,s2.elt)
+				If( box1.Intersects2(s2.elt.aabb) ) 
+				   callb.OnCollide(s1.elt,s2.elt)
 				End
 
 				s2 = s2.nextItem
@@ -75,12 +75,12 @@ Class BruteForce Extends BroadPhase
 		End 
 	End
 
-	Method pick : HaxeFastList<  Shape >( box : AABB ) 
+	Method Pick : HaxeFastList<  Shape >( box : AABB ) 
 
 		Local shapes  := New  HaxeFastList<  Shape > ()
 		For Local s := Eachin Self.shapes 
 
-			If( s.aabb.intersects(box) ) 
+			If( s.aabb.Intersects(box) ) 
 			   shapes.Add(s)
 			End 
         End 
@@ -88,17 +88,17 @@ Class BruteForce Extends BroadPhase
 		Return shapes
 	End
 
-	Method syncShape: Void( s : Shape ) 
+	Method SyncShape: Void( s : Shape ) 
 
 		'// nothing
 	End
 
-	Method commit: Void() 
+	Method Commit: Void() 
 
 		'// nothing
 	End
 
-	Method validate :Bool() 
+	Method Validate :Bool() 
 
 		Return true
 	End 

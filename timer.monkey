@@ -45,12 +45,12 @@ Class Timer
 		curs = New HaxeArray<StringObject>()
 	End 
 	
-	Method start( phase : String ) 
+	Method Start( phase : String ) 
 		times.Push((Millisecs()/1000.0))
 		curs.Push(phase)
 	End 
 
-	Method stop() 
+	Method Stop() 
 		Local dt  := ((Millisecs()/1000.0) - times.Pop()) * 1000
 		Local name  := curs.Pop()
 		Local data  := datas.Get(name)
@@ -68,7 +68,7 @@ Class Timer
 		End 
 	End 
 	
-	Method getTotal( name : String ) 
+	Method GetTotal( name : String ) 
 		Local data  := datas.Get(name)
 
 		If( data = null ) 
@@ -78,7 +78,7 @@ Class Timer
 		Return data.total
 	End 
 	
-	Method format( name : String ) 
+	Method Format( name : String ) 
 		Local data  := datas.Get(name)
 
 		If( data = null ) 

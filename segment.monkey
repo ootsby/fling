@@ -44,19 +44,19 @@ Class Segment extends Shape
 		Super.New(Shape.SEGMENT, material)
 		segment = Self
 		offset = New Vector(0,0)
-		Self.a = a.clone()
-		Self.b = b.clone()
+		Self.a = a.Clone()
+		Self.b = b.Clone()
 		Self.r = r
-		Local delta  := b.minus(a)
-		n = Vector.normal(delta.x,delta.y)
-		area = r * delta.length()
+		Local delta  := b.Minus(a)
+		n = Vector.Normal(delta.x,delta.y)
+		area = r * delta.Length()
 		tA = New Vector(0,0)
 		tB = New Vector(0,0)
 		tN = New Vector(0,0)
 		tNneg = New Vector(0,0)
 	End
 
-	Method update() 
+	Method Update() 
 
 		'// transform
 		tA.x = body.x + Constants.XROT(a,body)
@@ -89,7 +89,7 @@ Class Segment extends Shape
 		End 
 	End
 
-	Method calculateInertia: Float() 
+	Method CalculateInertia: Float() 
 
 		Return 1.0
 	End 

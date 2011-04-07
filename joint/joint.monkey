@@ -46,10 +46,10 @@ Class Joint
 		Self.anchr2 = anchr2
 	End 
 
-	Method preStep( invDt : Float ) 
+	Method PreStep( invDt : Float ) 
 	End 
 	
-	Method applyImpulse() 
+	Method ApplyImpulse() 
 	End 
 	
 End 

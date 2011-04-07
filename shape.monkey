@@ -63,18 +63,18 @@ Class Shape
 		aabb = New AABB(0,0,0,0)
 	End
 
-	Method update() 
+	Method Update() 
 	End
 
-	Method calculateInertia : Float() 
+	Method CalculateInertia : Float() 
 		Return 1.0
 	End
 
-	Method toString : String() 
+	Method ToString : String() 
 		Return"Shape#"+id
 	End
 
-	Function makeBox : Polygon( width : Float, height : Float,  px : Float = -width/2.0 ,  py : Float = -height /2.0 ,  mat: Material = Null  ) 
+	Function MakeBox : Polygon( width : Float, height : Float,  px : Float = -width/2.0 ,  py : Float = -height /2.0 ,  mat: Material = Null  ) 
 		If( px = Constants.NaN ) 
 		   px = -width / 2
 		End

@@ -31,16 +31,16 @@ Import fling.demo.alldemo
 
 Class DominoPyramid extends Demo 
 
-	Method init() 
-		world.gravity.set(0,0.3125)
-		createFloor()
+	Method Init() 
+		world.gravity.Set(0,0.3125)
+		CreateFloor()
 		Local d_width  := 5
 		Local d_heigth  := 20
 		Local stackHeigth  := 9
 		Local xstart  := 60.0
 		Local yp  := floor
 		Local d90  := Constants.PI / 2
-		Local domino  := Shape.makeBox(d_width*2, d_heigth*2, Constants.NaN, Constants.NaN, New Material(0.0, 0.6, 0.5))
+		Local domino  := Shape.MakeBox(d_width*2, d_heigth*2, Constants.NaN, Constants.NaN, New Material(0.0, 0.6, 0.5))
 		For Local i := 0 Until stackHeigth  
 
 			Local dw  := 0
@@ -54,21 +54,21 @@ Class DominoPyramid extends Demo
 				Local xp  := xstart + (3*d_heigth*j)
 				If( i = 0 ) 
 
-					createPoly( xp , yp - d_heigth, 0, domino )
-					createPoly( xp , yp - (2 * d_heigth) - d_width, d90, domino )
+					CreatePoly( xp , yp - d_heigth, 0, domino )
+					CreatePoly( xp , yp - (2 * d_heigth) - d_width, d90, domino )
 				Else  
 
-					createPoly( xp , yp - d_width, d90, domino )
-					createPoly( xp , yp - (2 * d_width) - d_heigth, 0, domino )
-					createPoly( xp , yp - (3 * d_width) - (2 * d_heigth), d90, domino )
+					CreatePoly( xp , yp - d_width, d90, domino )
+					CreatePoly( xp , yp - (2 * d_width) - d_heigth, 0, domino )
+					CreatePoly( xp , yp - (3 * d_width) - (2 * d_heigth), d90, domino )
 				End 
 
 				If( j = 0 ) 
-				   createPoly( xp - d_heigth + d_width , yp - (3 * d_heigth) - (4 * d_width) + dw, 0, domino )
+				   CreatePoly( xp - d_heigth + d_width , yp - (3 * d_heigth) - (4 * d_width) + dw, 0, domino )
 				End
 
 				If( j = stackHeigth - i - 1 ) 
-				   createPoly( xp + d_heigth - d_width , yp - (3 * d_heigth) - (4 * d_width) + dw, 0, domino )
+				   CreatePoly( xp + d_heigth - d_width , yp - (3 * d_heigth) - (4 * d_width) + dw, 0, domino )
 				End 
 			End 
 

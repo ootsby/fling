@@ -123,20 +123,20 @@ Class Body
 		arbiters = New  HaxeFastList< Arbiter > ()
 	End 
 	
-	Method addShape( s : Shape ) 
+	Method AddShape( s : Shape ) 
 		'test
 		Local d := s.material.density
 		shapes.Add(s)
 		s.body = Self
 	End 
 	
-	Method removeShape( s : Shape ) 
+	Method RemoveShape( s : Shape ) 
 
 		shapes.Remove(s)
 		s.body = null
 	End 
 	
-	Method updatePhysics() 
+	Method UpdatePhysics() 
 
 		Local m  : Float = 0.0
 		Local i  : Float = 0.0
@@ -145,7 +145,7 @@ Class Body
 			Local sm : Float = s.area
 			sm *= s.material.density
 			m += sm
-			i += s.calculateInertia() * sm
+			i += s.CalculateInertia() * sm
 		End 
 
 		If( m > 0 ) 
@@ -170,20 +170,20 @@ Class Body
 		End 
 	End 
 	
-	Method preventRotation() 
+	Method PreventRotation() 
 
 		inertia = Constants.POSITIVE_INFINITY
 		invInertia = 0
 	End 
 	
-	Method setAngle( a : Float ) 
+	Method SetAngle( a : Float ) 
 
 		Self.a = a
 		rcos = haxetypes.Math.Cos(a)
 		rsin = haxetypes.Math.Sin(a)
 	End 
 	
-	Method set(  pos : Vector = Null ,  a : Float = Constants.NaN ,  v : Vector = Null ,  w : Float = Constants.NaN  ) 
+	Method Set(  pos : Vector = Null ,  a : Float = Constants.NaN ,  v : Vector = Null ,  w : Float = Constants.NaN  ) 
 
 		If( Not( pos = null ) ) 
 
@@ -192,7 +192,7 @@ Class Body
 		End 
 
 		If( Not( a = Constants.NaN) ) 
-		   setAngle(a)
+		   SetAngle(a)
 		End
 
 		If( Not( v = null ) ) 
@@ -206,16 +206,16 @@ Class Body
 		End 
 	End 
 	
-	Method setPos( x : Float, y : Float,  a : Float = Constants.NaN  ) 
+	Method SetPos( x : Float, y : Float,  a : Float = Constants.NaN  ) 
 
 		Self.x = x
 		Self.y = y
 		If( Not( a = Constants.NaN  ) ) 
-		   setAngle(a)
+		   SetAngle(a)
 		End 
 	End 
 	
-	Method setSpeed( vx : Float, vy : Float,  w :Float = Constants.NaN  ) 
+	Method SetSpeed( vx : Float, vy : Float,  w :Float = Constants.NaN  ) 
 		v.x = vx
 		v.y = vy
 		If( Not( w = Constants.NaN ) ) 
@@ -223,11 +223,11 @@ Class Body
 		End 
 	End 
 	
-	Method toString() 
+	Method ToString() 
 		Return"Body#"+id
 	End 
 	
-	Method onDestroy() 
+	Method OnDestroy() 
 	End 
 End 
 

@@ -31,10 +31,10 @@ Import fling.demo.alldemo
 
 Class BasicStack extends Demo 
 
-	Method init() 
-		world.gravity.set(0,0.1875)
-		createFloor()
-		Local box  := Shape.makeBox( 30, 30, Constants.NaN, Constants.NaN, New Material(0.0, 0.8, 1) )
+	Method Init() 
+		world.gravity.Set(0,0.1875)
+		CreateFloor()
+		Local box  := Shape.MakeBox( 30, 30, Constants.NaN, Constants.NaN, New Material(0.0, 0.8, 1) )
 		Local startY  := floor - 15
 
 		For Local y := 0 Until 18  
@@ -45,7 +45,7 @@ Class BasicStack extends Demo
 			End 
 
 			For Local x := 0 Until 10 
-			   createPoly( offset + 150 + (x * 30), startY - (y * 30), 0, box )
+			   CreatePoly( offset + 150 + (x * 30), startY - (y * 30), 0, box )
 			End
 		End 
 	End 

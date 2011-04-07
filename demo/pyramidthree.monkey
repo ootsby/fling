@@ -31,12 +31,12 @@ Import fling.demo.alldemo
 
 Class PyramidThree extends Demo 
 
-	Method init() 
-		world.gravity.set(0,0.125)
-		createFloor()
+	Method Init() 
+		world.gravity.Set(0,0.125)
+		CreateFloor()
 		Local width  := 70
 		Local height  := 11
-		Local slab  := Shape.makeBox(width,height, Constants.NaN, Constants.NaN,New Material(0.0, 1, 1))
+		Local slab  := Shape.MakeBox(width,height, Constants.NaN, Constants.NaN,New Material(0.0, 1, 1))
 		Local p0  := Constants.DEFAULT_PROPERTIES
 		Local props  := New Properties(p0.linearFriction,p0.angularFriction,0.001, Constants.FMAX,p0.maxDist)
 		Local startY  := floor - (height / 2)
@@ -44,12 +44,12 @@ Class PyramidThree extends Demo
 		Local segcount  := 5
 
 		For Local i := 0 Until 5  
-			createPoly( startX - width, startY, 0, slab, props )
-			createPoly( startX + width, startY, 0, slab, props )
+			CreatePoly( startX - width, startY, 0, slab, props )
+			CreatePoly( startX + width, startY, 0, slab, props )
 
 			For Local y := 0 Until segcount  
 				For Local x := 0 Until y+1 
-				   createPoly( startX - (x * width) + y * (width / 2), startY, 0, slab, props )
+				   CreatePoly( startX - (x * width) + y * (width / 2), startY, 0, slab, props )
 				End
 
 				startY -= height
@@ -59,7 +59,7 @@ Class PyramidThree extends Demo
 
 			While( y > 0 ) 
 				For Local x := 0 Until y+1 
-				   createPoly( startX - (x * width) + y * (width / 2), startY, 0, slab, props )
+				   CreatePoly( startX - (x * width) + y * (width / 2), startY, 0, slab, props )
 				End
 
 				startY -= height

@@ -40,44 +40,44 @@ Class Vector
 		y = py
 	End 
 
-	Method clone:Vector() 
+	Method Clone:Vector() 
 		Return New Vector(x,y)
 	End 
 	
-	Method set( px : Float, py : Float) 
+	Method Set( px : Float, py : Float) 
 		x = px
 		y = py
 	End 
 
-	Method dot:Float( v : Vector ) 
+	Method Dot:Float( v : Vector ) 
 		Return x * v.x + y * v.y
 	End 
 
-	Method cross:Float( v : Vector ) 
+	Method Cross:Float( v : Vector ) 
 		Return x * v.y - y * v.x
 	End 
 
-	Method plus:Vector( v : Vector ) 
+	Method Plus:Vector( v : Vector ) 
 		Return New Vector(x + v.x, y + v.y)
 	End 
 
-	Method minus : Vector  ( v : Vector )
+	Method Minus : Vector  ( v : Vector )
 		Return New Vector(x - v.x, y - v.y)
 	End 
 
-	Method mult:Vector( s : Float ) 
+	Method Mult:Vector( s : Float ) 
 		Return New Vector(x * s, y * s)
 	End 
 	
-	Method length:Float() 
+	Method Length:Float() 
 		Return Sqrt(x * x + y * y)
 	End 
 
-	Method toString() 
+	Method ToString() 
 		Return"("+(Round(x*100)/100)+","+(Round(y*100)/100)+")"
 	End 
 
-	Function normal:Vector( x : Float, y : Float ) 
+	Function Normal:Vector( x : Float, y : Float ) 
 		Local d  := Sqrt(x * x + y * y)
 		Local k  :=  1 / d
 	

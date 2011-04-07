@@ -43,33 +43,33 @@ Class Demo
 		Updates = 3
 	End 
 	
-	Method start( world : World ) 
+	Method Start( world : World ) 
 		Self.world = world
-		init()
+		Init()
 	End 
 	
-	Method init() 
+	Method Init() 
 	End 
 
 	Method Update( dt :Float) 
 	End 
 
-	Method addRectangle:Body( x : Float, y : Float, w : Float, h :Float,  mat : Material = Null  ) 
-		Return addBody(x,y, Shape.makeBox(w,h,Constants.NaN,Constants.NaN,mat))
+	Method AddRectangle:Body( x : Float, y : Float, w : Float, h :Float,  mat : Material = Null  ) 
+		Return AddBody(x,y, Shape.MakeBox(w,h,Constants.NaN,Constants.NaN,mat))
 	End 
 	
-	Method addBody:Body( x : Float, y : Float, shape : Shape,  props : Properties = Null  ) 
+	Method AddBody:Body( x : Float, y : Float, shape : Shape,  props : Properties = Null  ) 
 		Local b  := New Body(x,y)
-		b.addShape(shape)
+		b.AddShape(shape)
 		If( Not( props = null ) ) 
 			b.properties = props
 		End
 
-		world.addBody(b)
+		world.AddBody(b)
 		Return b
 	End 
 	
-	Method createWord : Void  ( str : String, xp : Float, yp : Float, size : Float, spacing : Float,  mat : Material = Null  )
+	Method CreateWord : Void  ( str : String, xp : Float, yp : Float, size : Float, spacing : Float,  mat : Material = Null  )
 
 		For Local i := 0 Until str.Length( ) 
 			Local letter  := str[i]
@@ -99,7 +99,7 @@ Class Demo
 						   xmax = x
 						End
 
-						addRectangle( xp + x * (size + spacing), yp + y * (size + spacing), size, size, mat )
+						AddRectangle( xp + x * (size + spacing), yp + y * (size + spacing), size, size, mat )
 					End 
 				End 
 			End 
@@ -108,7 +108,7 @@ Class Demo
 		End 
 	End 
 
-	Method createConvexPoly : Polygon( nverts : Int, radius : Float, rotation : Float,  mat : Material = Null ) 
+	Method CreateConvexPoly : Polygon( nverts : Int, radius : Float, rotation : Float,  mat : Material = Null ) 
 
 		Local vl  := New HaxeArray<Vector>()
 	
@@ -121,7 +121,7 @@ Class Demo
 		Return New Polygon(vl,New Vector(0,0),mat)
 	End 
 
-	Method createPoly : Void( x : Float, y : Float, a : Float, shape : Polygon,  props : Properties = Null  ) 
+	Method CreatePoly : Void( x : Float, y : Float, a : Float, shape : Polygon,  props : Properties = Null  ) 
 		Local b  := New Body(x,y)
 		Local vl := New HaxeArray<Vector>()
 		Local v  := shape.verts
@@ -131,22 +131,22 @@ Class Demo
 			v = v.nextItem
 		End 
 
-		b.addShape( New Polygon(vl,New Vector(0,0),shape.material) )
-		b.setAngle(a)
+		b.AddShape( New Polygon(vl,New Vector(0,0),shape.material) )
+		b.SetAngle(a)
 		
 		If( Not( props = null ) ) 
 		   b.properties = props
 		End 
 		
-		world.addBody(b)
+		world.AddBody(b)
 	End 
 	
-	Method createFloor(  mat : Material = Null  ) 
-		Local s  := Shape.makeBox(600,40,0,floor,mat)
-		world.addStaticShape(s)
+	Method CreateFloor(  mat : Material = Null  ) 
+		Local s  := Shape.MakeBox(600,40,0,floor,mat)
+		world.AddStaticShape(s)
 	End 
 
-	Method rand : Float( min : Float, max : Float ) 
+	Method Rand : Float( min : Float, max : Float ) 
 		Return haxetypes.Math.Round(Rnd() * (max - min + 1)) + min
 	End 
 End 

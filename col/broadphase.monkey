@@ -34,24 +34,24 @@ Import fling.haxetypes.haxetypes
 
 Class BroadCallback Abstract 
 
-	Method onCollide : Bool ( s1 : Shape, s2 : Shape ) Abstract
+	Method OnCollide : Bool ( s1 : Shape, s2 : Shape ) Abstract
 End 
 
 Class BroadPhase Abstract 
 
 	'// initialize when added into world
-	Method init : Void ( bounds : AABB, cb : BroadCallback, staticBody : Body ) Abstract
+	Method Init : Void ( bounds : AABB, cb : BroadCallback, staticBody : Body ) Abstract
 	'// modify the shape list
-	Method addShape : Void ( s : Shape ) Abstract
-	Method removeShape : Void ( s : Shape ) Abstract
+	Method AddShape : Void ( s : Shape ) Abstract
+	Method RemoveShape : Void ( s : Shape ) Abstract
 	'// when modified : one sync per shape then one final commit
-	Method syncShape : Void ( s : Shape ) Abstract
-	Method commit : Void () Abstract
+	Method SyncShape : Void ( s : Shape ) Abstract
+	Method Commit : Void () Abstract
 	'// perform the collisions
-	Method collide : Void () Abstract
+	Method Collide : Void () Abstract
 	'// pick the content of the box
-	Method pick : HaxeFastList<  Shape >  ( bounds : AABB ) Abstract
+	Method Pick : HaxeFastList<  Shape >  ( bounds : AABB ) Abstract
 	'// check the validity of inner datas (for debug)
-	Method validate : Bool () Abstract
+	Method Validate : Bool () Abstract
 End 
 

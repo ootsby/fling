@@ -43,9 +43,9 @@ Class Jumble extends Demo
 		material = New Material(0.1, 0.5, 1)
 	End 
 	
-	Method init() 
-		world.gravity.set(0,0.3125)
-		createFloor()
+	Method Init() 
+		world.gravity.Set(0,0.3125)
+		CreateFloor()
 	End 
 
 	Method Update( dt : Float) 
@@ -56,15 +56,15 @@ Class Jumble extends Demo
 
 		lastAdd = 0
 		Local body  := New Body(0,0)
-		body.addShape( Shape.makeBox(60,10,Constants.NaN,Constants.NaN,material))
-		body.addShape( Shape.makeBox(10,60,Constants.NaN,Constants.NaN,material))
-		body.addShape(New Circle(12,New Vector(-30,0),material))
-		body.addShape(New Circle(12,New Vector(30,0),material))
-		body.addShape(New Circle(12,New Vector(0,-30),material))
-		body.addShape(New Circle(12,New Vector(0,30),material))
-		body.setPos( 300 + rand(-250,250), rand(-200,-20), rand(0,2*Constants.PI) )
-		body.w = rand( -2, 2 ) / 40
-		world.addBody(body)
+		body.AddShape( Shape.MakeBox(60,10,Constants.NaN,Constants.NaN,material))
+		body.AddShape( Shape.MakeBox(10,60,Constants.NaN,Constants.NaN,material))
+		body.AddShape(New Circle(12,New Vector(-30,0),material))
+		body.AddShape(New Circle(12,New Vector(30,0),material))
+		body.AddShape(New Circle(12,New Vector(0,-30),material))
+		body.AddShape(New Circle(12,New Vector(0,30),material))
+		body.SetPos( 300 + Rand(-250,250), Rand(-200,-20), Rand(0,2*Constants.PI) )
+		body.w = Rand( -2, 2 ) / 40
+		world.AddBody(body)
 	End 
 
 End 

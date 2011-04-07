@@ -77,7 +77,7 @@ Class MojoDraw
 		contactSize = null
 	End 
 
-	Method beginShape( c : Color ) 
+	Method BeginShape( c : Color ) 
 		If( c = null ) 
 		  Return false
 		End
@@ -87,141 +87,135 @@ Class MojoDraw
 		Return true
 	End 
 
-	Method endShape( c : Color ) 
+	Method EndShape( c : Color ) 
 	End 
 
-	Method selectColor:Color( s : Shape ) 
+	Method SelectColor:Color( s : Shape ) 
 		If( s.body.isStatic )
-		Return staticShape
+			Return staticShape
 		Else
 			If (Not(s.body.island = null) And s.body.island.sleeping)
-			Return sleepingShape
+				Return sleepingShape
 			Else
-			 Return shape
+				Return shape
 			End
 		End
 	End 
 
-	Method selectArbiterColor:Color( a : Arbiter ) 
+	Method SelectArbiterColor:Color( a : Arbiter ) 
 		If a.sleeping
-		Return sleepingContact 
+			Return sleepingContact 
 		Else
-		Return contact
+			Return contact
 		End
 	End 
 
-	Method drawWorld( w : World ) 
+	Method DrawWorld( w : World ) 
 		PushMatrix()
 		Scale(0.7,0.7)
-		drawBody(w.staticBody)
+		DrawBody(w.staticBody)
+
 		For Local b := Eachin w.bodies
-		   drawBody(b)
+		   DrawBody(b)
 		End
 
 		For Local j := Eachin w.joints
-		   drawJoint(j)
+		   DrawJoint(j)
 		End
 
 		For Local a := Eachin w.arbiters 
+			Local col  := SelectArbiterColor(a)
 
-			Local col  := selectArbiterColor(a)
-			If( beginShape(col) ) 
-
+			If( BeginShape(col) ) 
 				Local c  := a.contacts
-				If( c = null ) 
 
+				If( c = null ) 
 					Local b1  := a.s1.body
 					Local b2  := a.s2.body
 					Local p1  :=  New Vector( b1.x + Constants.XROT(a.s1.offset,b1), b1.y + Constants.YROT(a.s1.offset,b1) )
-					If( (a.s1.offset = null)  ) 
 
+					If( (a.s1.offset = null)  ) 
 					    p1 =  New Vector(b1.x,b1.y) 
 					End 
 
 					Local p2  :=  New Vector( b2.x + Constants.XROT(a.s2.offset,b2), b2.y + Constants.YROT(a.s2.offset,b2) )
-					If( (a.s2.offset = null)  ) 
 
+					If( (a.s2.offset = null)  ) 
 					    p2 =  New Vector(b1.x,b1.y) 
 					End 
 
 					DrawLine(p1.x,p1.y,p2.x,p2.y)
-					DrawCircle(p1.x,p1.y,5)
-					DrawCircle(p2.x,p2.y,5)
+					mojo.graphics.DrawCircle(p1.x,p1.y,5)
+					mojo.graphics.DrawCircle(p2.x,p2.y,5)
 				End 
 
 				While( Not( c = null ) ) 
-
 					If( c.updated ) 
 					   DrawRect(c.px - 1,c.py - 1,2,2)
 					End
-
 					c = c.nextItem
 				End 
 
-				endShape(col)
+				EndShape(col)
 			End 
 
-			If( beginShape(contactSize) ) 
-
+			If( BeginShape(contactSize) ) 
 				Local c  := a.contacts
+
 				While( Not( c = null ) ) 
-
 					If( c.updated ) 
-					   DrawCircle(c.px, c.py, c.dist)
+					   mojo.graphics.DrawCircle(c.px, c.py, c.dist)
 					End
-
 					c = c.nextItem
 				End 
 
-				endShape(contactSize)
+				EndShape(contactSize)
 			End 
 		End
 
 		PopMatrix()
 	End 
 
-	Method drawBody( b : Body ) 
+	Method DrawBody( b : Body ) 
 		For Local s := Eachin b.shapes 
-
 			Local b  := s.aabb
+
 			If( b.r < xmin Or b.b < ymin Or b.l > xmax Or b.t > ymax ) 
 			   Continue
 			End
 
-			drawShape(s)
+			DrawShape(s)
 		End 
 	End 
 
-	Method drawShape( s : Shape ) 
-		Local c  := selectColor(s)
-		If( beginShape(c) ) 
+	Method DrawShape( s : Shape ) 
+		Local c  := SelectColor(s)
 
+		If( BeginShape(c) ) 
 			Select( s.type ) 
-
-			Case Shape.CIRCLE drawCircle(s.circle)
-			Case Shape.POLYGON drawPoly(s.polygon)
-			Case Shape.SEGMENT drawSegment(s.segment)
+				Case Shape.CIRCLE DrawCircle(s.circle)
+				Case Shape.POLYGON DrawPoly(s.polygon)
+				Case Shape.SEGMENT DrawSegment(s.segment)
 			End 
 
-			endShape(c)
+			EndShape(c)
 		End 
 
-		If( beginShape(boundingBox) ) 
-
+		If( BeginShape(boundingBox) ) 
 			DrawRect(s.aabb.l, s.aabb.t, s.aabb.r - s.aabb.l, s.aabb.b - s.aabb.t)
-			endShape(boundingBox)
+			EndShape(boundingBox)
 		End 
 	End 
 
-	Method drawSegment( s : Segment ) 
-		Local delta  := s.tB.minus(s.tA)
+	Method DrawSegment( s : Segment ) 
+		Local delta  := s.tB.Minus(s.tA)
 		Local angle  := haxetypes.Math.ATan2( delta.x, delta.y )
 		Local dx  := haxetypes.Math.Cos(angle) * s.r
 		Local dy  := haxetypes.Math.Sin(angle) * s.r
 		If( drawSegmentsBorders ) 
 
-			DrawCircle(s.tA.x, s.tA.y, s.r)
-			DrawCircle(s.tB.x, s.tB.y, s.r)
+			mojo.graphics.DrawCircle(s.tA.x, s.tA.y, s.r)
+			mojo.graphics.DrawCircle(s.tB.x, s.tB.y, s.r)
 		End 
 
 		If( drawSegmentsNormals ) 
@@ -236,20 +230,18 @@ Class MojoDraw
 		DrawLine(s.tB.x - dx,s.tB.y + dy,s.tA.x - dx,s.tA.y + dy)
 	End 
 	
-	Method drawCircle( c : Circle ) 
+	Method DrawCircle( c : Circle ) 
+		mojo.graphics.DrawCircle(c.tC.x, c.tC.y, c.r )
 
-		DrawCircle(c.tC.x, c.tC.y, c.r )
 		If( drawCircleRotation ) 
-
 			DrawLine(c.tC.x, c.tC.y,c.tC.x + c.body.rcos * c.r, c.tC.y + c.body.rsin * c.r)
 		End 
 	End 
 	
-	Method drawPoly( p : Polygon ) 
-
+	Method DrawPoly( p : Polygon ) 
 		Local v  := p.tVerts
-		While( Not( v.nextItem = null ) ) 
 
+		While( Not( v.nextItem = null ) ) 
 			DrawLine(v.x, v.y, v.nextItem.x,v.nextItem.y)
 			v = v.nextItem
 		End 
@@ -257,6 +249,6 @@ Class MojoDraw
 		DrawLine( v.x,v.y,p.tVerts.x, p.tVerts.y )
 	End 
 	
-	Method drawJoint( j : Joint ) 
+	Method DrawJoint( j : Joint ) 
 	End 
 End 

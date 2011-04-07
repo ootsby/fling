@@ -71,34 +71,34 @@ Class World Extends BroadCallback
 		collision = New Collision()
 		staticBody = New Body(0,0)
 		staticBody.island = New Island(Self)
-		staticBody.updatePhysics()
+		staticBody.UpdatePhysics()
 		box = worldBoundary
 		Self.broadphase = broadphase
-		broadphase.init(box,BroadCallback(Self),staticBody)
+		broadphase.Init(box,BroadCallback(Self),staticBody)
 		timer = New Timer()
 		islands = New  HaxeFastList< Island > ()
 		waitingBodies = New  HaxeFastList< Body > ()
 	End 
 	 
-	Method setBroadPhase( bf : BroadPhase ) 
-		bf.init(box,BroadCallback(Self),staticBody)
+	Method SetBroadPhase( bf : BroadPhase ) 
+		bf.Init(box,BroadCallback(Self),staticBody)
 
 		For Local b := Eachin bodies 
 			For Local s := Eachin b.shapes 
-				broadphase.removeShape(s)
-				bf.addShape(s)
+				broadphase.RemoveShape(s)
+				bf.AddShape(s)
 			End 
 		End 
 
 		For Local s := Eachin staticBody.shapes 
-			broadphase.removeShape(s)
-			bf.addShape(s)
+			broadphase.RemoveShape(s)
+			bf.AddShape(s)
 		End 
 
 		broadphase = bf
 	End 
 
-	Method buildIslands() 
+	Method BuildIslands() 
 		Local stack  := New  HaxeFastList< Body > ()
 
 		For Local b := Eachin waitingBodies 
@@ -106,7 +106,7 @@ Class World Extends BroadCallback
 			   Continue
 			End 
 
-			Local i  := allocator.allocIsland(Self)
+			Local i  := allocator.AllocIsland(Self)
 			islands.Add(i)
 			stack.Add(b)
 			b.island = i
@@ -152,7 +152,7 @@ Class World Extends BroadCallback
 		   dt = 0
 		End 
 	
-		timer.start("all")
+		timer.Start("all")
 		'// update properties
 		Local invDt  :=  1 / dt
 
@@ -166,12 +166,12 @@ Class World Extends BroadCallback
 		End 
 
 		'// build islands
-		timer.start("island")
+		timer.Start("island")
 
 		If( useIslands )
-			buildIslands()
+			BuildIslands()
 		Else 
-			Local i  := allocator.allocIsland(Self)
+			Local i  := allocator.AllocIsland(Self)
 			i.bodies = bodies
 			i.ReplaceArbiters(arbiters)
 			i.joints = joints
@@ -182,48 +182,48 @@ Class World Extends BroadCallback
 		End 
 
 		If( debug ) 
-		   checkDatas()
+		   CheckDatas()
 		End 
 
-		timer.stop()
+		timer.Stop()
 		'// solve physics
-		timer.start("solve")
+		timer.Start("solve")
 
 		For Local i := Eachin islands 
 			If( Not(i.sleeping) ) 
-			   i.solve(dt,invDt,iterations)
+			   i.Solve(dt,invDt,iterations)
 			End 
         End 
 
-		timer.stop()
+		timer.Stop()
 
 		'// cleanup old living arbiters
 		For Local a := Eachin arbiters 
 			If( stamp - a.stamp > 3 ) 
-				allocator.freeAllContacts(a.contacts)
+				allocator.FreeAllContacts(a.contacts)
 				Local b1  := a.s1.body
 				Local b2  := a.s2.body
 				b1.RemoveArbiter(a)
 				b2.RemoveArbiter(a)
 				arbiters.Remove(a)
-				allocator.freeArbiter(a)
-				destroyIsland(b1.island)
-				destroyIsland(b2.island)
+				allocator.FreeArbiter(a)
+				DestroyIsland(b1.island)
+				DestroyIsland(b2.island)
 			End 
         End
 
 		'// collide
-		timer.start("col")
-		broadphase.commit()
+		timer.Start("col")
+		broadphase.Commit()
 		testedCollisions = 0
 		activeCollisions = 0
 
-		If( debug And Not(broadphase.validate()) ) 
+		If( debug And Not(broadphase.Validate()) ) 
 		   Print "INVALID BF DATAS"
 		End 
 
-		broadphase.collide()
-		timer.stop()
+		broadphase.Collide()
+		timer.Stop()
 		'// cleanup
 		stamp += 1
 
@@ -233,21 +233,21 @@ Class World Extends BroadCallback
 				tmp.Add(b)
             End 
 
-			For Local s := Eachin broadphase.pick(box) 
+			For Local s := Eachin broadphase.Pick(box) 
 				tmp.Remove(s.body)
             End 
 
 			For Local b := Eachin tmp 
-				If( removeBody(b) ) 
-				   b.onDestroy()
+				If( RemoveBody(b) ) 
+				   b.OnDestroy()
 				End 
             End 
 		End 
 
-		timer.stop()
+		timer.Stop()
 	End 
 
-	Method destroyIsland( i : Island ) 
+	Method DestroyIsland( i : Island ) 
 		If( i = null Or Not(useIslands) ) 
 		  Return
 		End 
@@ -267,10 +267,10 @@ Class World Extends BroadCallback
 			j.island = null
         End 
 
-		allocator.freeIsland(i)
+		allocator.FreeIsland(i)
 	End 
 
-	Method onCollide :Bool( s1 : Shape, s2 : Shape ) 
+	Method OnCollide :Bool( s1 : Shape, s2 : Shape ) 
 		Local b1  := s1.body
 		Local b2  := s2.body
 		testedCollisions += 1
@@ -297,8 +297,8 @@ Class World Extends BroadCallback
         End 
 
 		If( a = null ) 
-			a = allocator.allocArbiter()
-			a.assign(s1,s2)
+			a = allocator.AllocArbiter()
+			a.Assign(s1,s2)
 			pairFound = false
 		Else If( a.sleeping ) 
 			a.stamp = stamp
@@ -310,7 +310,7 @@ Class World Extends BroadCallback
 
 		a.sleeping = false
 		activeCollisions += 1
-		Local col : Bool = collision.testShapes(s1,s2,a)
+		Local col : Bool = collision.TestShapes(s1,s2,a)
 
 		If( col ) 
 			a.stamp = stamp
@@ -323,8 +323,8 @@ Class World Extends BroadCallback
 				Local i1  := b1.island
 
 				If( Not( i1 = b2.island ) ) 
-					destroyIsland(i1)
-					destroyIsland(b2.island)
+					DestroyIsland(i1)
+					DestroyIsland(b2.island)
 				Else  If( i1 ) 'Not( i1 = null ) ) 
 					i1.AddArbiter(a)
 					a.island = i1
@@ -335,25 +335,25 @@ Class World Extends BroadCallback
 			End
 
 		Else If( Not(pairFound) ) 
-		    allocator.freeArbiter(a)
+		    allocator.FreeArbiter(a)
 		End 
 		
 		Return(col)
 	End 
 	
-	Method addStaticShape :  Shape(s:Shape) 
-		staticBody.addShape(s)
-		s.update()
-		broadphase.addShape(s)
+	Method AddStaticShape :  Shape(s:Shape) 
+		staticBody.AddShape(s)
+		s.Update()
+		broadphase.AddShape(s)
 		Return s
 	End 
 	
-	Method removeStaticShape(s :Shape) 
-		staticBody.removeShape(s)
-		broadphase.removeShape(s)
+	Method RemoveStaticShape(s :Shape) 
+		staticBody.RemoveShape(s)
+		broadphase.RemoveShape(s)
 	End 
 	
-	Method addBody(b:Body) 
+	Method AddBody(b:Body) 
 		bodies.Add(b)
 		waitingBodies.Add(b)
 		b.properties.count += 1
@@ -367,19 +367,19 @@ Class World Extends BroadCallback
 			b.invInertia = 0
 
 			For Local s := Eachin b.shapes
-			   s.update()
+			   s.Update()
 			End
 
 		Else  
-			b.updatePhysics()
+			b.UpdatePhysics()
 		End 
 
 		For Local s := Eachin b.shapes 
-			broadphase.addShape(s)
+			broadphase.AddShape(s)
         End 
 	End 
 
-	Method removeBody : Bool(b:Body) 
+	Method RemoveBody : Bool(b:Body) 
 		If( Not(bodies.Remove(b)) ) 
 		  Return false
 		End 
@@ -391,10 +391,10 @@ Class World Extends BroadCallback
 		End 
 
 		For Local s := Eachin b.shapes 
-			broadphase.removeShape(s)
+			broadphase.RemoveShape(s)
         End 
 
-		destroyIsland(b.island)
+		DestroyIsland(b.island)
 		waitingBodies.Remove(b)
 
 		'// remove arbiters for the other bodies
@@ -411,7 +411,7 @@ Class World Extends BroadCallback
 		Return true
 	End 
 
-	Method activate( b : Body ) 
+	Method Activate( b : Body ) 
 		Local i  := b.island
 		b.motion = sleepEpsilon * Constants.WAKEUP_FACTOR
 	
@@ -424,24 +424,24 @@ Class World Extends BroadCallback
 		End 
 	End 
 
-	Method addJoint(j:Joint) 
+	Method AddJoint(j:Joint) 
 		joints.Add(j)
 	End 
 
-	Method removeJoint(j:Joint) 
+	Method RemoveJoint(j:Joint) 
 		joints.Remove(j)
-		destroyIsland(j.b1.island)
-		destroyIsland(j.b2.island)
+		DestroyIsland(j.b1.island)
+		DestroyIsland(j.b2.island)
 	End 
 
-	Method sync( b : Body ) 
+	Method Sync( b : Body ) 
 		For Local s := Eachin b.shapes 
-			s.update()
-			broadphase.syncShape(s)
+			s.Update()
+			broadphase.SyncShape(s)
 		End 
 	End 
 
-	Method checkBody( b : Body, i : Island ) 
+	Method CheckBody( b : Body, i : Island ) 
 		If( Not( b.island = i ) ) 
 		   Print "ASSERT"
 		End 
@@ -461,14 +461,14 @@ Class World Extends BroadCallback
 		End 
 	End 
 
-	Method checkDatas() 
+	Method CheckDatas() 
 		For Local b := Eachin waitingBodies 
-			checkBody(b,null)
+			CheckBody(b,null)
         End 
 
 		For Local i := Eachin islands 
 			For Local b := Eachin i.bodies 
-				checkBody(b,i)
+				CheckBody(b,i)
             End 
         End 
 	End 

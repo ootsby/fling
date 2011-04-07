@@ -80,7 +80,7 @@ Class Island
 		arbiters = New  HaxeFastList< Arbiter > ()
 	End 
 
-	Method solve( dt : Float, invDt : Float, iterations : Int ) 
+	Method Solve( dt : Float, invDt : Float, iterations : Int ) 
 		'// update bodies
 		Local g  := world.gravity
 		For Local b := Eachin bodies 
@@ -93,21 +93,21 @@ Class Island
 		End 
 		'// preUpdate arbiters and joints
 		For Local a := Eachin arbiters
-		   a.preStep(dt)
+		   a.PreStep(dt)
 		End
 
 		For Local joint := Eachin joints
-		   joint.preStep(invDt)
+		   joint.PreStep(invDt)
 		End
 		'// solve velocity constraints
 		For Local i := 0 Until iterations  
 
 			For Local a := Eachin arbiters
-			   a.applyImpulse()
+			   a.ApplyImpulse()
 			End
 
 			For Local j := Eachin joints
-			   j.applyImpulse()
+			   j.ApplyImpulse()
 			End
 		End 
 		'// update bodies position
@@ -142,8 +142,8 @@ Class Island
 			n += 1
 			For Local s := Eachin b.shapes 
 
-				s.update()
-				bf.syncShape(s)
+				s.Update()
+				bf.SyncShape(s)
 			End 
 		End 
 

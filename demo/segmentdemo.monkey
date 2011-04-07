@@ -46,45 +46,43 @@ Class SegmentDemo extends Demo
 		lastRefresh = 50
 	End 
 
-	Method init() 
-		world.gravity.set(0, 0.3125)
-		world.addStaticShape( New Segment( New Vector(0, 0), New Vector(220, 200), 4))
-		world.addStaticShape( New Segment( New Vector(600, 0), New Vector(380, 200), 4))
-		world.addStaticShape( New Segment( New Vector(200, 350), New Vector(300, 300), 4))
-		world.addStaticShape( New Segment( New Vector(400, 350), New Vector(300, 300), 4))
-		world.addStaticShape( New Segment( New Vector(100, 400), New Vector(200, 500), 2))
-		world.addStaticShape( New Segment( New Vector(500, 400), New Vector(400, 500), 2))
+	Method Init() 
+		world.gravity.Set(0, 0.3125)
+		world.AddStaticShape( New Segment( New Vector(0, 0), New Vector(220, 200), 4))
+		world.AddStaticShape( New Segment( New Vector(600, 0), New Vector(380, 200), 4))
+		world.AddStaticShape( New Segment( New Vector(200, 350), New Vector(300, 300), 4))
+		world.AddStaticShape( New Segment( New Vector(400, 350), New Vector(300, 300), 4))
+		world.AddStaticShape( New Segment( New Vector(100, 400), New Vector(200, 500), 2))
+		world.AddStaticShape( New Segment( New Vector(500, 400), New Vector(400, 500), 2))
 
 		Local material := New Material(0.0, 0.2, 1)
 
 		For Local i := 0 Until numBodies  
 			Local s : Shape
 			
-			If( rand(0,2) > 0 )
-				s = createConvexPoly(Int(rand(3, 4)),rand(12, 20),0, material)
+			If( Rand(0,2) > 0 )
+				s = CreateConvexPoly(Int(Rand(3, 4)),Rand(12, 20),0, material)
 			Else  
-				s = New Circle(rand(8,20),New Vector(0,0))
+				s = New Circle(Rand(8,20),New Vector(0,0))
 			End
 
-			Local b := addBody( 300 + rand(-200, 200), rand(-50,-150), s )
-			'Local b := addBody( 300, 0, s )
+			Local b := AddBody( 300 + Rand(-200, 200), Rand(-50,-150), s )
+			'Local b := AddBody( 300, 0, s )
 			bodies.Add(b)
 		End 
 	End 
 
 	Method Update( dt : Float ) 
-
 		lastRefresh += 1
+
 		If( lastRefresh < refreshDelay ) 
 		  Return
 		End
 
 		For Local b := Eachin bodies 
-
 			If( (b.y > size.y + 20) Or (b.x < -20) Or (b.y > size.x + 20) ) 
-
-				b.setPos( 300 + rand(-200, 200), rand(-50,-100) )
-				b.setSpeed( rand(-10,10)/40, rand(10,100)/40 )
+				b.SetPos( 300 + Rand(-200, 200), Rand(-50,-100) )
+				b.SetSpeed( Rand(-10,10)/40, Rand(10,100)/40 )
 			End 
 		End 
 	End 

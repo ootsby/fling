@@ -50,7 +50,7 @@ Class MainDemo Extends App
 		draw = true
 		debug = false
 		stopped = false
-		setDemo(New TitleDemo())
+		SetDemo(New TitleDemo())
 		SetUpdateRate(20)
 		Print("Press 1-8 to change demo scene. Mouse click fires block.")
 	End 
@@ -75,7 +75,7 @@ Class MainDemo Extends App
 		End
 
 		If( MouseHit( MOUSE_LEFT) )
-			fireBlock( MouseX(), MouseY())
+			FireBlock( MouseX(), MouseY())
 		End
 
 		CheckKeys()
@@ -95,7 +95,7 @@ Class MainDemo Extends App
 		End
 
 		If( draw )
-		   fd.drawWorld(world)
+		   fd.DrawWorld(world)
 		End
 	End 
 	
@@ -107,7 +107,7 @@ Class MainDemo Extends App
 
 		If( KeyHit(66) ) 'B
 			curbf = (curbf + 1) Mod broadphases.Length()
-			world.setBroadPhase(broadphases[curbf])
+			world.SetBroadPhase(broadphases[curbf])
 		End
 
 		If( KeyHit(68) ) 'D
@@ -115,56 +115,56 @@ Class MainDemo Extends App
 		End
 
 		If( KeyHit(49) ) '1
-			setDemo(new TitleDemo())
+			SetDemo(new TitleDemo())
 		End
 
 		If( KeyHit(50) ) '2
-			setDemo(new DominoPyramid())
+			SetDemo(new DominoPyramid())
 		End
 
 		If( KeyHit(51) )'3
-			setDemo(new PyramidThree())
+			SetDemo(new PyramidThree())
 		End
 
 		If( KeyHit(52) )'4
-			setDemo(new BoxPyramidDemo())
+			SetDemo(new BoxPyramidDemo())
 		End
 
 		If( KeyHit(53) )'5
-			setDemo(new BasicStack())
+			SetDemo(new BasicStack())
 		End
 
 		If( KeyHit(54) )'6
-			setDemo(new Jumble())
+			SetDemo(new Jumble())
 		End
 
 		If( KeyHit(55) )'7
-			setDemo(new PentagonRain())
+			SetDemo(new PentagonRain())
 		End
 
 		If( KeyHit(56) )'8
-			setDemo(new SegmentDemo())
+			SetDemo(new SegmentDemo())
 		End		
 		'If( KeyHit(57) )'9
-		'	setDemo(new demo.Test())
+		'	SetDemo(new demo.Test())
 		'End
 		
 		If( KeyHit(27) )'ESC
-			setDemo(demo)
+			SetDemo(demo)
 		End
  
 	End 
 
-	Method setDemo : Void ( demo : Demo ) 
+	Method SetDemo : Void ( demo : Demo ) 
 	 
 		Self.demo = demo
 		stopped = false
 		recalStep = false
 		world = new World(new AABB(-2000,-2000,2000,2000),broadphases[curbf])
-		demo.start(world)
+		demo.Start(world)
 	End 
 	
-	Method buildInfos : Void() 
+	Method BuildInfos : Void() 
 	 
 		Local t := world.timer
 		Local tot := t.total
@@ -175,10 +175,10 @@ Class MainDemo Extends App
 			'''"Arbit=" + Lambda.filter(world.arbiters,Method(a)Return Not a.sleeping).length + " / " + Lambda.count(world.arbiters),
 			"BF=" + Type.getClassName(Type.getClass(world.broadphase)),
 			"COLS=" + world.activeCollisions+ " / "+world.testedCollisions,
-			t.format("all"),
-			t.format("col"),
-			t.format("island"),
-			t.format("solve")]
+			t.Format("all"),
+			t.Format("col"),
+			t.Format("island"),
+			t.Format("solve")]
 		Local nislands := Lambda.count(world.islands)
 		If( nislands > 5 )
 			log.Push("Islands="+nislands)
@@ -201,19 +201,19 @@ Class MainDemo Extends App
 		Return log
 	End 
 	
-	Method fireBlock( mouseX : Float, mouseY : Float ) 
+	Method FireBlock( mouseX : Float, mouseY : Float ) 
 	 
 		Local pos := new Vector(DeviceWidth(),DeviceHeight())
 		pos.x += 100
 		pos.y /= 3
 		Local v := new Vector( mouseX - pos.x, mouseY - pos.y )
-		Local k := 15 / v.length()
+		Local k := 15 / v.Length()
 		v.x *= k
 		v.y *= k
 		Local b := new Body(0,0)
-		b.set(pos,0,v,2)
-		b.addShape( Shape.makeBox(20,20, Constants.NaN, Constants.NaN,new Material(0.0, 1, 5)) )
-		world.addBody(b)
+		b.Set(pos,0,v,2)
+		b.AddShape( Shape.MakeBox(20,20, Constants.NaN, Constants.NaN,new Material(0.0, 1, 5)) )
+		world.AddBody(b)
 	End 
 End 
 

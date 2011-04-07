@@ -37,13 +37,13 @@ Class SortedList Extends BroadPhase
 
 	End
 
-	Method init : Void ( bounds : AABB, cb : BroadCallback, staticBody : Body ) 
+	Method Init : Void ( bounds : AABB, cb : BroadCallback, staticBody : Body ) 
 
 		Self.callb = cb
 		boxes = null
 	End
 
-	Method addSort : Void( b : AABB ) 
+	Method AddSort : Void( b : AABB ) 
 
 		Local cur  := boxes
 		Local prev : AABB = null
@@ -66,14 +66,14 @@ Class SortedList Extends BroadPhase
 		End 
 	End
 
-	Method addShape: Void( s : Shape ) 
+	Method AddShape: Void( s : Shape ) 
 
 		Local b  := s.aabb
 		b.shape = s
-		addSort(b)
+		AddSort(b)
 	End
 
-	Method removeShape: Void( s : Shape ) 
+	Method RemoveShape: Void( s : Shape ) 
 
 		Local b  := s.aabb
 		Local nextItem  := b.nextItem
@@ -89,7 +89,7 @@ Class SortedList Extends BroadPhase
 		End 
 	End
 
-	Method collide: Void() 
+	Method Collide: Void() 
 
 		Local b1  := boxes
 		While( Not( b1 = null ) ) 
@@ -102,8 +102,8 @@ Class SortedList Extends BroadPhase
 				   Exit
 				End
 
-				If( b1.intersects2(b2) ) 
-				   callb.onCollide(b1.shape,b2.shape)
+				If( b1.Intersects2(b2) ) 
+				   callb.OnCollide(b1.shape,b2.shape)
 				End
 
 				b2 = b2.nextItem
@@ -113,7 +113,7 @@ Class SortedList Extends BroadPhase
 		End 
 	End
 
-	Method pick : HaxeFastList<Shape>( box : AABB ) 
+	Method Pick : HaxeFastList<Shape>( box : AABB ) 
 
 		Local shapes  := New  HaxeFastList<  Shape > ()
 		Local b  := boxes
@@ -129,7 +129,7 @@ Class SortedList Extends BroadPhase
 
 		While( Not( b = null ) ) 
 
-			If( b.intersects(box) ) 
+			If( b.Intersects(box) ) 
 			   shapes.Add(b.shape)
 			End
 
@@ -139,7 +139,7 @@ Class SortedList Extends BroadPhase
 		Return shapes
 	End
 
-	Method syncShape: Void( s : Shape ) 
+	Method SyncShape: Void( s : Shape ) 
 
 		Local b  := s.aabb
 		Local prev  := b.prev
@@ -151,7 +151,7 @@ Class SortedList Extends BroadPhase
 			   nextItem.prev = prev
 			End
 
-			addSort(b)
+			AddSort(b)
 		Else  If( Not( nextItem = null ) And nextItem.t < b.t ) 
 
 			If( prev = null )
@@ -161,16 +161,16 @@ Class SortedList Extends BroadPhase
 			End
 
 			nextItem.prev = prev
-			addSort(b)
+			AddSort(b)
 		End 
 	End
 
-	Method commit: Void() 
+	Method Commit: Void() 
 
 		'// nothing, syncShape already sorted the list
 	End
 
-	Method validate:Bool() 
+	Method Validate:Bool() 
 
 		Local cur  := boxes
 		While( Not( cur = null ) ) 

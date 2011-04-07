@@ -38,14 +38,14 @@ Class Circle extends Shape
 	Method New( radius: Float, offset : Vector,  material : Material = Null  ) 
 		Super.New(Shape.CIRCLE, material)
 		circle = Self
-		Self.offset = offset.clone()
-		c = offset.clone()
+		Self.offset = offset.Clone()
+		c = offset.Clone()
 		r = radius
 		area = Constants.PI * (r * r)
-		tC = c.clone()
+		tC = c.Clone()
 	End 
 	
-	Method update() 
+	Method Update() 
 		tC.x = body.x + Constants.XROT(c,body)
 		tC.y = body.y + Constants.YROT(c,body)
 		aabb.l = tC.x - r
@@ -54,8 +54,8 @@ Class Circle extends Shape
 		aabb.b = tC.y + r
 	End 
 
-	Method calculateInertia : Float() 
-		Return 0.5 * (r * r) + offset.dot(offset)
+	Method CalculateInertia : Float() 
+		Return 0.5 * (r * r) + offset.Dot(offset)
 	End 
 End 
 

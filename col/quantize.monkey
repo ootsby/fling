@@ -63,7 +63,7 @@ Class Quantize Extends BroadPhase
 		Return(x Shl spanbits) | y
 	End
 
-	Method init : Void ( bounds : AABB, cb : BroadCallback, staticBody : Body ) 
+	Method Init : Void ( bounds : AABB, cb : BroadCallback, staticBody : Body ) 
 
 		Self.cb = cb
 		Self.staticBody = staticBody
@@ -82,7 +82,7 @@ Class Quantize Extends BroadPhase
 		End 
 	End
 
-	Method add( l :  HaxeFastList< AABB > , box : AABB ) 
+	Method Add( l :  HaxeFastList< AABB > , box : AABB ) 
 
 		If( Not( box.shape.body = staticBody ) ) 
 
@@ -109,7 +109,7 @@ Class Quantize Extends BroadPhase
 		End 
 	End
 
-	Method addShape: Void( s : Shape ) 
+	Method AddShape: Void( s : Shape ) 
 
 		Local box  := s.aabb
 		Local nbits  := Self.nbits
@@ -143,12 +143,12 @@ Class Quantize Extends BroadPhase
 					End 
 				End 
 
-				add(l,box)
+				Add(l,box)
 			End 
 		End 
 	End
 
-	Method removeShape: Void( s : Shape ) 
+	Method RemoveShape: Void( s : Shape ) 
 
 		Local box  := s.aabb
 		Local ib  := box.bounds
@@ -166,7 +166,7 @@ Class Quantize Extends BroadPhase
 		End 
 	End
 
-	Method syncShape: Void( s : Shape ) 
+	Method SyncShape: Void( s : Shape ) 
 
 		Local box  := s.aabb
 		Local nbits  := Self.nbits
@@ -179,7 +179,7 @@ Class Quantize Extends BroadPhase
 		  Return
 		End
 
-		removeShape(s)
+		RemoveShape(s)
 		ib.l = x1
 		ib.t = y1
 		ib.r = x2
@@ -208,17 +208,17 @@ Class Quantize Extends BroadPhase
 					End 
 				End 
 
-				add(l,box)
+				Add(l,box)
 			End 
 		End 
 	End
 
-	Method commit: Void() 
+	Method Commit: Void() 
 
 		'// NOTHING
 	End
 
-	Method collide: Void() 
+	Method Collide: Void() 
 
 		For Local list := Eachin all 
 
@@ -233,8 +233,8 @@ Class Quantize Extends BroadPhase
 				Local box2  := list.head
 				While( Not( box2 = null ) ) 
 
-					If( b.intersects2(box2.elt) And Not( box1 = box2 ) ) 
-					   cb.onCollide(b.shape,box2.elt.shape)
+					If( b.Intersects2(box2.elt) And Not( box1 = box2 ) ) 
+					   cb.OnCollide(b.shape,box2.elt.shape)
 					End
 
 					box2 = box2.nextItem
@@ -245,7 +245,7 @@ Class Quantize Extends BroadPhase
 		End 
 	End
 
-	Method pick : HaxeFastList<  Shape >( box : AABB ) 
+	Method Pick : HaxeFastList<  Shape >( box : AABB ) 
 
 		Local nbits  := Self.nbits
 		Local x1  := Int(box.l) Shr nbits
@@ -275,7 +275,7 @@ Class Quantize Extends BroadPhase
 
 				For Local b := Eachin l 
 
-					If( b.intersects(box) ) 
+					If( b.Intersects(box) ) 
 					   shapes.Add(b.shape)
 					End 
                 End 
@@ -285,7 +285,7 @@ Class Quantize Extends BroadPhase
 		Return shapes
 	End
 
-	Method validate:Bool() 
+	Method Validate:Bool() 
 
 		'// check internal data structures
 		Return true

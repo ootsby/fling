@@ -36,19 +36,19 @@ Class Test extends Demo
 	Field dir : Int
 	Field et : Float
 	  
-	Method init() 
+	Method Init() 
 		Main.inst.recalStep = true
 		Main.inst.debug = true
 		world.gravity = New Vector(0,0.9)
 		Updates = 1
-		body = addBody( 300, 500, Shape.makeBox(128,16) )
+		body = AddBody( 300, 500, Shape.MakeBox(128,16) )
 		body.isStatic = true
-		world.removeBody(body)
-		world.addBody(body)
-		body2 = addBody( 250, 500 - 64, New Circle(10,New Vector(0,0)) )
+		world.RemoveBody(body)
+		world.AddBody(body)
+		body2 = AddBody( 250, 500 - 64, New Circle(10,New Vector(0,0)) )
 		body2.v.x = 0.5
-		'//body2 = addBody( 250, 500 - 64, Shape.makeBox(64,64) )
-		body2.preventRotation()
+		'//body2 = AddBody( 250, 500 - 64, Shape.MakeBox(64,64) )
+		body2.PreventRotation()
 		dir = 1
 		et = 0
 	End 
@@ -65,6 +65,6 @@ Class Test extends Demo
 		body.v.y = -0.5 * dir
 		body.x += body.v.x * dt
 		body.y += body.v.y * dt
-		world.sync(body)
+		world.Sync(body)
 	End 
 End 
