@@ -65,7 +65,8 @@ Class DominoPyramid extends Demo
 
 				If( j = 0 ) 
 				   createPoly( xp - d_heigth + d_width , yp - (3 * d_heigth) - (4 * d_width) + dw, 0, domino )
-				End 
+				End
+
 				If( j = stackHeigth - i - 1 ) 
 				   createPoly( xp + d_heigth - d_width , yp - (3 * d_heigth) - (4 * d_width) + dw, 0, domino )
 				End 

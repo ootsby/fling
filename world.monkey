@@ -332,7 +332,8 @@ Class World Extends BroadCallback
 
 				s2.body.AddArbiter(a)
 				s1.body.AddArbiter(a)
-			End 
+			End
+
 		Else If( Not(pairFound) ) 
 		    allocator.freeArbiter(a)
 		End 
@@ -368,6 +369,7 @@ Class World Extends BroadCallback
 			For Local s := Eachin b.shapes
 			   s.update()
 			End
+
 		Else  
 			b.updatePhysics()
 		End 

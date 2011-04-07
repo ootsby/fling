@@ -63,7 +63,8 @@ Class Demo
 		b.addShape(shape)
 		If( Not( props = null ) ) 
 			b.properties = props
-		End 
+		End
+
 		world.addBody(b)
 		Return b
 	End 
@@ -96,7 +97,8 @@ Class Demo
 					If( datas[ x + y * FontArray.WIDTH] = 1 ) 
 						If( x > xmax ) 
 						   xmax = x
-						End 
+						End
+
 						addRectangle( xp + x * (size + spacing), yp + y * (size + spacing), size, size, mat )
 					End 
 				End 

@@ -51,9 +51,11 @@ Class Math
 	Function Sin: Float( rads: Float)
 		Return monkey.math.Sin( rads * DegreesPerRad )
 	End
+
 	Function Cos: Float( rads: Float)
 		Return monkey.math.Cos( rads * DegreesPerRad )
 	End
+
 	Function ATan2: Float( x: Float, y: Float)
 		Return monkey.math.ATan2( x, y ) * RadsPerDegree
 	End
@@ -79,6 +81,7 @@ Public
 		If( length = arr.Length() )
 			arr = arr.Resize(length+lengthInc)
 		End
+
 		arr[length] = item
 		length += 1
 	End
@@ -92,6 +95,7 @@ Public
 		End
 	End
 End
+
 Class HaxeStringMap<T> Extends StringMap<T>
 	Method get( key : String )
 		Return Self.Get(key)
@@ -105,6 +109,7 @@ Class HaxeFastList<T>
 	Method Add( item:T )
 		AddFirst(item)
 	End
+
 	Method add( item:T )
 		AddFirst(item)
 	End
@@ -163,6 +168,7 @@ Class HaxeFastList<T>
 				node._pred.Remove
 			Return True
 			End
+
 		Wend
 		Return False
 	End

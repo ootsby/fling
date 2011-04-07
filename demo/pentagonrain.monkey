@@ -76,7 +76,8 @@ Class PentagonRain extends Demo
 		lastRefresh += dt
 		If( lastRefresh < refreshDelay ) 
 		  Return
-		End 
+		End
+
 		For Local p := Eachin pentagons 
 
 			If( (p.y > size.y + 20) Or (p.x < -20) Or (p.y > size.x + 20) ) 

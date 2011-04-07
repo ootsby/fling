@@ -51,6 +51,7 @@ Class PyramidThree extends Demo
 				For Local x := 0 Until y+1 
 				   createPoly( startX - (x * width) + y * (width / 2), startY, 0, slab, props )
 				End
+
 				startY -= height
 			End 
 
@@ -60,6 +61,7 @@ Class PyramidThree extends Demo
 				For Local x := 0 Until y+1 
 				   createPoly( startX - (x * width) + y * (width / 2), startY, 0, slab, props )
 				End
+
 				startY -= height
 				y -= 1
 			End 

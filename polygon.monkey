@@ -111,16 +111,20 @@ Class Polygon extends Shape
 			tv.y = body.y + Constants.YROT(v,body)
 			If( tv.x < aabb.l ) 
 			   aabb.l = tv.x
-			End 
+			End
+
 			If( tv.x > aabb.r ) 
 			   aabb.r = tv.x
-			End 
+			End
+
 			If( tv.y < aabb.t ) 
 			   aabb.t = tv.y
-			End 
+			End
+
 			If( tv.y > aabb.b ) 
 			   aabb.b = tv.y
-			End 
+			End
+
 			v = v.nextItem
 			tv = tv.nextItem
 		End 

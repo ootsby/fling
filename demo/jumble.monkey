@@ -52,7 +52,8 @@ Class Jumble extends Demo
 		lastAdd += 1
 		If( lastAdd < addDelay ) 
 		  Return
-		End 
+		End
+
 		lastAdd = 0
 		Local body  := New Body(0,0)
 		body.addShape( Shape.makeBox(60,10,Constants.NaN,Constants.NaN,material))

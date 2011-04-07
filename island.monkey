@@ -48,13 +48,16 @@ Class Island
 	
 	Method AddArbiter( a : Arbiter )
 		arbiters.Add(a)
-	End 
+	End
+
 	Method RemoveArbiter( a : Arbiter )
 		arbiters.Remove(a)
-	End 
+	End
+
 	Method ReplaceArbiters( arbiters : HaxeFastList< Arbiter >)
 		Self.arbiters = arbiters
 	End
+
 	Method ReleaseArbiters()
 		For Local a := Eachin arbiters 
 
@@ -62,6 +65,7 @@ Class Island
 			a.island = null
 		End 
 	End
+
 	Method ClearArbiters()
 		arbiters.Clear()
 	End
@@ -91,6 +95,7 @@ Class Island
 		For Local a := Eachin arbiters
 		   a.preStep(dt)
 		End
+
 		For Local joint := Eachin joints
 		   joint.preStep(invDt)
 		End
@@ -100,6 +105,7 @@ Class Island
 			For Local a := Eachin arbiters
 			   a.applyImpulse()
 			End
+
 			For Local j := Eachin joints
 			   j.applyImpulse()
 			End
@@ -154,6 +160,7 @@ Class Island
 			For Local a := Eachin arbiters
 			   a.sleeping = true
 			End
+
 			sleeping = true
 		End 
 	End 

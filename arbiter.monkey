@@ -84,7 +84,8 @@ Class Arbiter
 
 			If( hash = c.hash ) 
 			   Exit
-			End 
+			End
+
 			c = c.nextItem
 		End 
 
@@ -105,7 +106,8 @@ Class Arbiter
 		c.ny = n.y * nCoef
 		c.dist = dist
 		c.updated = true
-	End 
+	End
+
 	Method bodyImpulse( c : Contact, b1 : Body, b2 : Body, cjTx : Float, cjTy : Float ) 
 
 		b1.v.x -= cjTx * b1.invMass
@@ -114,7 +116,8 @@ Class Arbiter
 		b2.v.x += cjTx * b2.invMass
 		b2.v.y += cjTy * b2.invMass
 		b2.w += b2.invInertia * (c.r2x * cjTy - c.r2y * cjTx)
-	End 
+	End
+
 	Method preStep( dt : Float ) 
 
 		Local b1  := s1.body
@@ -133,7 +136,8 @@ Class Arbiter
 					contacts = c
 				Else  
 					prev.nextItem = c
-				End 
+				End
+
 				Continue
 			End 
 
@@ -177,7 +181,8 @@ Class Arbiter
 			prev = c
 			c = c.nextItem
 		End 
-	End 
+	End
+
 	Method applyImpulse() 
 
 		Local b1  := s1.body
@@ -195,7 +200,8 @@ Class Arbiter
 			c.jBias = jbnOld + jbn
 			If( c.jBias < 0 ) 
 			   c.jBias = 0
-			End 
+			End
+
 			jbn = c.jBias - jbnOld
 			'// apply the bias impulse
 			Local cjTx  : Float = c.nx * jbn
@@ -215,7 +221,8 @@ Class Arbiter
 			c.jnAcc = jnOld - jn
 			If( c.jnAcc < 0 ) 
 			   c.jnAcc = 0
-			End 
+			End
+
 			jn = c.jnAcc - jnOld
 			'// calculate the relative tangent velocity
 			Local vrt  : Float = c.nx * vry - c.ny * vrx
@@ -228,7 +235,8 @@ Class Arbiter
 			   c.jtAcc = -jtMax 
 			Else If( c.jtAcc > jtMax ) 
 				c.jtAcc = jtMax
-			End 
+			End
+
 			jt = c.jtAcc - jtOld
 			'// apply the impulse
 			Local cjTx2  : Float = c.nx * jn - c.ny * jt

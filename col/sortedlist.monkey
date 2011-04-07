@@ -35,12 +35,14 @@ Class SortedList Extends BroadPhase
 	Field callb : BroadCallback
 	Method New() 
 
-	End 
+	End
+
 	Method init : Void ( bounds : AABB, cb : BroadCallback, staticBody : Body ) 
 
 		Self.callb = cb
 		boxes = null
-	End 
+	End
+
 	Method addSort : Void( b : AABB ) 
 
 		Local cur  := boxes
@@ -57,17 +59,20 @@ Class SortedList Extends BroadPhase
 			boxes = b
 		Else  
 			prev.nextItem = b
-		End 
+		End
+
 		If( Not( cur = null ) ) 
 		   cur.prev = b
 		End 
-	End 
+	End
+
 	Method addShape: Void( s : Shape ) 
 
 		Local b  := s.aabb
 		b.shape = s
 		addSort(b)
-	End 
+	End
+
 	Method removeShape: Void( s : Shape ) 
 
 		Local b  := s.aabb
@@ -77,11 +82,13 @@ Class SortedList Extends BroadPhase
 			boxes = nextItem
 		Else  
 			prev.nextItem = nextItem
-		End 
+		End
+
 		If( Not( nextItem = null ) ) 
 		   nextItem.prev = prev
 		End 
-	End 
+	End
+
 	Method collide: Void() 
 
 		Local b1  := boxes
@@ -93,16 +100,19 @@ Class SortedList Extends BroadPhase
 
 				If( b2.t > bottom ) 
 				   Exit
-				End 
+				End
+
 				If( b1.intersects2(b2) ) 
 				   callb.onCollide(b1.shape,b2.shape)
-				End 
+				End
+
 				b2 = b2.nextItem
 			End 
 
 			b1 = b1.nextItem
 		End 
-	End 
+	End
+
 	Method pick : HaxeFastList<Shape>( box : AABB ) 
 
 		Local shapes  := New  HaxeFastList<  Shape > ()
@@ -112,7 +122,8 @@ Class SortedList Extends BroadPhase
 
 			If( b.t <= box.b ) 
 			   Exit
-			End 
+			End
+
 			b = b.nextItem
 		End 
 
@@ -120,12 +131,14 @@ Class SortedList Extends BroadPhase
 
 			If( b.intersects(box) ) 
 			   shapes.Add(b.shape)
-			End 
+			End
+
 			b = b.nextItem
 		End 
 
 		Return shapes
-	End 
+	End
+
 	Method syncShape: Void( s : Shape ) 
 
 		Local b  := s.aabb
@@ -136,7 +149,8 @@ Class SortedList Extends BroadPhase
 			prev.nextItem = nextItem
 			If( Not( nextItem = null ) ) 
 			   nextItem.prev = prev
-			End 
+			End
+
 			addSort(b)
 		Else  If( Not( nextItem = null ) And nextItem.t < b.t ) 
 
@@ -144,15 +158,18 @@ Class SortedList Extends BroadPhase
 				boxes = nextItem
 			Else  
 				prev.nextItem = nextItem
-			End 
+			End
+
 			nextItem.prev = prev
 			addSort(b)
 		End 
-	End 
+	End
+
 	Method commit: Void() 
 
 		'// nothing, syncShape already sorted the list
-	End 
+	End
+
 	Method validate:Bool() 
 
 		Local cur  := boxes
@@ -161,7 +178,8 @@ Class SortedList Extends BroadPhase
 			Local nextItem  := cur.nextItem
 			If( Not( nextItem = null ) And nextItem.t < cur.t ) 
 			  Return false
-			End 
+			End
+
 			cur = nextItem
 		End 
 

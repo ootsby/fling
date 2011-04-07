@@ -37,20 +37,24 @@ Class BruteForce Extends BroadPhase
 	Field callb : BroadCallback
 	Method New() 
 
-	End 
+	End
+
 	Method init : Void ( bounds : AABB, cb : BroadCallback, staticBody : Body ) 
 
 		Self.callb = callb
 		shapes = New  HaxeFastList< Shape > ()
-	End 
+	End
+
 	Method addShape: Void( s : Shape ) 
 
 		shapes.Add(s)
-	End 
+	End
+
 	Method removeShape: Void( s : Shape ) 
 
 		shapes.Remove(s)
-	End 
+	End
+
 	Method collide: Void() 
 
 		Local s1  := shapes.head
@@ -62,13 +66,15 @@ Class BruteForce Extends BroadPhase
 
 				If( box1.intersects2(s2.elt.aabb) ) 
 				   callb.onCollide(s1.elt,s2.elt)
-				End 
+				End
+
 				s2 = s2.nextItem
 			End 
 
 			s1 = s1.nextItem
 		End 
-	End 
+	End
+
 	Method pick : HaxeFastList<  Shape >( box : AABB ) 
 
 		Local shapes  := New  HaxeFastList<  Shape > ()
@@ -80,15 +86,18 @@ Class BruteForce Extends BroadPhase
         End 
 
 		Return shapes
-	End 
+	End
+
 	Method syncShape: Void( s : Shape ) 
 
 		'// nothing
-	End 
+	End
+
 	Method commit: Void() 
 
 		'// nothing
-	End 
+	End
+
 	Method validate :Bool() 
 
 		Return true

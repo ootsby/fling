@@ -62,18 +62,22 @@ Class MainDemo Extends App
 		If(  stopped  )
 		    Updates = 0 
 		End
+
 		Local dt : Float = 1.0
 		Local niter := 5
 		For Local i := 0 Until Updates 
 			demo.Update(dt/Updates)
 			world.Update(dt/Updates,niter)
-		End 
+		End
+
 		If( recalStep )
 		   world.Update(0,1)
 		End
+
 		If( MouseHit( MOUSE_LEFT) )
 			fireBlock( MouseX(), MouseY())
 		End
+
 		CheckKeys()
 	End
 	
@@ -88,7 +92,8 @@ Class MainDemo Extends App
 			'fd.contact.line = 0xFF0000
 			'fd.sleepingContact.line = 0xFF00FF
 			fd.drawCircleRotation = true
-		End 
+		End
+
 		If( draw )
 		   fd.drawWorld(world)
 		End
@@ -99,34 +104,44 @@ Class MainDemo Extends App
 		If( KeyHit(32) )'SPACE
 			debug = Not debug
 		End
+
 		If( KeyHit(66) ) 'B
 			curbf = (curbf + 1) Mod broadphases.Length()
 			world.setBroadPhase(broadphases[curbf])
 		End
+
 		If( KeyHit(68) ) 'D
 			draw = Not draw
 		End
+
 		If( KeyHit(49) ) '1
 			setDemo(new TitleDemo())
 		End
+
 		If( KeyHit(50) ) '2
 			setDemo(new DominoPyramid())
 		End
+
 		If( KeyHit(51) )'3
 			setDemo(new PyramidThree())
 		End
+
 		If( KeyHit(52) )'4
 			setDemo(new BoxPyramidDemo())
 		End
+
 		If( KeyHit(53) )'5
 			setDemo(new BasicStack())
 		End
+
 		If( KeyHit(54) )'6
 			setDemo(new Jumble())
 		End
+
 		If( KeyHit(55) )'7
 			setDemo(new PentagonRain())
 		End
+
 		If( KeyHit(56) )'8
 			setDemo(new SegmentDemo())
 		End		
@@ -177,10 +192,12 @@ Class MainDemo Extends App
 				    str += " e=" + Math.ceil(i.energy*1000)/1000
 				End
  			End
+
 			Local b := i.bodies.first()
 			str += " (" + Math.ceil(b.x) + "," + Math.ceil(b.y) + ")"
 			log.Push(str)
-		End 
+		End
+
 		Return log
 	End 
 	

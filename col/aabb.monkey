@@ -45,19 +45,23 @@ Class AABB
 		Self.t = top
 		Self.r = right
 		Self.b = bottom
-	End 
+	End
+
 	Method intersects( aabb : AABB ) 
 
 		Return Not(aabb.l > r Or aabb.r < l Or aabb.t > b Or aabb.b < t)
-	End 
+	End
+
 	Method intersects2( aabb:AABB ) 
 
 		Return(l<=aabb.r And aabb.l<=r And t<=aabb.b And aabb.t<=b)
-	End 
+	End
+
 	Method containsPoint( v : Vector ) 
 
 		Return Not(v.y < t Or v.y > b Or v.x < l Or v.x > r)
-	End 
+	End
+
 	Method toString() 
 
 		Return"[l=" + l + " b=" + b + " r=" + r + " t=" + t + "]"

@@ -39,7 +39,8 @@ Class IAABB
 		Self.t = top
 		Self.r = right
 		Self.b = bottom
-	End 
+	End
+
 	Method toString() 
 
 		Return"[l=" + l + " b=" + b + " r=" + r + " t=" + t + "]"

@@ -54,7 +54,8 @@ Class Segment extends Shape
 		tB = New Vector(0,0)
 		tN = New Vector(0,0)
 		tNneg = New Vector(0,0)
-	End 
+	End
+
 	Method update() 
 
 		'// transform
@@ -86,7 +87,8 @@ Class Segment extends Shape
 			aabb.t = tB.y - r
 			aabb.b = tA.y + r
 		End 
-	End 
+	End
+
 	Method calculateInertia: Float() 
 
 		Return 1.0

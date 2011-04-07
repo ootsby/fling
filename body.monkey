@@ -69,16 +69,20 @@ Class Body
 	
 	Method GetArbiters: HaxeFastList<Arbiter>( )
 		Return arbiters
-	End 
+	End
+
 	Method AddArbiter( a : Arbiter )
 		arbiters.Add(a)
-	End 
+	End
+
 	Method RemoveArbiter( a : Arbiter )
 		arbiters.Remove(a)
-	End 
+	End
+
 	Method ReplaceArbiters( arbiters : HaxeFastList< Arbiter >)
 		Self.arbiters = arbiters
 	End
+
 	Method ReleaseArbiters()
 		For Local a := Eachin arbiters 
 
@@ -86,6 +90,7 @@ Class Body
 			a.island = null
 		End 
 	End
+
 	Method ClearArbiters()
 		arbiters.Clear()
 	End
@@ -188,7 +193,8 @@ Class Body
 
 		If( Not( a = Constants.NaN) ) 
 		   setAngle(a)
-		End 
+		End
+
 		If( Not( v = null ) ) 
 
 			Self.v.x = v.x

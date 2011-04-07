@@ -46,7 +46,8 @@ Class Collision
 			Return circle2circle(s1.circle,s2.circle,a)
 			Else  ' type = SEGMENT 
 			Return circle2segment(s1.circle,s2.segment,a)
-			End 
+			End
+
 		Else If( s1.type = Shape.SEGMENT And s2.type = Shape.POLYGON ) 
 		Return segment2poly(s1.segment,s2.polygon,a)
 		Else  
@@ -64,7 +65,8 @@ Class Collision
 			Local k  := n.dot(v)
 			If( k < min ) 
 			   min = k
-			End 
+			End
+
 			v = v.nextItem
 		End 
 
@@ -82,7 +84,8 @@ Class Collision
 			Local min  := polyAxisProject(shape2,a.n,a.d)
 			If( min > 0 ) 
 			  Return false
-			End 
+			End
+
 			If( min > max1 ) 
 
 				max1 = min
@@ -100,7 +103,8 @@ Class Collision
 			Local min  := polyAxisProject(shape1,a.n,a.d)
 			If( min > 0 ) 
 			  Return false
-			End 
+			End
+
 			If( min > max2 ) 
 
 				max2 = min
@@ -114,7 +118,8 @@ Class Collision
 			findVerts(arb, shape1, shape2, axis1,  1, max1)
 		Else  
 			findVerts(arb, shape1, shape2, axis2, -1, max2)
-		End 
+		End
+
 		Return true
 	End 
 
@@ -187,7 +192,8 @@ Class Collision
 		Local distSqr  := x * x + y * y
 		If( distSqr >= minDist * minDist ) 
 		  Return false
-		End 
+		End
+
 		Local dist  := Sqrt(distSqr)
 		Local invDist  :=  1 / dist
 		If( (dist < Constants.EPSILON)  ) 
@@ -212,7 +218,8 @@ Class Collision
         dist -= (circle.r + seg.r)
 		If( dist > 0 ) 
 		  Return false
-		End 
+		End
+
 		Local dt  := -seg.tN.cross(circle.tC)
 		Local dtMin  := -seg.tN.cross(seg.tA)
 		Local dtMax  := -seg.tN.cross(seg.tB)
@@ -220,7 +227,8 @@ Class Collision
 
 			If( dt < dtMin - circle.r ) 
 			  Return false
-			End 
+			End
+
 		Return circle2circleQuery(arb, circle.tC, seg.tA, circle.r, seg.r)
 		Else  
 
@@ -289,7 +297,8 @@ Class Collision
 		Local minNeg  := polyAxisProject(poly,seg.tNneg,-segD) - seg.r
 		If( minNeg > 0 Or minNorm > 0 ) 
 		  Return false
-		End 
+		End
+
 		Local a  := poly.tAxes
 		Local polyMin  := Constants.FMIN
 		Local axis  : Axis = null
@@ -298,7 +307,8 @@ Class Collision
 			Local dist  := segAxisProject(seg,a.n,a.d)
 			If( dist > 0 ) 
 			  Return false
-			End 
+			End
+
 			If( dist > polyMin ) 
 
 				polyMin = dist
@@ -306,16 +316,19 @@ Class Collision
 			End 
 
 			a = a.nextItem
-		End 
+		End
+
 		Local n  := axis.n
 		Local va  := New Vector( seg.tA.x - n.x * seg.r, seg.tA.y - n.y * seg.r )
 		Local vb  := New Vector( seg.tB.x - n.x * seg.r, seg.tB.y - n.y * seg.r )
 		If( polyContainsPoint(poly,va) ) 
 		   arb.injectContact(va, n, -1.0, polyMin, 0 )
-		End 
+		End
+
 		If( polyContainsPoint(poly,vb) ) 
 		   arb.injectContact(vb, n, -1.0, polyMin, 1 )
-		End 
+		End
+
 		If( minNorm >= polyMin Or minNeg >= polyMin ) 
 
 			If( minNorm > minNeg )
@@ -340,7 +353,8 @@ Class Collision
 			Local dist  := a.n.dot(circle.tC) - a.d - circle.r
 			If( dist > 0 ) 
 			  Return false
-			End 
+			End
+
 			If( dist > min ) 
 
 				min = dist
@@ -350,7 +364,8 @@ Class Collision
 
 			a = a.nextItem
 			v = v.nextItem
-		End 
+		End
+
 		Local n  := a0.n
 		Local v1  := v0.nextItem
 		If( (v0.nextItem = null) ) 
@@ -361,10 +376,12 @@ Class Collision
 		Local dt  := n.cross(circle.tC)
 		If( dt < n.cross(v1) ) 
 		  Return circle2circleQuery(arb, circle.tC, v1, circle.r, 0)
-		End 
+		End
+
 		If( dt >= n.cross(v0) ) 
 		  Return circle2circleQuery(arb, circle.tC, v0, circle.r, 0)
-		End 
+		End
+
 		Local nx  := n.x * (circle.r + min * 0.5)
 		Local ny  := n.y * (circle.r + min * 0.5)
 		arb.injectContact(New Vector(circle.tC.x - nx, circle.tC.y - ny),n,-1.0,min,0) 
@@ -378,7 +395,8 @@ Class Collision
 
 			If( a.n.dot(p) > a.d ) 
 			  Return false
-			End 
+			End
+
 			a = a.nextItem
 		End 
 

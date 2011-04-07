@@ -61,26 +61,32 @@ ID += 1
 
 		Self.area = 0
 		aabb = New AABB(0,0,0,0)
-	End 
+	End
+
 	Method update() 
 
-	End 
+	End
+
 	Method calculateInertia : Float() 
 
 		Return 1.0
-	End 
+	End
+
 	Method toString : String() 
 
 		Return"Shape#"+id
-	End 
+	End
+
 	Function makeBox : Polygon( width : Float, height : Float,  px : Float = -width/2.0 ,  py : Float = -height /2.0 ,  mat: Material = Null  ) 
 
 		If( px = Constants.NaN ) 
 		   px = -width / 2
-		End 
+		End
+
 		If( py = Constants.NaN ) 
 		   py = -height / 2
-		End 
+		End
+
 		Local v : HaxeArray<Vector> = New HaxeArray<Vector>()
 		v.Push(New Vector(0,0))
 		v.Push(New Vector(0,height))

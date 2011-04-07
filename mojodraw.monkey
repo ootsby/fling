@@ -80,7 +80,8 @@ Class MojoDraw
 	Method beginShape( c : Color ) 
 		If( c = null ) 
 		  Return false
-		End 
+		End
+
 		SetColor(c.r,c.g,c.b)
 		SetAlpha(c.a)
 		Return true
@@ -116,9 +117,11 @@ Class MojoDraw
 		For Local b := Eachin w.bodies
 		   drawBody(b)
 		End
+
 		For Local j := Eachin w.joints
 		   drawJoint(j)
 		End
+
 		For Local a := Eachin w.arbiters 
 
 			Local col  := selectArbiterColor(a)
@@ -150,7 +153,8 @@ Class MojoDraw
 
 					If( c.updated ) 
 					   DrawRect(c.px - 1,c.py - 1,2,2)
-					End 
+					End
+
 					c = c.nextItem
 				End 
 
@@ -164,13 +168,15 @@ Class MojoDraw
 
 					If( c.updated ) 
 					   DrawCircle(c.px, c.py, c.dist)
-					End 
+					End
+
 					c = c.nextItem
 				End 
 
 				endShape(contactSize)
 			End 
-		End 
+		End
+
 		PopMatrix()
 	End 
 
@@ -180,7 +186,8 @@ Class MojoDraw
 			Local b  := s.aabb
 			If( b.r < xmin Or b.b < ymin Or b.l > xmax Or b.t > ymax ) 
 			   Continue
-			End 
+			End
+
 			drawShape(s)
 		End 
 	End 

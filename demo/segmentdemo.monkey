@@ -64,7 +64,8 @@ Class SegmentDemo extends Demo
 				s = createConvexPoly(Int(rand(3, 4)),rand(12, 20),0, material)
 			Else  
 				s = New Circle(rand(8,20),New Vector(0,0))
-			End 
+			End
+
 			Local b := addBody( 300 + rand(-200, 200), rand(-50,-150), s )
 			'Local b := addBody( 300, 0, s )
 			bodies.Add(b)
@@ -76,7 +77,8 @@ Class SegmentDemo extends Demo
 		lastRefresh += 1
 		If( lastRefresh < refreshDelay ) 
 		  Return
-		End 
+		End
+
 		For Local b := Eachin bodies 
 
 			If( (b.y > size.y + 20) Or (b.x < -20) Or (b.y > size.x + 20) ) 

@@ -73,7 +73,8 @@ Class Timer
 
 		If( data = null ) 
 		  Return 0.0
-		End 
+		End
+
 		Return data.total
 	End 
 	
@@ -82,7 +83,8 @@ Class Timer
 
 		If( data = null ) 
 		  Return name + " ????"
-		End 
+		End
+
 		Return name + " : "+Int(data.avg*1000) + " ("+(Int(data.total*1000/total)/10)+"Mod)"
 	End 
 	
