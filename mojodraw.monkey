@@ -208,7 +208,7 @@ class MojoDraw
 
 	Method drawSegment( s : Segment ) 
 		Local delta  := s.tB.minus(s.tA)
-		Local angle  := ATan2( delta.x, delta.y )
+		Local angle  := haxetypes.Math.ATan2( delta.x, delta.y )
 		Local dx  := haxetypes.Math.Cos(angle) * s.r
 		Local dy  := haxetypes.Math.Sin(angle) * s.r
 		if( drawSegmentsBorders ) 
