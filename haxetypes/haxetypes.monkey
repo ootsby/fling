@@ -37,11 +37,12 @@
 #end
 
 Class Math
+	
 	Function Round:Int( f : Float )
 		If( Ceil(f) - f > f - Floor(f))
-		Return Floor(f)
+			Return Floor(f)
 		Else
-		Return Ceil(f)
+			Return Ceil(f)
 		End
 	End
 	
@@ -65,9 +66,10 @@ Class HaxeArray<T>
 
 Private
 	Field arr : T[]
+	Const lengthInc : Int = 100
+	
 Public
 	Field length : Int = 0
-	Const lengthInc : Int = 100
 	
 	Method Get:T( index:Int)
 		Return arr[index]
@@ -89,16 +91,10 @@ Public
 	Method Pop:T()
 		If( length >= 0 )
 			length -= 1
-		Return arr[length]
+			Return arr[length]
 		Else
-		Return Null
+			Return Null
 		End
-	End
-End
-
-Class HaxeStringMap<T> Extends StringMap<T>
-	Method get( key : String )
-		Return Self.Get(key)
 	End
 End
 
@@ -107,10 +103,6 @@ Class HaxeFastList<T>
 	Field head := New HaxeFastCell<T>()
 	
 	Method Add( item:T )
-		AddFirst(item)
-	End
-
-	Method add( item:T )
 		AddFirst(item)
 	End
 
@@ -181,7 +173,6 @@ Class HaxeFastList<T>
 		Wend
 	End
 
-
 	Method RemoveFirst:T()
 		Local data:T=head.nextItem.elt
 		head.nextItem.Remove
@@ -215,6 +206,7 @@ Class HaxeFastCell<T>
 		_pred.nextItem=Self
 		elt=data
 	End
+
 	'create a link node
 	Method New( succ:HaxeFastCell<T>,pred:HaxeFastCell<T>,data:T )
 		nextItem=succ
@@ -234,10 +226,9 @@ Class HaxeFastCell<T>
 	End Method
 
 	Field elt:T
-
 	Field nextItem:HaxeFastCell<T>
+
 Private
-	
 
 	Field _pred:HaxeFastCell<T>
 
