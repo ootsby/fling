@@ -27,8 +27,8 @@
  '*/
 #end
 
-import fling.allfling
-import haxetypes.haxetypes
+Import fling.allfling
+Import haxetypes.haxetypes
 
 class Body 
 	Global ID  := 0
@@ -218,7 +218,7 @@ class Body
 	End 
 	
 	Method toString() 
-	Return"Body#"+id
+		Return"Body#"+id
 	End 
 	
 	Method onDestroy() 

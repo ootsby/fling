@@ -27,7 +27,7 @@
  '*/
 #end
 
-import fling.allfling
+Import fling.allfling
 import fling.col.aabb
 
 class Shape 

@@ -27,10 +27,10 @@
  '*/
 #end
 
-import fling.allfling
-import fling.demo.alldemo
-import fling.col.allcol
-import mojo
+Import fling.allfling
+Import fling.demo.alldemo
+Import fling.col.allcol
+Import mojo
 
 class MainDemo Extends App 
 
@@ -167,13 +167,13 @@ class MainDemo Extends App
 		Local nislands := Lambda.count(world.islands)
 		If( nislands > 5 )
 			log.Push("Islands="+nislands)
-		else
+		Else
 			For Local i := Eachin world.islands 
 			
 				Local str := "Island= #" + Lambda.count(i.bodies)
 				If(  i.sleeping  )
 				    str +=" SLEEP" 
-				else
+				Else
 				    str += " e=" + Math.ceil(i.energy*1000)/1000
 				End
  			End

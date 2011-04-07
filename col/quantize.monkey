@@ -27,8 +27,8 @@
  '*/
 #end
 
-import fling.col.allcol
-import fling.haxetypes.haxetypes
+Import fling.col.allcol
+Import fling.haxetypes.haxetypes
 
 #rem
 '/**
@@ -73,7 +73,7 @@ class Quantize Extends BroadPhase
 		height = Int(bounds.b + size - 0.1) Shr nbits
 		Local tmp  := width - 1
 		Local spanbits  := 0
-		while( tmp > 0 ) 
+		While( tmp > 0 ) 
 
 			spanbits += 1
 			tmp Shr= 1
@@ -89,7 +89,7 @@ class Quantize Extends BroadPhase
 
 		Local b  := l.head
 		Local prev : HaxeFastCell<AABB> = null
-		while( Not( b = null ) ) 
+		While( Not( b = null ) ) 
 
 			If( b.elt.shape.body = staticBody ) 
 			   Exit
@@ -130,7 +130,7 @@ class Quantize Extends BroadPhase
 					Else  
 
 						If( isout ) 
-						   continue
+						   Continue
 						End 
 						isout = true
 						l = out
@@ -190,7 +190,7 @@ class Quantize Extends BroadPhase
 					Else  
 
 						If( isout ) 
-						   continue
+						   Continue
 						End 
 						isout = true
 						l = out
@@ -210,14 +210,14 @@ class Quantize Extends BroadPhase
 		For Local list := Eachin all 
 
 			Local box1  := list.head
-			while( Not( box1 = null ) ) 
+			While( Not( box1 = null ) ) 
 
 				Local b  := box1.elt
 				If( b.shape.body = staticBody ) 
 				   Exit
 				End 
 				Local box2  := list.head
-				while( Not( box2 = null ) ) 
+				While( Not( box2 = null ) ) 
 
 					If( b.intersects2(box2.elt) And Not( box1 = box2 ) ) 
 					   cb.onCollide(b.shape,box2.elt.shape)
@@ -246,10 +246,10 @@ class Quantize Extends BroadPhase
 				If( l = null ) 
 
 					If( x >= 0 And x < width And y >= 0 And y < height ) 
-					   continue
+					   Continue
 					End 
 					If( isout ) 
-					   continue
+					   Continue
 					End 
 					isout = true
 					l = out

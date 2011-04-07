@@ -27,10 +27,10 @@
  '*/
 #end
 
-import fling.col.allcol
+Import fling.col.allcol
 import fling.shape
-import fling.body
-import fling.haxetypes.haxetypes
+Import fling.body
+Import fling.haxetypes.haxetypes
 
 Class BroadCallback Abstract 
 

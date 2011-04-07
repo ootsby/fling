@@ -27,7 +27,7 @@
  '*/
 #end
 
-import fling.allfling
+Import fling.allfling
 
 class Circle extends Shape 
 

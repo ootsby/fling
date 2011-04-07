@@ -27,9 +27,9 @@
  '*/
 #end
 
-import mojo
-import fling.datahash
-import fling.haxetypes.haxetypes
+Import mojo
+Import fling.datahash
+Import fling.haxetypes.haxetypes
 
 class Timer 
 	

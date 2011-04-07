@@ -32,15 +32,15 @@
 	importing.
 #end
 
-import fling.demo.basicstack
-import fling.demo.boxpyramiddemo
-import fling.demo.demo
-import fling.demo.dominopyramid
-import fling.demo.fontarray
-import fling.demo.jumble
-import fling.demo.maindemo
-import fling.demo.pentagonrain
-import fling.demo.pyramidthree
-import fling.demo.segmentdemo
-import fling.demo.test
-import fling.demo.titledemo
+Import fling.demo.basicstack
+Import fling.demo.boxpyramiddemo
+Import fling.demo.demo
+Import fling.demo.dominopyramid
+Import fling.demo.fontarray
+Import fling.demo.jumble
+Import fling.demo.maindemo
+Import fling.demo.pentagonrain
+Import fling.demo.pyramidthree
+Import fling.demo.segmentdemo
+Import fling.demo.test
+Import fling.demo.titledemo

@@ -27,8 +27,8 @@
  '*/
 #end
 
-import fling.demo.alldemo
-import fling.allfling
+Import fling.demo.alldemo
+Import fling.allfling
 
 class Demo 
 
@@ -74,7 +74,7 @@ class Demo
 			Local letter  := str[i]
 			If( letter = 32 ) 
 				xp += size
-				continue
+				Continue
 			End 
 
 			Local datas : Int[]
@@ -86,7 +86,7 @@ class Demo
 			End
 			
 			If( Not(datas) ) 
-			   continue
+			   Continue
 			End 
 			
 			Local xmax  := 0

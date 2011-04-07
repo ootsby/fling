@@ -27,7 +27,7 @@
  '*/
 #end
 
-import fling.allfling
+Import fling.allfling
 
 class Collision 
 
@@ -59,7 +59,7 @@ class Collision
 
 		Local v  := s.tVerts
 		Local min : Float = Constants.FMAX
-		while( Not( v = null ) ) 
+		While( Not( v = null ) ) 
 
 			Local k  := n.dot(v)
 			If( k < min ) 
@@ -77,7 +77,7 @@ class Collision
 		Local max1  : Float = Constants.FMIN
 		Local axis1  : Axis = null
 		Local a  := shape1.tAxes
-		while( Not( a = null ) ) 
+		While( Not( a = null ) ) 
 
 			Local min  := polyAxisProject(shape2,a.n,a.d)
 			If( min > 0 ) 
@@ -95,7 +95,7 @@ class Collision
 		Local max2  := Constants.FMIN
 		Local axis2  : Axis = null
 		a = shape2.tAxes
-		while( Not( a = null ) ) 
+		While( Not( a = null ) ) 
 
 			Local min  := polyAxisProject(shape1,a.n,a.d)
 			If( min > 0 ) 
@@ -131,7 +131,7 @@ class Collision
 
 		Local c  := 0
 		Local v  := poly1.tVerts
-		while( Not( v = null ) ) 
+		While( Not( v = null ) ) 
 
 			If( polyContainsPoint(poly2,v) ) 
 
@@ -156,7 +156,7 @@ class Collision
 		End 
 
 		v = poly2.tVerts
-		while( Not( v = null ) ) 
+		While( Not( v = null ) ) 
 
 			If( polyContainsPoint(poly1,v) ) 
 
@@ -254,7 +254,7 @@ class Collision
 		Local v  := poly.tVerts
 		Local i  := 2
 		 '// 0 and 1 are reserved for segment
-		while( Not( v = null ) ) 
+		While( Not( v = null ) ) 
 
 			If( v.dot(n) < k + seg.r ) 
 
@@ -293,7 +293,7 @@ class Collision
 		Local a  := poly.tAxes
 		Local polyMin  := Constants.FMIN
 		Local axis  : Axis = null
-		while( Not( a = null ) ) 
+		While( Not( a = null ) ) 
 
 			Local dist  := segAxisProject(seg,a.n,a.d)
 			If( dist > 0 ) 
@@ -335,7 +335,7 @@ class Collision
 		Local a  := poly.tAxes
 		Local v  := poly.tVerts
 		Local min  := Constants.FMIN
-		while( Not( a = null ) ) 
+		While( Not( a = null ) ) 
 
 			Local dist  := a.n.dot(circle.tC) - a.d - circle.r
 			If( dist > 0 ) 
@@ -374,7 +374,7 @@ class Collision
 	Method polyContainsPoint:Bool( s : Polygon, p : Vector ) 
 
 		Local a  := s.tAxes
-		while( Not( a = null ) ) 
+		While( Not( a = null ) ) 
 
 			If( a.n.dot(p) > a.d ) 
 			  Return false

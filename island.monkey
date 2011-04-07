@@ -27,9 +27,9 @@
  '*/
 #end
 
-import fling.allfling
-import haxetypes.haxetypes
-import fling.joint.joint
+Import fling.allfling
+Import haxetypes.haxetypes
+Import fling.joint.joint
 
 class Island 
 	Global ID  := 0

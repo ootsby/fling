@@ -27,7 +27,7 @@
  '*/
 #end
 
-import fling.col.allcol
+Import fling.col.allcol
 import fling.shape
 
 class SortedList Extends BroadPhase 
@@ -45,7 +45,7 @@ class SortedList Extends BroadPhase
 
 		Local cur  := boxes
 		Local prev : AABB = null
-		while( Not( cur = null ) And cur.t < b.t ) 
+		While( Not( cur = null ) And cur.t < b.t ) 
 
 			prev = cur
 			cur = cur.nextItem
@@ -85,11 +85,11 @@ class SortedList Extends BroadPhase
 	 Method collide: Void() 
 
 		Local b1  := boxes
-		while( Not( b1 = null ) ) 
+		While( Not( b1 = null ) ) 
 
 			Local b2  := b1.nextItem
 			Local bottom  := b1.b
-			while( Not( b2 = null ) ) 
+			While( Not( b2 = null ) ) 
 
 				If( b2.t > bottom ) 
 				   Exit
@@ -108,7 +108,7 @@ class SortedList Extends BroadPhase
 		Local shapes  := New  HaxeFastList<  Shape > ()
 		Local b  := boxes
 		'// skip top boxes
-		while( Not( b = null ) ) 
+		While( Not( b = null ) ) 
 
 			If( b.t <= box.b ) 
 			   Exit
@@ -116,7 +116,7 @@ class SortedList Extends BroadPhase
 			b = b.nextItem
 		End 
 
-		while( Not( b = null ) ) 
+		While( Not( b = null ) ) 
 
 			If( b.intersects(box) ) 
 			   shapes.Add(b.shape)
@@ -156,7 +156,7 @@ class SortedList Extends BroadPhase
 	 Method validate:Bool() 
 
 		Local cur  := boxes
-		while( Not( cur = null ) ) 
+		While( Not( cur = null ) ) 
 
 			Local nextItem  := cur.nextItem
 			If( Not( nextItem = null ) And nextItem.t < cur.t ) 

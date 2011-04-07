@@ -27,7 +27,7 @@
  '*/
 #end
 
-import fling.allfling
+Import fling.allfling
 
 class Allocator 
 	
@@ -41,7 +41,7 @@ class Allocator
 		Local i  := islandPool
 		If( i = null )
 		Return New Island(w)
-		else 
+		Else 
 
 			islandPool = i.allocNext
 		Return i
@@ -69,7 +69,7 @@ class Allocator
 
 		If( c = null )
 		Return New Contact()
-		else 
+		Else 
 			contactPool = c.nextItem
 		Return c
 		End 
@@ -81,7 +81,7 @@ class Allocator
 	End 
 
 	Method freeAllContacts( c : Contact ) 
-		while( Not( c = null ) ) 
+		While( Not( c = null ) ) 
 			Local nextItem  := c.nextItem
 			c.nextItem = contactPool
 			contactPool = c

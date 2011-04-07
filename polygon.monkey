@@ -27,8 +27,8 @@
  '*/
 #end
 
-import fling.allfling
-import fling.haxetypes.haxetypes
+Import fling.allfling
+Import fling.haxetypes.haxetypes
 
 class Polygon extends Shape 
 
@@ -105,7 +105,7 @@ class Polygon extends Shape
 		aabb.r = Constants.FMIN
 		aabb.b = Constants.FMIN
 		'// transform points
-		while( Not( v = null ) ) 
+		While( Not( v = null ) ) 
 
 			tv.x = body.x + Constants.XROT(v,body)
 			tv.y = body.y + Constants.YROT(v,body)
@@ -127,7 +127,7 @@ class Polygon extends Shape
 		'// transform axes
 		Local a  := axes
 		Local ta  := tAxes
-		while( Not( a = null ) ) 
+		While( Not( a = null ) ) 
 
 			Local n  := a.n
 			ta.n.x = Constants.XROT(n,body)
@@ -144,7 +144,7 @@ class Polygon extends Shape
 		'// but simplifying the maths is not easy here
 		Local tVertsTemp  := New HaxeArray<Vector>()
 		Local v  := verts
-		while( Not( v = null ) ) 
+		While( Not( v = null ) ) 
 
 			tVertsTemp.Push( New Vector( v.x + offset.x , v.y + offset.y) )
 			v = v.nextItem

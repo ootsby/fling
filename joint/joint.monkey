@@ -27,7 +27,7 @@
  '*/
 #end
 
-import fling.allfling
+Import fling.allfling
 
 'Unimplemented in physaxe 1.2
 

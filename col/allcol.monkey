@@ -32,9 +32,9 @@
 	importing.
 #end
 
-import fling.col.aabb
-import fling.col.broadphase
-import fling.col.bruteforce
-import fling.col.iaabb
-import fling.col.quantize
-import fling.col.sortedlist
+Import fling.col.aabb
+Import fling.col.broadphase
+Import fling.col.bruteforce
+Import fling.col.iaabb
+Import fling.col.quantize
+Import fling.col.sortedlist

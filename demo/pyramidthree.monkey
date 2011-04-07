@@ -27,7 +27,7 @@
  '*/
 #end
 
-import fling.demo.alldemo
+Import fling.demo.alldemo
 
 class PyramidThree extends Demo 
 
@@ -56,7 +56,7 @@ class PyramidThree extends Demo
 
 			Local y  := segcount
 
-			while( y > 0 ) 
+			While( y > 0 ) 
 				For Local x := 0 Until y+1 
 				   createPoly( startX - (x * width) + y * (width / 2), startY, 0, slab, props )
 				End

@@ -27,8 +27,8 @@
  '*/
 #end
 
-import fling.col.iaabb
-import fling.shape
+Import fling.col.iaabb
+Import fling.shape
 
 class AABB 
 	Field l:Float

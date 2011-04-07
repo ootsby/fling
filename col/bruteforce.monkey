@@ -27,10 +27,10 @@
  '*/
 #end
 
-import fling.col.allcol
+Import fling.col.allcol
 import fling.haxetypes.haxetypes
-import fling.shape
-import fling.body
+Import fling.shape
+Import fling.body
 
 class BruteForce Extends BroadPhase 
 	Field shapes :  HaxeFastList< Shape > 
@@ -54,11 +54,11 @@ class BruteForce Extends BroadPhase
 	 Method collide: Void() 
 
 		Local s1  := shapes.head
-		while( Not( s1 = null ) ) 
+		While( Not( s1 = null ) ) 
 
 			Local box1  := s1.elt.aabb
 			Local s2  := s1.nextItem
-			while( Not( s2 = null ) ) 
+			While( Not( s2 = null ) ) 
 
 				If( box1.intersects2(s2.elt.aabb) ) 
 				   callb.onCollide(s1.elt,s2.elt)

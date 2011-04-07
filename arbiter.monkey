@@ -27,7 +27,7 @@
  '*/
 #end
 
-import fling.allfling
+Import fling.allfling
 
 class Arbiter 
 	
@@ -80,7 +80,7 @@ class Arbiter
 
 	Method injectContact( p : Vector, n : Vector, nCoef : Float, dist : Float, hash : Int ) 
 		Local c  := contacts
-		while( Not( c = null ) ) 
+		While( Not( c = null ) ) 
 
 			If( hash = c.hash ) 
 			   Exit
@@ -122,7 +122,7 @@ class Arbiter
 		Local mass_sum  : Float = b1.invMass + b2.invMass
 		Local c  := contacts
 		Local prev :Contact = null
-		while( Not( c = null ) ) 
+		While( Not( c = null ) ) 
 
 			If( Not(c.updated) ) 
 
@@ -134,7 +134,7 @@ class Arbiter
 				Else  
 					prev.nextItem = c
 				End 
-				continue
+				Continue
 			End 
 
 			c.updated = false
@@ -183,7 +183,7 @@ class Arbiter
 		Local b1  := s1.body
 		Local b2  := s2.body
 		Local c  := contacts
-		while( Not( c = null ) ) 
+		While( Not( c = null ) ) 
 
 			'// calculate the relative bias velocities
 			Local vbn  : Float =
@@ -226,7 +226,7 @@ class Arbiter
 			c.jtAcc = jtOld - jt
 			If( c.jtAcc < -jtMax ) 
 			   c.jtAcc = -jtMax 
-			else If( c.jtAcc > jtMax ) 
+			Else If( c.jtAcc > jtMax ) 
 				c.jtAcc = jtMax
 			End 
 			jt = c.jtAcc - jtOld

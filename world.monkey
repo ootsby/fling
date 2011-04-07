@@ -27,10 +27,10 @@
  '*/
 #end
 
-import fling.allfling
-import fling.haxetypes.haxetypes
-import fling.joint.joint
-import fling.col.allcol
+Import fling.allfling
+Import fling.haxetypes.haxetypes
+Import fling.joint.joint
+Import fling.col.allcol
 
 class World Extends BroadCallback 
 
@@ -103,7 +103,7 @@ class World Extends BroadCallback
 
 		For Local b := Eachin waitingBodies 
 			If( Not( b.island = null ) Or b.isStatic ) 
-			   continue
+			   Continue
 			End 
 
 			Local i  := allocator.allocIsland(Self)
@@ -111,7 +111,7 @@ class World Extends BroadCallback
 			stack.Add(b)
 			b.island = i
 
-			while( true ) 
+			While( true ) 
 				Local b  := stack.Pop()
 
 				If( b = null ) 
@@ -122,7 +122,7 @@ class World Extends BroadCallback
 
 				For Local a := Eachin b.GetArbiters() 
 					If( Not( a.island = null ) ) 
-					   continue
+					   Continue
 					End 
 
 					i.AddArbiter(a)
@@ -170,7 +170,7 @@ class World Extends BroadCallback
 
 		If( useIslands )
 			buildIslands()
-		else 
+		Else 
 			Local i  := allocator.allocIsland(Self)
 			i.bodies = bodies
 			i.ReplaceArbiters(arbiters)

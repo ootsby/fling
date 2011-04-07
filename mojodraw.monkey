@@ -27,8 +27,8 @@
  '*/
 #end
 
-import fling.allfling
-import mojo
+Import fling.allfling
+Import mojo
 
 class Color  
 	Field r : Float
@@ -104,7 +104,7 @@ class MojoDraw
 	Method selectArbiterColor:Color( a : Arbiter ) 
 		If a.sleeping
 		Return sleepingContact 
-		else
+		Else
 		Return contact
 		End
 	End 
@@ -146,7 +146,7 @@ class MojoDraw
 					DrawCircle(p2.x,p2.y,5)
 				End 
 
-				while( Not( c = null ) ) 
+				While( Not( c = null ) ) 
 
 					If( c.updated ) 
 					   DrawRect(c.px - 1,c.py - 1,2,2)
@@ -160,7 +160,7 @@ class MojoDraw
 			If( beginShape(contactSize) ) 
 
 				Local c  := a.contacts
-				while( Not( c = null ) ) 
+				While( Not( c = null ) ) 
 
 					If( c.updated ) 
 					   DrawCircle(c.px, c.py, c.dist)
@@ -179,7 +179,7 @@ class MojoDraw
 
 			Local b  := s.aabb
 			If( b.r < xmin Or b.b < ymin Or b.l > xmax Or b.t > ymax ) 
-			   continue
+			   Continue
 			End 
 			drawShape(s)
 		End 
@@ -241,7 +241,7 @@ class MojoDraw
 	Method drawPoly( p : Polygon ) 
 
 		Local v  := p.tVerts
-		while( Not( v.nextItem = null ) ) 
+		While( Not( v.nextItem = null ) ) 
 
 			DrawLine(v.x, v.y, v.nextItem.x,v.nextItem.y)
 			v = v.nextItem

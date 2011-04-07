@@ -27,8 +27,8 @@
  '*/
 #end
 
-import fling.demo.alldemo
-import fling.allfling
+Import fling.demo.alldemo
+Import fling.allfling
 
 class Test extends Demo 
 	Field body : Body

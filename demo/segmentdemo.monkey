@@ -27,9 +27,9 @@
  '*/
 #end
 
-import fling.demo.alldemo
-import fling.haxetypes.haxetypes
-import fling.allfling
+Import fling.demo.alldemo
+Import fling.haxetypes.haxetypes
+Import fling.allfling
 
 class SegmentDemo extends Demo 
 	

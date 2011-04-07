@@ -27,9 +27,9 @@
  '*/
 #end
 
-import fling.demo.alldemo
-import fling.allfling
-import fling.haxetypes.haxetypes
+Import fling.demo.alldemo
+Import fling.allfling
+Import fling.haxetypes.haxetypes
 
 class PentagonRain extends Demo
  

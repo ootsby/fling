@@ -27,7 +27,7 @@
  '*/
 #end
 
-import fling.demo.alldemo
+Import fling.demo.alldemo
 
 class BasicStack extends Demo 
 
