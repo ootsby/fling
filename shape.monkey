@@ -28,13 +28,13 @@
 #end
 
 Import fling.allfling
-import fling.col.aabb
+Import fling.col.aabb
 
 Class Shape 
 	Global ID  := 0
-	 Global CIRCLE  := 0
-	 Global SEGMENT  := 1
-	 Global POLYGON  := 2
+	Global CIRCLE  := 0
+	Global SEGMENT  := 1
+	Global POLYGON  := 2
 	Field id : Int
 	Field type : Int
 	Field circle : Circle
@@ -46,16 +46,16 @@ Class Shape
 	Field material : Material
 	Field area : Float
 	Field groups : Int
+	
 	Method New( type : Int, material : Material ) 
-
-ID += 1
+		ID += 1
 		id = ID
 		groups = 1
 		Self.type = type
+		
 		If( (material = null)  )
 		    Self.material = Constants.DEFAULT_MATERIAL 
 		Else  
-
 		    Self.material = material
 		End 
 
@@ -64,21 +64,17 @@ ID += 1
 	End
 
 	Method update() 
-
 	End
 
 	Method calculateInertia : Float() 
-
 		Return 1.0
 	End
 
 	Method toString : String() 
-
 		Return"Shape#"+id
 	End
 
 	Function makeBox : Polygon( width : Float, height : Float,  px : Float = -width/2.0 ,  py : Float = -height /2.0 ,  mat: Material = Null  ) 
-
 		If( px = Constants.NaN ) 
 		   px = -width / 2
 		End
@@ -92,8 +88,6 @@ ID += 1
 		v.Push(New Vector(0,height))
 		v.Push(New Vector(width,height))
 		v.Push(New Vector(width,0))
-		
-		
 		
 		Return New Polygon( v,New Vector(px,py),mat)
 	End 
