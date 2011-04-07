@@ -30,9 +30,9 @@
 Import fling.demo.alldemo
 Import fling.allfling
 
-class TitleDemo extends Demo
+Class TitleDemo extends Demo
  
-	  Method init() 
+	Method init() 
 		createWord("fling!", 180, 180, 20, 0)
 		Local material  := New Material(0.1, 0.7, 3)
 		Local stick1  := addRectangle( -100, 0, 100, 20, material )

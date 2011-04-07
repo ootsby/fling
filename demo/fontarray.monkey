@@ -29,7 +29,7 @@
 
 Import fling.demo.alldemo
 
-class FontArray 
+Class FontArray 
 
 	Global WIDTH  := 5
 	Global HEIGHT  := 10

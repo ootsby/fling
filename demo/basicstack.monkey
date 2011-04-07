@@ -29,7 +29,7 @@
 
 Import fling.demo.alldemo
 
-class BasicStack extends Demo 
+Class BasicStack extends Demo 
 
 	Method init() 
 		world.gravity.set(0,0.1875)

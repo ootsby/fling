@@ -32,26 +32,26 @@ import fling.haxetypes.haxetypes
 Import fling.shape
 Import fling.body
 
-class BruteForce Extends BroadPhase 
+Class BruteForce Extends BroadPhase 
 	Field shapes :  HaxeFastList< Shape > 
 	Field callb : BroadCallback
-	 Method New() 
+	Method New() 
 
 	End 
-	 Method init : Void ( bounds : AABB, cb : BroadCallback, staticBody : Body ) 
+	Method init : Void ( bounds : AABB, cb : BroadCallback, staticBody : Body ) 
 
 		Self.callb = callb
 		shapes = New  HaxeFastList< Shape > ()
 	End 
-	 Method addShape: Void( s : Shape ) 
+	Method addShape: Void( s : Shape ) 
 
 		shapes.Add(s)
 	End 
-	 Method removeShape: Void( s : Shape ) 
+	Method removeShape: Void( s : Shape ) 
 
 		shapes.Remove(s)
 	End 
-	 Method collide: Void() 
+	Method collide: Void() 
 
 		Local s1  := shapes.head
 		While( Not( s1 = null ) ) 
@@ -69,7 +69,7 @@ class BruteForce Extends BroadPhase
 			s1 = s1.nextItem
 		End 
 	End 
-	 Method pick : HaxeFastList<  Shape >( box : AABB ) 
+	Method pick : HaxeFastList<  Shape >( box : AABB ) 
 
 		Local shapes  := New  HaxeFastList<  Shape > ()
 		For Local s := Eachin Self.shapes 
@@ -79,19 +79,19 @@ class BruteForce Extends BroadPhase
 			End 
         End 
 
-	Return shapes
+		Return shapes
 	End 
-	 Method syncShape: Void( s : Shape ) 
+	Method syncShape: Void( s : Shape ) 
 
 		'// nothing
 	End 
-	 Method commit: Void() 
+	Method commit: Void() 
 
 		'// nothing
 	End 
-	 Method validate :Bool() 
+	Method validate :Bool() 
 
-	Return true
+		Return true
 	End 
 End 
 

@@ -30,7 +30,7 @@
 Import fling.demo.alldemo
 Import fling.allfling
 
-class Demo 
+Class Demo 
 
 	Field world : World
 	Field floor : Float
@@ -55,7 +55,7 @@ class Demo
 	End 
 
 	Method addRectangle:Body( x : Float, y : Float, w : Float, h :Float,  mat : Material = Null  ) 
-	Return addBody(x,y, Shape.makeBox(w,h,Constants.NaN,Constants.NaN,mat))
+		Return addBody(x,y, Shape.makeBox(w,h,Constants.NaN,Constants.NaN,mat))
 	End 
 	
 	Method addBody:Body( x : Float, y : Float, shape : Shape,  props : Properties = Null  ) 
@@ -65,7 +65,7 @@ class Demo
 			b.properties = props
 		End 
 		world.addBody(b)
-	Return b
+		Return b
 	End 
 	
 	Method createWord : Void  ( str : String, xp : Float, yp : Float, size : Float, spacing : Float,  mat : Material = Null  )
@@ -116,7 +116,7 @@ class Demo
 			vl.Push( New Vector(radius * haxetypes.Math.Cos(angle), radius * haxetypes.Math.Sin(angle)) )
 		End 
 
-	Return New Polygon(vl,New Vector(0,0),mat)
+		Return New Polygon(vl,New Vector(0,0),mat)
 	End 
 
 	Method createPoly : Void( x : Float, y : Float, a : Float, shape : Polygon,  props : Properties = Null  ) 
@@ -145,7 +145,7 @@ class Demo
 	End 
 
 	Method rand : Float( min : Float, max : Float ) 
-	Return haxetypes.Math.Round(Rnd() * (max - min + 1)) + min
+		Return haxetypes.Math.Round(Rnd() * (max - min + 1)) + min
 	End 
 End 
 

@@ -27,7 +27,7 @@
  '*/
 #end
 
-class DataHash 
+Class DataHash 
 
 	Field total : Float
 	Field avg : Float

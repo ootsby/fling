@@ -30,7 +30,7 @@
 Import fling.allfling
 Import fling.haxetypes.haxetypes
 
-class Polygon extends Shape 
+Class Polygon extends Shape 
 
 	Field verts : Vector
 	Field tVerts : Vector
@@ -162,7 +162,7 @@ class Polygon extends Shape
 			sum2 += a
 		End 
 
-	Return sum1 / (6 * sum2)
+		Return sum1 / (6 * sum2)
 	End 
 End 
 

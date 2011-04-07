@@ -41,7 +41,7 @@ Import fling.haxetypes.haxetypes
 '**/
 #end
 
-class Quantize Extends BroadPhase 
+Class Quantize Extends BroadPhase 
 	Field nbits : Int
 	Field size : Int
 	Field width : Int
@@ -52,16 +52,16 @@ class Quantize Extends BroadPhase
 	Field out :  HaxeFastList< AABB > 
 	Field cb : BroadCallback
 	Field staticBody : Body
-	 Method New( nbits : Int ) 
+	Method New( nbits : Int ) 
 
 		Self.nbits = nbits
 		Self.size = 1 Shl nbits
 	End 
-	 Method ADDR(x,y) 
+	Method ADDR(x,y) 
 
-	Return(x Shl spanbits) | y
+		Return(x Shl spanbits) | y
 	End 
-	 Method init : Void ( bounds : AABB, cb : BroadCallback, staticBody : Body ) 
+	Method init : Void ( bounds : AABB, cb : BroadCallback, staticBody : Body ) 
 
 		Self.cb = cb
 		Self.staticBody = staticBody
@@ -104,7 +104,7 @@ class Quantize Extends BroadPhase
 			prev.nextItem = New HaxeFastCell<AABB>(box,b)
 		End 
 	End 
-	 Method addShape: Void( s : Shape ) 
+	Method addShape: Void( s : Shape ) 
 
 		Local box  := s.aabb
 		Local nbits  := Self.nbits
@@ -141,7 +141,7 @@ class Quantize Extends BroadPhase
 			End 
 		End 
 	End 
-	 Method removeShape: Void( s : Shape ) 
+	Method removeShape: Void( s : Shape ) 
 
 		Local box  := s.aabb
 		Local ib  := box.bounds
@@ -157,7 +157,7 @@ class Quantize Extends BroadPhase
 			End 
 		End 
 	End 
-	 Method syncShape: Void( s : Shape ) 
+	Method syncShape: Void( s : Shape ) 
 
 		Local box  := s.aabb
 		Local nbits  := Self.nbits
@@ -201,11 +201,11 @@ class Quantize Extends BroadPhase
 			End 
 		End 
 	End 
-	 Method commit: Void() 
+	Method commit: Void() 
 
 		'// NOTHING
 	End 
-	 Method collide: Void() 
+	Method collide: Void() 
 
 		For Local list := Eachin all 
 
@@ -229,7 +229,7 @@ class Quantize Extends BroadPhase
 			End 
 		End 
 	End 
-	 Method pick : HaxeFastList<  Shape >( box : AABB ) 
+	Method pick : HaxeFastList<  Shape >( box : AABB ) 
 
 		Local nbits  := Self.nbits
 		Local x1  := Int(box.l) Shr nbits
@@ -264,11 +264,11 @@ class Quantize Extends BroadPhase
             End 
         End 
 
-	Return shapes
+		Return shapes
 	End 
-	 Method validate:Bool() 
+	Method validate:Bool() 
 
 		'// check internal data structures
-	Return true
+		Return true
 	End 
 End 

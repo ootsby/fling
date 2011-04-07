@@ -30,7 +30,7 @@
 Import fling.allfling
 import fling.col.aabb
 
-class Shape 
+Class Shape 
 	Global ID  := 0
 	 Global CIRCLE  := 0
 	 Global SEGMENT  := 1
@@ -62,18 +62,18 @@ ID += 1
 		Self.area = 0
 		aabb = New AABB(0,0,0,0)
 	End 
-	 Method update() 
+	Method update() 
 
 	End 
-	 Method calculateInertia : Float() 
+	Method calculateInertia : Float() 
 
-	Return 1.0
+		Return 1.0
 	End 
-	 Method toString : String() 
+	Method toString : String() 
 
-	Return"Shape#"+id
+		Return"Shape#"+id
 	End 
-	 Function makeBox : Polygon( width : Float, height : Float,  px : Float = -width/2.0 ,  py : Float = -height /2.0 ,  mat: Material = Null  ) 
+	Function makeBox : Polygon( width : Float, height : Float,  px : Float = -width/2.0 ,  py : Float = -height /2.0 ,  mat: Material = Null  ) 
 
 		If( px = Constants.NaN ) 
 		   px = -width / 2
@@ -89,7 +89,7 @@ ID += 1
 		
 		
 		
-	Return New Polygon( v,New Vector(px,py),mat)
+		Return New Polygon( v,New Vector(px,py),mat)
 	End 
 End 
 

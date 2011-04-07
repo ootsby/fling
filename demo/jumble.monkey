@@ -30,7 +30,7 @@
 Import fling.demo.alldemo
 Import fling.allfling
 
-class Jumble extends Demo 
+Class Jumble extends Demo 
 
 	Field addDelay : Int
 	Field lastAdd : Int

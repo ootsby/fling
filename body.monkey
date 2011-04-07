@@ -30,7 +30,7 @@
 Import fling.allfling
 Import haxetypes.haxetypes
 
-class Body 
+Class Body 
 	Global ID  := 0
 	Field id : Int
 	Field mass : Float
@@ -68,7 +68,7 @@ class Body
 	Public 
 	
 	Method GetArbiters: HaxeFastList<Arbiter>( )
-	Return arbiters
+		Return arbiters
 	End 
 	Method AddArbiter( a : Arbiter )
 		arbiters.Add(a)
@@ -91,7 +91,7 @@ class Body
 	End
 
 	
-	 Method New( x : Float, y : Float,  props : Properties = Null  ) 
+	Method New( x : Float, y : Float,  props : Properties = Null  ) 
 
 		ID += 1
 		id = ID

@@ -29,7 +29,7 @@
 
 Import fling.allfling
 
-class Allocator 
+Class Allocator 
 	
 	Field contactPool : Contact
 	Field islandPool : Island
@@ -58,7 +58,7 @@ class Allocator
 	End 
 
 	Method allocArbiter : Arbiter  ()
-	Return New Arbiter(Self)
+		Return New Arbiter(Self)
 	End 
 
 	Method freeArbiter( a : Arbiter ) 

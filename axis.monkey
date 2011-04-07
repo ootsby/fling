@@ -29,7 +29,7 @@
 
 Import fling.allfling
 
-class Axis 
+Class Axis 
 
 	Field n : Vector
 	 '// normal
@@ -43,11 +43,11 @@ class Axis
 	End 
 
 	Method clone : Axis() 
-	Return New Axis( Self.n.clone(), Self.d )
+		Return New Axis( Self.n.clone(), Self.d )
 	End 
 	
 	Method toString() 
-	Return"[Axis= " + n.x + "," + n.y + " d=" + d+"]"
+		Return"[Axis= " + n.x + "," + n.y + " d=" + d+"]"
 	End 
 End 
 

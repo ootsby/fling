@@ -30,7 +30,7 @@
 Import fling.col.iaabb
 Import fling.shape
 
-class AABB 
+Class AABB 
 	Field l:Float
 	Field b:Float
 	Field r:Float
@@ -39,28 +39,28 @@ class AABB
 	Field prev : AABB
 	Field nextItem : AABB
 	Field bounds : IAABB
-	 Method New(left,top,right,bottom) 
+	Method New(left,top,right,bottom) 
 
 		Self.l = left
 		Self.t = top
 		Self.r = right
 		Self.b = bottom
 	End 
-	  Method intersects( aabb : AABB ) 
+	Method intersects( aabb : AABB ) 
 
-	Return Not(aabb.l > r Or aabb.r < l Or aabb.t > b Or aabb.b < t)
+		Return Not(aabb.l > r Or aabb.r < l Or aabb.t > b Or aabb.b < t)
 	End 
-	  Method intersects2( aabb:AABB ) 
+	Method intersects2( aabb:AABB ) 
 
-	Return(l<=aabb.r And aabb.l<=r And t<=aabb.b And aabb.t<=b)
+		Return(l<=aabb.r And aabb.l<=r And t<=aabb.b And aabb.t<=b)
 	End 
-	  Method containsPoint( v : Vector ) 
+	Method containsPoint( v : Vector ) 
 
-	Return Not(v.y < t Or v.y > b Or v.x < l Or v.x > r)
+		Return Not(v.y < t Or v.y > b Or v.x < l Or v.x > r)
 	End 
-	 Method toString() 
+	Method toString() 
 
-	Return"[l=" + l + " b=" + b + " r=" + r + " t=" + t + "]"
+		Return"[l=" + l + " b=" + b + " r=" + r + " t=" + t + "]"
 	End 
 End 
 

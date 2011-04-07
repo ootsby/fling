@@ -30,13 +30,13 @@
 Import fling.col.allcol
 import fling.shape
 
-class SortedList Extends BroadPhase 
+Class SortedList Extends BroadPhase 
 	Field boxes : AABB
 	Field callb : BroadCallback
-	 Method New() 
+	Method New() 
 
 	End 
-	 Method init : Void ( bounds : AABB, cb : BroadCallback, staticBody : Body ) 
+	Method init : Void ( bounds : AABB, cb : BroadCallback, staticBody : Body ) 
 
 		Self.callb = cb
 		boxes = null
@@ -62,13 +62,13 @@ class SortedList Extends BroadPhase
 		   cur.prev = b
 		End 
 	End 
-	 Method addShape: Void( s : Shape ) 
+	Method addShape: Void( s : Shape ) 
 
 		Local b  := s.aabb
 		b.shape = s
 		addSort(b)
 	End 
-	 Method removeShape: Void( s : Shape ) 
+	Method removeShape: Void( s : Shape ) 
 
 		Local b  := s.aabb
 		Local nextItem  := b.nextItem
@@ -82,7 +82,7 @@ class SortedList Extends BroadPhase
 		   nextItem.prev = prev
 		End 
 	End 
-	 Method collide: Void() 
+	Method collide: Void() 
 
 		Local b1  := boxes
 		While( Not( b1 = null ) ) 
@@ -103,7 +103,7 @@ class SortedList Extends BroadPhase
 			b1 = b1.nextItem
 		End 
 	End 
-	 Method pick : HaxeFastList<Shape>( box : AABB ) 
+	Method pick : HaxeFastList<Shape>( box : AABB ) 
 
 		Local shapes  := New  HaxeFastList<  Shape > ()
 		Local b  := boxes
@@ -124,9 +124,9 @@ class SortedList Extends BroadPhase
 			b = b.nextItem
 		End 
 
-	Return shapes
+		Return shapes
 	End 
-	 Method syncShape: Void( s : Shape ) 
+	Method syncShape: Void( s : Shape ) 
 
 		Local b  := s.aabb
 		Local prev  := b.prev
@@ -149,11 +149,11 @@ class SortedList Extends BroadPhase
 			addSort(b)
 		End 
 	End 
-	 Method commit: Void() 
+	Method commit: Void() 
 
 		'// nothing, syncShape already sorted the list
 	End 
-	 Method validate:Bool() 
+	Method validate:Bool() 
 
 		Local cur  := boxes
 		While( Not( cur = null ) ) 
@@ -165,6 +165,6 @@ class SortedList Extends BroadPhase
 			cur = nextItem
 		End 
 
-	Return true
+		Return true
 	End 
 End 

@@ -32,7 +32,7 @@ Import fling.demo.alldemo
 Import fling.col.allcol
 Import mojo
 
-class MainDemo Extends App 
+Class MainDemo Extends App 
 
 	Field debug : Bool
 	Field stopped : Bool
@@ -181,7 +181,7 @@ class MainDemo Extends App
 			str += " (" + Math.ceil(b.x) + "," + Math.ceil(b.y) + ")"
 			log.Push(str)
 		End 
-	Return log
+		Return log
 	End 
 	
 	Method fireBlock( mouseX : Float, mouseY : Float ) 

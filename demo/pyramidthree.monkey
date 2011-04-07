@@ -29,7 +29,7 @@
 
 Import fling.demo.alldemo
 
-class PyramidThree extends Demo 
+Class PyramidThree extends Demo 
 
 	Method init() 
 		world.gravity.set(0,0.125)

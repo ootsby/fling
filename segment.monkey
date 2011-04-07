@@ -29,7 +29,7 @@
 
 Import fling.allfling
 
-class Segment extends Shape 
+Class Segment extends Shape 
 
 	Field a : Vector
 	Field b : Vector
@@ -55,7 +55,7 @@ class Segment extends Shape
 		tN = New Vector(0,0)
 		tNneg = New Vector(0,0)
 	End 
-	  Method update() 
+	Method update() 
 
 		'// transform
 		tA.x = body.x + Constants.XROT(a,body)
@@ -87,9 +87,9 @@ class Segment extends Shape
 			aabb.b = tA.y + r
 		End 
 	End 
-	  Method calculateInertia: Float() 
+	Method calculateInertia: Float() 
 
-	Return 1.0
+		Return 1.0
 	End 
 End 
 

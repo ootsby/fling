@@ -29,7 +29,7 @@
 
 Import fling.demo.alldemo
 
-class DominoPyramid extends Demo 
+Class DominoPyramid extends Demo 
 
 	Method init() 
 		world.gravity.set(0,0.3125)

@@ -32,7 +32,7 @@ Import fling.haxetypes.haxetypes
 Import fling.joint.joint
 Import fling.col.allcol
 
-class World Extends BroadCallback 
+Class World Extends BroadCallback 
 
 	Field stamp : Int
 	Field bodies :  HaxeFastList< Body > 
@@ -344,7 +344,7 @@ class World Extends BroadCallback
 		staticBody.addShape(s)
 		s.update()
 		broadphase.addShape(s)
-	Return s
+		Return s
 	End 
 	
 	Method removeStaticShape(s :Shape) 
@@ -406,7 +406,7 @@ class World Extends BroadCallback
             End 
 		End 
 
-	Return true
+		Return true
 	End 
 
 	Method activate( b : Body ) 

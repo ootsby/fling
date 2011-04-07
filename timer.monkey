@@ -31,7 +31,7 @@ Import mojo
 Import fling.datahash
 Import fling.haxetypes.haxetypes
 
-class Timer 
+Class Timer 
 	
 	Field times : HaxeArray<FloatObject>
 	Field curs : HaxeArray<StringObject>
@@ -74,7 +74,7 @@ class Timer
 		If( data = null ) 
 		  Return 0.0
 		End 
-	Return data.total
+		Return data.total
 	End 
 	
 	Method format( name : String ) 
@@ -83,7 +83,7 @@ class Timer
 		If( data = null ) 
 		  Return name + " ????"
 		End 
-	Return name + " : "+Int(data.avg*1000) + " ("+(Int(data.total*1000/total)/10)+"Mod)"
+		Return name + " : "+Int(data.avg*1000) + " ("+(Int(data.total*1000/total)/10)+"Mod)"
 	End 
 	
 End 

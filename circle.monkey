@@ -29,7 +29,7 @@
 
 Import fling.allfling
 
-class Circle extends Shape 
+Class Circle extends Shape 
 
 	Field c:Vector
 	Field r:Float
@@ -55,7 +55,7 @@ class Circle extends Shape
 	End 
 
 	Method calculateInertia : Float() 
-	Return 0.5 * (r * r) + offset.dot(offset)
+		Return 0.5 * (r * r) + offset.dot(offset)
 	End 
 End 
 

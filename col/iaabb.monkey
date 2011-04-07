@@ -28,20 +28,20 @@
 #end
 
 
-class IAABB 
+Class IAABB 
 	Field l:Int
 	Field b:Int
 	Field r:Int
 	Field t:Int
-	 Method New(left,top,right,bottom) 
+	Method New(left,top,right,bottom) 
 
 		Self.l = left
 		Self.t = top
 		Self.r = right
 		Self.b = bottom
 	End 
-	 Method toString() 
+	Method toString() 
 
-	Return"[l=" + l + " b=" + b + " r=" + r + " t=" + t + "]"
+		Return"[l=" + l + " b=" + b + " r=" + r + " t=" + t + "]"
 	End 
 End 

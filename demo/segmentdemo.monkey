@@ -31,7 +31,7 @@ Import fling.demo.alldemo
 Import fling.haxetypes.haxetypes
 Import fling.allfling
 
-class SegmentDemo extends Demo 
+Class SegmentDemo extends Demo 
 	
 	Field bodies : HaxeFastList<Body>
 	Field numBodies : Int

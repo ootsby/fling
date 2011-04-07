@@ -30,7 +30,7 @@
 Import fling.allfling
 Import mojo
 
-class Color  
+Class Color  
 	Field r : Float
 	Field g : Float
 	Field b : Float
@@ -44,7 +44,7 @@ class Color
 	End
 End 
 
-class MojoDraw 
+Class MojoDraw 
 
 	Field shape : Color
 	Field staticShape : Color
@@ -61,7 +61,7 @@ class MojoDraw
 	Field xmax : Int
 	Field ymax : Int
 
-	 Method New( ) 
+	Method New( ) 
 		Self.xmin = -1000000000
 		Self.ymin = -1000000000
 		Self.xmax = 1000000000
@@ -83,7 +83,7 @@ class MojoDraw
 		End 
 		SetColor(c.r,c.g,c.b)
 		SetAlpha(c.a)
-	Return true
+		Return true
 	End 
 
 	Method endShape( c : Color ) 

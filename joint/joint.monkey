@@ -31,7 +31,7 @@ Import fling.allfling
 
 'Unimplemented in physaxe 1.2
 
-class Joint 
+Class Joint 
 
 	Field b1: Body
 	Field b2: Body

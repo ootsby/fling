@@ -29,7 +29,7 @@
 
 Import fling.allfling
 
-class Arbiter 
+Class Arbiter 
 	
 	Field contacts : Contact
 	Field friction : Float
@@ -106,7 +106,7 @@ class Arbiter
 		c.dist = dist
 		c.updated = true
 	End 
-	 Method bodyImpulse( c : Contact, b1 : Body, b2 : Body, cjTx : Float, cjTy : Float ) 
+	Method bodyImpulse( c : Contact, b1 : Body, b2 : Body, cjTx : Float, cjTy : Float ) 
 
 		b1.v.x -= cjTx * b1.invMass
 		b1.v.y -= cjTy * b1.invMass
@@ -115,7 +115,7 @@ class Arbiter
 		b2.v.y += cjTy * b2.invMass
 		b2.w += b2.invInertia * (c.r2x * cjTy - c.r2y * cjTx)
 	End 
-	 Method preStep( dt : Float ) 
+	Method preStep( dt : Float ) 
 
 		Local b1  := s1.body
 		Local b2  := s2.body
@@ -178,7 +178,7 @@ class Arbiter
 			c = c.nextItem
 		End 
 	End 
-	 Method applyImpulse() 
+	Method applyImpulse() 
 
 		Local b1  := s1.body
 		Local b2  := s2.body

@@ -30,7 +30,7 @@
 Import fling.demo.alldemo
 Import fling.allfling
 
-class Test extends Demo 
+Class Test extends Demo 
 	Field body : Body
 	Field body2 : Body
 	Field dir : Int

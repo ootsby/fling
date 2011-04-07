@@ -27,7 +27,7 @@
  '*/
 #end
 
-class Contact 
+Class Contact 
 
 	Field px:Float
 	'// contact point

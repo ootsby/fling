@@ -31,7 +31,7 @@ Import fling.allfling
 Import haxetypes.haxetypes
 Import fling.joint.joint
 
-class Island 
+Class Island 
 	Global ID  := 0
 	Field id : Int
 	Field bodies :  HaxeFastList< Body > 

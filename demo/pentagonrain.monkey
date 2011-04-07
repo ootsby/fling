@@ -31,7 +31,7 @@ Import fling.demo.alldemo
 Import fling.allfling
 Import fling.haxetypes.haxetypes
 
-class PentagonRain extends Demo
+Class PentagonRain extends Demo
  
 	Field pentagons : HaxeFastList<Body>
 	Field numPentagons : Int

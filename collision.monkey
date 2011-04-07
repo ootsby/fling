@@ -29,7 +29,7 @@
 
 Import fling.allfling
 
-class Collision 
+Class Collision 
 
 
 	Method New() 
@@ -68,7 +68,7 @@ class Collision
 			v = v.nextItem
 		End 
 
-	Return min - d
+		Return min - d
 	End 
 
 	Method poly2poly :Bool( shape1 : Polygon, shape2 : Polygon, arb : Arbiter ) 
@@ -115,7 +115,7 @@ class Collision
 		Else  
 			findVerts(arb, shape1, shape2, axis2, -1, max2)
 		End 
-	Return true
+		Return true
 	End 
 
 	Method findVerts( arb : Arbiter, poly1 : Polygon, poly2 : Polygon, n : Axis, nCoef : Float, dist : Float ) 
@@ -176,7 +176,7 @@ class Collision
 
 	Method circle2circle:Bool( circle1: Circle, circle2:Circle, arb : Arbiter ) 
 		Local b := circle2circleQuery( arb, circle1.tC, circle2.tC, circle1.r, circle2.r )
-	Return b 
+		Return b 
 	End 
 
 	Method circle2circleQuery : Bool( arb : Arbiter, p1 : Vector, p2 : Vector, r1 : Float, r2 : Float ) 
@@ -197,7 +197,7 @@ class Collision
 
 		Local df  := 0.5 + (r1 - 0.5 * minDist) * invDist
 		arb.injectContact( New Vector(p1.x + x * df,p1.y + y * df), New Vector(x * invDist, y * invDist), 1.0, dist - minDist, 0)
-	Return true
+		Return true
 	End 
 	
 	Method circle2segment:Bool( circle : Circle, seg : Segment, arb : Arbiter ) 
@@ -242,7 +242,7 @@ class Collision
 			End 
 		End 
 
-	Return false
+		Return false
 	End 
 	
 	Method findPolyPointsBehindSegment( seg : Segment, poly : Polygon, pDist : Float, coef : Float, arb : Arbiter ) 
@@ -325,7 +325,7 @@ class Collision
 			End 
 		End 
 
-	Return true
+		Return true
 	End 
 	
 	Method circle2poly:Bool( circle : Circle, poly : Polygon, arb : Arbiter ) 
@@ -368,7 +368,7 @@ class Collision
 		Local nx  := n.x * (circle.r + min * 0.5)
 		Local ny  := n.y * (circle.r + min * 0.5)
 		arb.injectContact(New Vector(circle.tC.x - nx, circle.tC.y - ny),n,-1.0,min,0) 
-	Return true
+		Return true
 	End 
 	
 	Method polyContainsPoint:Bool( s : Polygon, p : Vector ) 
@@ -382,7 +382,7 @@ class Collision
 			a = a.nextItem
 		End 
 
-	Return true
+		Return true
 	End 
 	
 	Method testPoint:Bool( s : Shape, p : Vector ) 

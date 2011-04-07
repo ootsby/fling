@@ -29,7 +29,7 @@
 
 Import fling.demo.alldemo
 
-class BoxPyramidDemo extends Demo 
+Class BoxPyramidDemo extends Demo 
 
 	Method init() 
 		createFloor()

@@ -27,11 +27,11 @@
  '*/
 #end
 
-class Material 
+Class Material 
 	Field restitution:Float
 	Field friction:Float
 	Field density:Float
-	 Method New( restitution : Float, friction : Float, density : Float ) 
+	Method New( restitution : Float, friction : Float, density : Float ) 
 
 		Self.restitution = restitution
 		Self.friction = friction

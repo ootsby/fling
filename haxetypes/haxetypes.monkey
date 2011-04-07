@@ -49,13 +49,13 @@ Class Math
 	Const DegreesPerRad : Float = 360.0/TWOPI
 	 
 	Function Sin: Float( rads: Float)
-	Return monkey.math.Sin( rads * DegreesPerRad )
+		Return monkey.math.Sin( rads * DegreesPerRad )
 	End
 	Function Cos: Float( rads: Float)
-	Return monkey.math.Cos( rads * DegreesPerRad )
+		Return monkey.math.Cos( rads * DegreesPerRad )
 	End
 	Function ATan2: Float( x: Float, y: Float)
-	Return monkey.math.ATan2( x, y ) * RadsPerDegree
+		Return monkey.math.ATan2( x, y ) * RadsPerDegree
 	End
 End
 
@@ -68,7 +68,7 @@ Public
 	Const lengthInc : Int = 100
 	
 	Method Get:T( index:Int)
-	Return arr[index]
+		Return arr[index]
 	End
 	
 	Method Set( index:Int, item:T )
@@ -94,7 +94,7 @@ Public
 End
 Class HaxeStringMap<T> Extends StringMap<T>
 	Method get( key : String )
-	Return Self.Get(key)
+		Return Self.Get(key)
 	End
 End
 
@@ -110,11 +110,11 @@ Class HaxeFastList<T>
 	End
 
 	Method Pop:T()
-	Return RemoveFirst()
+		Return RemoveFirst()
 	End
 	
 	Method Equals( lhs:Object,rhs:Object )
-	Return lhs=rhs
+		Return lhs=rhs
 	End
 	
 	Method Clear()
@@ -127,32 +127,32 @@ Class HaxeFastList<T>
 			node=node.nextItem
 			n+=1
 		Wend
-	Return n
+		Return n
 	End
 	
 	Method IsEmpty?()
-	Return head.nextItem=head
+		Return head.nextItem=head
 	End
 	
 	Method First:T()
-	Return head.nextItem.elt
+		Return head.nextItem.elt
 	End
 
 	Method Last:T()
-	Return head._pred.elt
+		Return head._pred.elt
 	End
 	
 	Method AddFirst:HaxeFastCell<T>( data:T )
-	Return New HaxeFastCell<T>( head.nextItem,head,data )
+		Return New HaxeFastCell<T>( head.nextItem,head,data )
 	End
 
 	Method AddLast:HaxeFastCell<T>( data:T )
-	Return New HaxeFastCell<T>( head,head._pred,data )
+		Return New HaxeFastCell<T>( head,head._pred,data )
 	End
 
 	'I think this should GO!
 	Method Remove : Bool ( value:T )
-	Return RemoveFirst(value)
+		Return RemoveFirst(value)
 	End
 	
 	Method RemoveFirst : Bool( value:T )
@@ -164,7 +164,7 @@ Class HaxeFastList<T>
 			Return True
 			End
 		Wend
-	Return False
+		Return False
 	End
 
 	Method RemoveEach( value:T )
@@ -179,17 +179,17 @@ Class HaxeFastList<T>
 	Method RemoveFirst:T()
 		Local data:T=head.nextItem.elt
 		head.nextItem.Remove
-	Return data
+		Return data
 	End
 
 	Method RemoveLast:T()
 		Local data:T=head._pred.elt
 		head._pred.Remove
-	Return data
+		Return data
 	End
 
 	Method ObjectEnumerator:Enumerator<T>()
-	Return New Enumerator<T>( Self )
+		Return New Enumerator<T>( Self )
 	End
 	
 End
@@ -219,7 +219,7 @@ Class HaxeFastCell<T>
 	End
 	
 	Method Value:T()
-	Return elt
+		Return elt
 	End
 
 	Method Remove()
@@ -246,13 +246,13 @@ Class Enumerator<T>
 	End Method
 
 	Method HasNext:Bool()
-	Return _curr<>_list.head
+		Return _curr<>_list.head
 	End 
 
 	Method NextObject:T()
 		Local data:T=_curr.elt
 		_curr=_curr.nextItem
-	Return data
+		Return data
 	End
 
 Private

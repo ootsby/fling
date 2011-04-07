@@ -27,7 +27,7 @@
  '*/
 #end
 
-class Properties 
+Class Properties 
 	Global PID  := 0
 #rem
 '/**
@@ -65,7 +65,7 @@ class Properties
 	Field lfdt : Float
 	Field afdt : Float
 	
-	 Method New( linearFriction : Float, angularFriction : Float, biasCoef : Float, maxMotion : Float, maxDist : Float ) 
+	Method New( linearFriction : Float, angularFriction : Float, biasCoef : Float, maxMotion : Float, maxDist : Float ) 
 		PID += 1
 		id = PID
 		count = 0
