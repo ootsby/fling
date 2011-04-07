@@ -74,12 +74,12 @@ class SegmentDemo extends Demo
 	Method Update( dt : Float ) 
 
 		lastRefresh += 1
-		if( lastRefresh < refreshDelay ) 
-		   return
+		If( lastRefresh < refreshDelay ) 
+		  Return
 		End 
 		For Local b := Eachin bodies 
 
-			if( (b.y > size.y + 20) Or (b.x < -20) Or (b.y > size.x + 20) ) 
+			If( (b.y > size.y + 20) Or (b.x < -20) Or (b.y > size.x + 20) ) 
 
 				b.setPos( 300 + rand(-200, 200), rand(-50,-100) )
 				b.setSpeed( rand(-10,10)/40, rand(10,100)/40 )

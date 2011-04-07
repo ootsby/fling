@@ -29,10 +29,10 @@
 
 
 class IAABB 
-	 Field l:Int
-	 Field b:Int
-	 Field r:Int
-	 Field t:Int
+	Field l:Int
+	Field b:Int
+	Field r:Int
+	Field t:Int
 	 Method New(left,top,right,bottom) 
 
 		Self.l = left
@@ -42,6 +42,6 @@ class IAABB
 	End 
 	 Method toString() 
 
-		return "[l=" + l + " b=" + b + " r=" + r + " t=" + t + "]"
+	Return"[l=" + l + " b=" + b + " r=" + r + " t=" + t + "]"
 	End 
 End 

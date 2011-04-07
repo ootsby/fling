@@ -54,7 +54,7 @@ class Arbiter
 		Local m2  := s2.material
 		Local p1  := s1.body.properties
 		Local p2  := s2.body.properties
-		if(  m1.restitution > m2.restitution  ) 
+		If(  m1.restitution > m2.restitution  ) 
 
 		    restitution =m1.restitution 
 		Else  
@@ -63,14 +63,14 @@ class Arbiter
 		End 
 
 		friction = Sqrt(m1.friction * m2.friction)
-		if( (p1.biasCoef > p2.biasCoef)  )
+		If( (p1.biasCoef > p2.biasCoef)  )
 		    bias = p1.biasCoef 
 		Else  
 
 		    bias = p2.biasCoef
 		End 
 
-		if( (p1.maxDist > p2.maxDist)  )
+		If( (p1.maxDist > p2.maxDist)  )
 		    maxDist = p2.maxDist 
 		Else  
 
@@ -82,13 +82,13 @@ class Arbiter
 		Local c  := contacts
 		while( Not( c = null ) ) 
 
-			if( hash = c.hash ) 
+			If( hash = c.hash ) 
 			   Exit
 			End 
 			c = c.nextItem
 		End 
 
-		if( c = null ) 
+		If( c = null ) 
 
 			c = allocator.allocContact()
 			c.hash = hash
@@ -124,12 +124,12 @@ class Arbiter
 		Local prev :Contact = null
 		while( Not( c = null ) ) 
 
-			if( Not(c.updated) ) 
+			If( Not(c.updated) ) 
 
 				Local old  := c
 				c = c.nextItem
 				allocator.freeContact(old)
-				if( prev = null )
+				If( prev = null )
 					contacts = c
 				Else  
 					prev.nextItem = c
@@ -193,7 +193,7 @@ class Arbiter
 			Local jbn  : Float = (c.bias - vbn) * c.nMass
 			Local jbnOld  : Float = c.jBias
 			c.jBias = jbnOld + jbn
-			if( c.jBias < 0 ) 
+			If( c.jBias < 0 ) 
 			   c.jBias = 0
 			End 
 			jbn = c.jBias - jbnOld
@@ -213,7 +213,7 @@ class Arbiter
 			Local jn  : Float = (c.bounce + (vrx * c.nx + vry * c.ny)) * c.nMass
 			Local jnOld  : Float = c.jnAcc
 			c.jnAcc = jnOld - jn
-			if( c.jnAcc < 0 ) 
+			If( c.jnAcc < 0 ) 
 			   c.jnAcc = 0
 			End 
 			jn = c.jnAcc - jnOld
@@ -224,9 +224,9 @@ class Arbiter
 			Local jt  : Float = vrt * c.tMass
 			Local jtOld  : Float = c.jtAcc
 			c.jtAcc = jtOld - jt
-			if( c.jtAcc < -jtMax ) 
+			If( c.jtAcc < -jtMax ) 
 			   c.jtAcc = -jtMax 
-			else if( c.jtAcc > jtMax ) 
+			else If( c.jtAcc > jtMax ) 
 				c.jtAcc = jtMax
 			End 
 			jt = c.jtAcc - jtOld

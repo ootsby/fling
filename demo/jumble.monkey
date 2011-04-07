@@ -50,8 +50,8 @@ class Jumble extends Demo
 
 	Method Update( dt : Float) 
 		lastAdd += 1
-		if( lastAdd < addDelay ) 
-		   return
+		If( lastAdd < addDelay ) 
+		  Return
 		End 
 		lastAdd = 0
 		Local body  := New Body(0,0)

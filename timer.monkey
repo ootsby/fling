@@ -72,18 +72,18 @@ class Timer
 		Local data  := datas.Get(name)
 
 		If( data = null ) 
-		   return 0.0
+		  Return 0.0
 		End 
-		return data.total
+	Return data.total
 	End 
 	
 	Method format( name : String ) 
 		Local data  := datas.Get(name)
 
 		If( data = null ) 
-		   return name + " ????"
+		  Return name + " ????"
 		End 
-		return name + " : "+Int(data.avg*1000) + " ("+(Int(data.total*1000/total)/10)+"Mod)"
+	Return name + " : "+Int(data.avg*1000) + " ("+(Int(data.total*1000/total)/10)+"Mod)"
 	End 
 	
 End 

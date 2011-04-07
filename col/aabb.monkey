@@ -31,14 +31,14 @@ import fling.col.iaabb
 import fling.shape
 
 class AABB 
-	 Field l:Float
-	 Field b:Float
-	 Field r:Float
-	 Field t:Float
-	 Field shape : Shape
-	 Field prev : AABB
-	 Field nextItem : AABB
-	 Field bounds : IAABB
+	Field l:Float
+	Field b:Float
+	Field r:Float
+	Field t:Float
+	Field shape : Shape
+	Field prev : AABB
+	Field nextItem : AABB
+	Field bounds : IAABB
 	 Method New(left,top,right,bottom) 
 
 		Self.l = left
@@ -48,19 +48,19 @@ class AABB
 	End 
 	  Method intersects( aabb : AABB ) 
 
-		return Not(aabb.l > r Or aabb.r < l Or aabb.t > b Or aabb.b < t)
+	Return Not(aabb.l > r Or aabb.r < l Or aabb.t > b Or aabb.b < t)
 	End 
 	  Method intersects2( aabb:AABB ) 
 
-		return (l<=aabb.r And aabb.l<=r And t<=aabb.b And aabb.t<=b)
+	Return(l<=aabb.r And aabb.l<=r And t<=aabb.b And aabb.t<=b)
 	End 
 	  Method containsPoint( v : Vector ) 
 
-		return Not(v.y < t Or v.y > b Or v.x < l Or v.x > r)
+	Return Not(v.y < t Or v.y > b Or v.x < l Or v.x > r)
 	End 
 	 Method toString() 
 
-		return "[l=" + l + " b=" + b + " r=" + r + " t=" + t + "]"
+	Return"[l=" + l + " b=" + b + " r=" + r + " t=" + t + "]"
 	End 
 End 
 

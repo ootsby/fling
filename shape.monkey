@@ -35,24 +35,24 @@ class Shape
 	 Global CIRCLE  := 0
 	 Global SEGMENT  := 1
 	 Global POLYGON  := 2
-	 Field id : Int
-	 Field type : Int
-	 Field circle : Circle
-	 Field segment : Segment
-	 Field polygon : Polygon
-	 Field body : Body
-	 Field offset : Vector
-	 Field aabb : AABB
-	 Field material : Material
-	 Field area : Float
-	 Field groups : Int
+	Field id : Int
+	Field type : Int
+	Field circle : Circle
+	Field segment : Segment
+	Field polygon : Polygon
+	Field body : Body
+	Field offset : Vector
+	Field aabb : AABB
+	Field material : Material
+	Field area : Float
+	Field groups : Int
 	Method New( type : Int, material : Material ) 
 
 ID += 1
 		id = ID
 		groups = 1
 		Self.type = type
-		if( (material = null)  )
+		If( (material = null)  )
 		    Self.material = Constants.DEFAULT_MATERIAL 
 		Else  
 
@@ -67,18 +67,18 @@ ID += 1
 	End 
 	 Method calculateInertia : Float() 
 
-		return 1.0
+	Return 1.0
 	End 
 	 Method toString : String() 
 
-		return "Shape#"+id
+	Return"Shape#"+id
 	End 
 	 Function makeBox : Polygon( width : Float, height : Float,  px : Float = -width/2.0 ,  py : Float = -height /2.0 ,  mat: Material = Null  ) 
 
-		if( px = Constants.NaN ) 
+		If( px = Constants.NaN ) 
 		   px = -width / 2
 		End 
-		if( py = Constants.NaN ) 
+		If( py = Constants.NaN ) 
 		   py = -height / 2
 		End 
 		Local v : HaxeArray<Vector> = New HaxeArray<Vector>()
@@ -89,7 +89,7 @@ ID += 1
 		
 		
 		
-		return New Polygon( v,New Vector(px,py),mat)
+	Return New Polygon( v,New Vector(px,py),mat)
 	End 
 End 
 

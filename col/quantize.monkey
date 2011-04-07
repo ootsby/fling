@@ -59,7 +59,7 @@ class Quantize Extends BroadPhase
 	End 
 	 Method ADDR(x,y) 
 
-		return (x Shl spanbits) | y
+	Return(x Shl spanbits) | y
 	End 
 	 Method init : Void ( bounds : AABB, cb : BroadCallback, staticBody : Body ) 
 
@@ -81,24 +81,24 @@ class Quantize Extends BroadPhase
 	End 
 	Method add( l :  HaxeFastList< AABB > , box : AABB ) 
 
-		if( Not( box.shape.body = staticBody ) ) 
+		If( Not( box.shape.body = staticBody ) ) 
 
 			l.Add(box)
-			return
+		Return
 		End 
 
 		Local b  := l.head
 		Local prev : HaxeFastCell<AABB> = null
 		while( Not( b = null ) ) 
 
-			if( b.elt.shape.body = staticBody ) 
+			If( b.elt.shape.body = staticBody ) 
 			   Exit
 			End 
 			prev = b
 			b = b.nextItem
 		End 
 
-		if( prev = null )
+		If( prev = null )
 			l.head = New HaxeFastCell<AABB>(box,b)
 		Else  
 			prev.nextItem = New HaxeFastCell<AABB>(box,b)
@@ -120,16 +120,16 @@ class Quantize Extends BroadPhase
 			For Local y := y1 Until y2  
 
 				Local l  := world.Get(ADDR(x,y))
-				if( l = null ) 
+				If( l = null ) 
 
-					if( x >= 0 And x < width And y >= 0 And y < height ) 
+					If( x >= 0 And x < width And y >= 0 And y < height ) 
 
 						l = New  HaxeFastList< AABB > ()
 						all.Add(l)
 						world.Set(ADDR(x,y), l)
 					Else  
 
-						if( isout ) 
+						If( isout ) 
 						   continue
 						End 
 						isout = true
@@ -150,7 +150,7 @@ class Quantize Extends BroadPhase
 			For Local y := ib.t Until ib.b  
 
 				Local l  := world.Get(ADDR(x,y))
-				if( l = null ) 
+				If( l = null ) 
 				   l = out
 				End 
 				l.Remove(box)
@@ -166,8 +166,8 @@ class Quantize Extends BroadPhase
 		Local x2  := (Int(box.r) Shr nbits) + 1
 		Local y2  := (Int(box.b) Shr nbits) + 1
 		Local ib  := box.bounds
-		if( x1 = ib.l And y1 = ib.t And x2 = ib.r And y2 = ib.b ) 
-		   return
+		If( x1 = ib.l And y1 = ib.t And x2 = ib.r And y2 = ib.b ) 
+		  Return
 		End 
 		removeShape(s)
 		ib.l = x1
@@ -180,16 +180,16 @@ class Quantize Extends BroadPhase
 			For Local y := y1 Until y2  
 
 				Local l  := world.Get(ADDR(x,y))
-				if( l = null ) 
+				If( l = null ) 
 
-					if( x >= 0 And x < width And y >= 0 And y < height ) 
+					If( x >= 0 And x < width And y >= 0 And y < height ) 
 
 						l = New  HaxeFastList< AABB > ()
 						all.Add(l)
 						world.Set(ADDR(x,y), l)
 					Else  
 
-						if( isout ) 
+						If( isout ) 
 						   continue
 						End 
 						isout = true
@@ -213,13 +213,13 @@ class Quantize Extends BroadPhase
 			while( Not( box1 = null ) ) 
 
 				Local b  := box1.elt
-				if( b.shape.body = staticBody ) 
+				If( b.shape.body = staticBody ) 
 				   Exit
 				End 
 				Local box2  := list.head
 				while( Not( box2 = null ) ) 
 
-					if( b.intersects2(box2.elt) And Not( box1 = box2 ) ) 
+					If( b.intersects2(box2.elt) And Not( box1 = box2 ) ) 
 					   cb.onCollide(b.shape,box2.elt.shape)
 					End 
 					box2 = box2.nextItem
@@ -243,12 +243,12 @@ class Quantize Extends BroadPhase
 			For Local y := y1 Until y2  
 
 				Local l  := world.Get(ADDR(x,y))
-				if( l = null ) 
+				If( l = null ) 
 
-					if( x >= 0 And x < width And y >= 0 And y < height ) 
+					If( x >= 0 And x < width And y >= 0 And y < height ) 
 					   continue
 					End 
-					if( isout ) 
+					If( isout ) 
 					   continue
 					End 
 					isout = true
@@ -257,18 +257,18 @@ class Quantize Extends BroadPhase
 
 				For Local b := Eachin l 
 
-					if( b.intersects(box) ) 
+					If( b.intersects(box) ) 
 					   shapes.Add(b.shape)
 					End 
                 End 
             End 
         End 
 
-		return shapes
+	Return shapes
 	End 
 	 Method validate:Bool() 
 
 		'// check internal data structures
-		return true
+	Return true
 	End 
 End 

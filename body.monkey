@@ -32,43 +32,43 @@ import haxetypes.haxetypes
 
 class Body 
 	Global ID  := 0
-	 Field id : Int
-	 Field mass : Float
-	 Field invMass : Float
-	 Field inertia : Float
-	 Field invInertia : Float
-	 Field x:Float
+	Field id : Int
+	Field mass : Float
+	Field invMass : Float
+	Field inertia : Float
+	Field invInertia : Float
+	Field x:Float
 	 			'// position
-	 Field y:Float
-	 Field v:Vector
+	Field y:Float
+	Field v:Vector
 	 		'// velocity
-	 Field f:Vector
+	Field f:Vector
 	 		'// force
-	 Field v_bias:Vector
+	Field v_bias:Vector
 	 	'// used internally for penetration/joint correction
-	 Field a:Float
+	Field a:Float
 	 			'// angle
-	 Field w:Float
+	Field w:Float
 	 			'// angular velocity
-	 Field t:Float
+	Field t:Float
 	 			'// torque
-	 Field w_bias:Float
+	Field w_bias:Float
 	 	'// used internally for penetration/joint correction
-	 Field rcos:Float
+	Field rcos:Float
 	 		'// current rotation
-	 Field rsin:Float
-	 Field motion:Float
-	 Field isStatic:Bool
-	 Field island : Island
-	 Field shapes :  HaxeFastList< Shape > 
-	 Field properties : Properties
+	Field rsin:Float
+	Field motion:Float
+	Field isStatic:Bool
+	Field island : Island
+	Field shapes :  HaxeFastList< Shape > 
+	Field properties : Properties
 	
 	Private
 	Field arbiters :  HaxeFastList< Arbiter > 
 	Public 
 	
 	Method GetArbiters: HaxeFastList<Arbiter>( )
-		Return arbiters
+	Return arbiters
 	End 
 	Method AddArbiter( a : Arbiter )
 		arbiters.Add(a)
@@ -95,7 +95,7 @@ class Body
 
 		ID += 1
 		id = ID
-		if(  props = null  ) 
+		If(  props = null  ) 
 
 		    properties =Constants.DEFAULT_PROPERTIES 
 		Else  
@@ -143,7 +143,7 @@ class Body
 			i += s.calculateInertia() * sm
 		End 
 
-		if( m > 0 ) 
+		If( m > 0 ) 
 
 			mass = m
 			invMass = 1 / m
@@ -154,7 +154,7 @@ class Body
 			isStatic = true
 		End 
 
-		if( i > 0 ) 
+		If( i > 0 ) 
 
 			inertia = i
 			invInertia = 1 / i
@@ -180,22 +180,22 @@ class Body
 	
 	Method set(  pos : Vector = Null ,  a : Float = Constants.NaN ,  v : Vector = Null ,  w : Float = Constants.NaN  ) 
 
-		if( Not( pos = null ) ) 
+		If( Not( pos = null ) ) 
 
 			x = pos.x
 			y = pos.y
 		End 
 
-		if( Not( a = Constants.NaN) ) 
+		If( Not( a = Constants.NaN) ) 
 		   setAngle(a)
 		End 
-		if( Not( v = null ) ) 
+		If( Not( v = null ) ) 
 
 			Self.v.x = v.x
 			Self.v.y = v.y
 		End 
 
-		if( Not( w = Constants.NaN) ) 
+		If( Not( w = Constants.NaN) ) 
 		   Self.w = w
 		End 
 	End 
@@ -204,7 +204,7 @@ class Body
 
 		Self.x = x
 		Self.y = y
-		if( Not( a = Constants.NaN  ) ) 
+		If( Not( a = Constants.NaN  ) ) 
 		   setAngle(a)
 		End 
 	End 
@@ -212,13 +212,13 @@ class Body
 	Method setSpeed( vx : Float, vy : Float,  w :Float = Constants.NaN  ) 
 		v.x = vx
 		v.y = vy
-		if( Not( w = Constants.NaN ) ) 
+		If( Not( w = Constants.NaN ) ) 
 		   Self.w = w
 		End 
 	End 
 	
 	Method toString() 
-		return "Body#"+id
+	Return"Body#"+id
 	End 
 	
 	Method onDestroy() 

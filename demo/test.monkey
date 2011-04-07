@@ -55,7 +55,7 @@ class Test extends Demo
 	
 	Method Update( dt : Float ) 
 		et += dt
-		if( et > 100 ) 
+		If( et > 100 ) 
 
 			et -= 100
 			dir *= -1

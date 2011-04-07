@@ -39,12 +39,12 @@ class Allocator
 	
 	Method allocIsland : Island  (w:World)
 		Local i  := islandPool
-		if( i = null )
-			return New Island(w)
+		If( i = null )
+		Return New Island(w)
 		else 
 
 			islandPool = i.allocNext
-			return i
+		Return i
 		End 
 	End 
 
@@ -58,7 +58,7 @@ class Allocator
 	End 
 
 	Method allocArbiter : Arbiter  ()
-		return New Arbiter(Self)
+	Return New Arbiter(Self)
 	End 
 
 	Method freeArbiter( a : Arbiter ) 
@@ -67,11 +67,11 @@ class Allocator
 	Method allocContact : Contact  ()
 		Local c  := contactPool
 
-		if( c = null )
-			return New Contact()
+		If( c = null )
+		Return New Contact()
 		else 
 			contactPool = c.nextItem
-			return c
+		Return c
 		End 
 	End 
 

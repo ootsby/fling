@@ -74,12 +74,12 @@ class PentagonRain extends Demo
 
 	Method Update( dt : Float ) 
 		lastRefresh += dt
-		if( lastRefresh < refreshDelay ) 
-		   return
+		If( lastRefresh < refreshDelay ) 
+		  Return
 		End 
 		For Local p := Eachin pentagons 
 
-			if( (p.y > size.y + 20) Or (p.x < -20) Or (p.y > size.x + 20) ) 
+			If( (p.y > size.y + 20) Or (p.x < -20) Or (p.y > size.x + 20) ) 
 
 				p.setPos( 300 + rand(-280,280), rand(-50,-100) )
 				p.setSpeed( rand(-10,10)/40, rand(10,100)/40 )

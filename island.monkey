@@ -33,13 +33,13 @@ import fling.joint.joint
 
 class Island 
 	Global ID  := 0
-	 Field id : Int
-	 Field bodies :  HaxeFastList< Body > 
-	 Field joints :  HaxeFastList< Joint > 
-	 Field sleeping : Bool
-	 Field energy : Float
+	Field id : Int
+	Field bodies :  HaxeFastList< Body > 
+	Field joints :  HaxeFastList< Joint > 
+	Field sleeping : Bool
+	Field energy : Float
 	Field world : World
-	 Field allocNext : Island
+	Field allocNext : Island
 	
 	Private
 	Field arbiters :  HaxeFastList< Arbiter > 
@@ -111,7 +111,7 @@ class Island
 		For Local b := Eachin bodies 
 
 			Local motion : Float = b.v.x * b.v.x + b.v.y * b.v.y + b.w * b.w * Constants.ANGULAR_TO_LINEAR
-			if( motion > b.properties.maxMotion ) 
+			If( motion > b.properties.maxMotion ) 
 
 				Local k : Float = Sqrt(b.properties.maxMotion / motion)
 				b.v.x *= k
@@ -142,7 +142,7 @@ class Island
 		End 
 
 		energy = e / Sqrt(n)
-		if( energy < world.sleepEpsilon ) 
+		If( energy < world.sleepEpsilon ) 
 
 			For Local b := Eachin bodies 
 

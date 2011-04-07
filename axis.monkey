@@ -43,11 +43,11 @@ class Axis
 	End 
 
 	Method clone : Axis() 
-		return New Axis( Self.n.clone(), Self.d )
+	Return New Axis( Self.n.clone(), Self.d )
 	End 
 	
 	Method toString() 
-		return "[Axis= " + n.x + "," + n.y + " d=" + d+"]"
+	Return"[Axis= " + n.x + "," + n.y + " d=" + d+"]"
 	End 
 End 
 

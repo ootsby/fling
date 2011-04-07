@@ -47,11 +47,11 @@ class Constants
 	 '// 1 degree ~= 0.5 pix
 
 	Function XROT : Float( v : Vector, b : Body ) 
-		return v.x * b.rcos - v.y * b.rsin
+	Return v.x * b.rcos - v.y * b.rsin
 	End 
 
 	Function YROT : Float( v : Vector, b : Body ) 
-		return v.x * b.rsin + v.y * b.rcos
+	Return v.x * b.rsin + v.y * b.rcos
 	End 
 End 
 

@@ -44,7 +44,7 @@ class DominoPyramid extends Demo
 		For Local i := 0 Until stackHeigth  
 
 			Local dw  := 0
-			if( (i = 0) ) 
+			If( (i = 0) ) 
 
 			    dw = 2 * d_width
 			End 
@@ -52,7 +52,7 @@ class DominoPyramid extends Demo
 			For Local j := 0 Until stackHeigth - i  
 
 				Local xp  := xstart + (3*d_heigth*j)
-				if( i = 0 ) 
+				If( i = 0 ) 
 
 					createPoly( xp , yp - d_heigth, 0, domino )
 					createPoly( xp , yp - (2 * d_heigth) - d_width, d90, domino )
@@ -63,10 +63,10 @@ class DominoPyramid extends Demo
 					createPoly( xp , yp - (3 * d_width) - (2 * d_heigth), d90, domino )
 				End 
 
-				if( j = 0 ) 
+				If( j = 0 ) 
 				   createPoly( xp - d_heigth + d_width , yp - (3 * d_heigth) - (4 * d_width) + dw, 0, domino )
 				End 
-				if( j = stackHeigth - i - 1 ) 
+				If( j = stackHeigth - i - 1 ) 
 				   createPoly( xp + d_heigth - d_width , yp - (3 * d_heigth) - (4 * d_width) + dw, 0, domino )
 				End 
 			End 

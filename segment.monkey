@@ -67,7 +67,7 @@ class Segment extends Shape
 		tNneg.x = -tN.x
 		tNneg.y = -tN.y
 		'// update bounding box
-		if( tA.x < tB.x ) 
+		If( tA.x < tB.x ) 
 
 			aabb.l = tA.x - r
 			aabb.r = tB.x + r
@@ -77,7 +77,7 @@ class Segment extends Shape
 			aabb.r = tA.x + r
 		End 
 
-		if( tA.y < tB.y ) 
+		If( tA.y < tB.y ) 
 
 			aabb.t = tA.y - r
 			aabb.b = tB.y + r
@@ -89,7 +89,7 @@ class Segment extends Shape
 	End 
 	  Method calculateInertia: Float() 
 
-		return 1.0
+	Return 1.0
 	End 
 End 
 

@@ -59,7 +59,7 @@ class MainDemo Extends App
 	
 		'// Update
 		Local Updates :=  demo.Updates
-		if(  stopped  )
+		If(  stopped  )
 		    Updates = 0 
 		End
 		Local dt : Float = 1.0
@@ -68,7 +68,7 @@ class MainDemo Extends App
 			demo.Update(dt/Updates)
 			world.Update(dt/Updates,niter)
 		End 
-		if( recalStep )
+		If( recalStep )
 		   world.Update(0,1)
 		End
 		If( MouseHit( MOUSE_LEFT) )
@@ -82,14 +82,14 @@ class MainDemo Extends App
 		'// draw
 		Cls 0,0,0
 		
-		if( debug ) 
+		If( debug ) 
 		
 			'fd.boundingBox.line = 0x000000
 			'fd.contact.line = 0xFF0000
 			'fd.sleepingContact.line = 0xFF00FF
 			fd.drawCircleRotation = true
 		End 
-		if( draw )
+		If( draw )
 		   fd.drawWorld(world)
 		End
 	End 
@@ -157,7 +157,7 @@ class MainDemo Extends App
 			"Stamp=" + world.stamp,
 			"Demo=" + Type.getClassName(Type.getClass(demo)),
 			"Bodies=" + Lambda.count(world.bodies),
-			'''"Arbit=" + Lambda.filter(world.arbiters,Method(a) return Not a.sleeping).length + " / " + Lambda.count(world.arbiters),
+			'''"Arbit=" + Lambda.filter(world.arbiters,Method(a)Return Not a.sleeping).length + " / " + Lambda.count(world.arbiters),
 			"BF=" + Type.getClassName(Type.getClass(world.broadphase)),
 			"COLS=" + world.activeCollisions+ " / "+world.testedCollisions,
 			t.format("all"),
@@ -165,13 +165,13 @@ class MainDemo Extends App
 			t.format("island"),
 			t.format("solve")]
 		Local nislands := Lambda.count(world.islands)
-		if( nislands > 5 )
+		If( nislands > 5 )
 			log.Push("Islands="+nislands)
 		else
 			For Local i := Eachin world.islands 
 			
 				Local str := "Island= #" + Lambda.count(i.bodies)
-				if(  i.sleeping  )
+				If(  i.sleeping  )
 				    str +=" SLEEP" 
 				else
 				    str += " e=" + Math.ceil(i.energy*1000)/1000
@@ -181,7 +181,7 @@ class MainDemo Extends App
 			str += " (" + Math.ceil(b.x) + "," + Math.ceil(b.y) + ")"
 			log.Push(str)
 		End 
-		return log
+	Return log
 	End 
 	
 	Method fireBlock( mouseX : Float, mouseY : Float ) 

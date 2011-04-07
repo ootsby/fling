@@ -60,7 +60,7 @@ class BruteForce Extends BroadPhase
 			Local s2  := s1.nextItem
 			while( Not( s2 = null ) ) 
 
-				if( box1.intersects2(s2.elt.aabb) ) 
+				If( box1.intersects2(s2.elt.aabb) ) 
 				   callb.onCollide(s1.elt,s2.elt)
 				End 
 				s2 = s2.nextItem
@@ -74,12 +74,12 @@ class BruteForce Extends BroadPhase
 		Local shapes  := New  HaxeFastList<  Shape > ()
 		For Local s := Eachin Self.shapes 
 
-			if( s.aabb.intersects(box) ) 
+			If( s.aabb.intersects(box) ) 
 			   shapes.Add(s)
 			End 
         End 
 
-		return shapes
+	Return shapes
 	End 
 	 Method syncShape: Void( s : Shape ) 
 
@@ -91,7 +91,7 @@ class BruteForce Extends BroadPhase
 	End 
 	 Method validate :Bool() 
 
-		return true
+	Return true
 	End 
 End 
 

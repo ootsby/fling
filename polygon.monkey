@@ -61,7 +61,7 @@ class Polygon extends Shape
 			Local v2  := vl.Get((i + 2) Mod count)
 			area += v1.x * (v0.y - v2.y)
 			Local v  :=  v0
-			if( off  ) 
+			If( off  ) 
 			    v =  v0.plus(offset) 
 			End 
 
@@ -70,7 +70,7 @@ class Polygon extends Shape
 			Local vt  := v.clone()
 			Local at  := a.clone()
 			'// enqueue
-			if( i = 0 ) 
+			If( i = 0 ) 
 
 				verts	= v
 				tVerts 	= vt
@@ -109,16 +109,16 @@ class Polygon extends Shape
 
 			tv.x = body.x + Constants.XROT(v,body)
 			tv.y = body.y + Constants.YROT(v,body)
-			if( tv.x < aabb.l ) 
+			If( tv.x < aabb.l ) 
 			   aabb.l = tv.x
 			End 
-			if( tv.x > aabb.r ) 
+			If( tv.x > aabb.r ) 
 			   aabb.r = tv.x
 			End 
-			if( tv.y < aabb.t ) 
+			If( tv.y < aabb.t ) 
 			   aabb.t = tv.y
 			End 
-			if( tv.y > aabb.b ) 
+			If( tv.y > aabb.b ) 
 			   aabb.b = tv.y
 			End 
 			v = v.nextItem
@@ -162,7 +162,7 @@ class Polygon extends Shape
 			sum2 += a
 		End 
 
-		return sum1 / (6 * sum2)
+	Return sum1 / (6 * sum2)
 	End 
 End 
 

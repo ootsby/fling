@@ -28,9 +28,9 @@
 #end
 
 class Material 
-	 Field restitution:Float
-	 Field friction:Float
-	 Field density:Float
+	Field restitution:Float
+	Field friction:Float
+	Field density:Float
 	 Method New( restitution : Float, friction : Float, density : Float ) 
 
 		Self.restitution = restitution

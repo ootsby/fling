@@ -53,12 +53,12 @@ class SortedList Extends BroadPhase
 
 		b.prev = prev
 		b.nextItem = cur
-		if( prev = null )
+		If( prev = null )
 			boxes = b
 		Else  
 			prev.nextItem = b
 		End 
-		if( Not( cur = null ) ) 
+		If( Not( cur = null ) ) 
 		   cur.prev = b
 		End 
 	End 
@@ -73,12 +73,12 @@ class SortedList Extends BroadPhase
 		Local b  := s.aabb
 		Local nextItem  := b.nextItem
 		Local prev  := b.prev
-		if( prev = null )
+		If( prev = null )
 			boxes = nextItem
 		Else  
 			prev.nextItem = nextItem
 		End 
-		if( Not( nextItem = null ) ) 
+		If( Not( nextItem = null ) ) 
 		   nextItem.prev = prev
 		End 
 	End 
@@ -91,10 +91,10 @@ class SortedList Extends BroadPhase
 			Local bottom  := b1.b
 			while( Not( b2 = null ) ) 
 
-				if( b2.t > bottom ) 
+				If( b2.t > bottom ) 
 				   Exit
 				End 
-				if( b1.intersects2(b2) ) 
+				If( b1.intersects2(b2) ) 
 				   callb.onCollide(b1.shape,b2.shape)
 				End 
 				b2 = b2.nextItem
@@ -110,7 +110,7 @@ class SortedList Extends BroadPhase
 		'// skip top boxes
 		while( Not( b = null ) ) 
 
-			if( b.t <= box.b ) 
+			If( b.t <= box.b ) 
 			   Exit
 			End 
 			b = b.nextItem
@@ -118,29 +118,29 @@ class SortedList Extends BroadPhase
 
 		while( Not( b = null ) ) 
 
-			if( b.intersects(box) ) 
+			If( b.intersects(box) ) 
 			   shapes.Add(b.shape)
 			End 
 			b = b.nextItem
 		End 
 
-		return shapes
+	Return shapes
 	End 
 	 Method syncShape: Void( s : Shape ) 
 
 		Local b  := s.aabb
 		Local prev  := b.prev
 		Local nextItem  := b.nextItem
-		if( Not( prev = null ) And prev.t > b.t ) 
+		If( Not( prev = null ) And prev.t > b.t ) 
 
 			prev.nextItem = nextItem
-			if( Not( nextItem = null ) ) 
+			If( Not( nextItem = null ) ) 
 			   nextItem.prev = prev
 			End 
 			addSort(b)
-		Else  if( Not( nextItem = null ) And nextItem.t < b.t ) 
+		Else  If( Not( nextItem = null ) And nextItem.t < b.t ) 
 
-			if( prev = null )
+			If( prev = null )
 				boxes = nextItem
 			Else  
 				prev.nextItem = nextItem
@@ -159,12 +159,12 @@ class SortedList Extends BroadPhase
 		while( Not( cur = null ) ) 
 
 			Local nextItem  := cur.nextItem
-			if( Not( nextItem = null ) And nextItem.t < cur.t ) 
-			   return false
+			If( Not( nextItem = null ) And nextItem.t < cur.t ) 
+			  Return false
 			End 
 			cur = nextItem
 		End 
 
-		return true
+	Return true
 	End 
 End 

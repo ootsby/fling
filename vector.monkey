@@ -41,7 +41,7 @@ class Vector
 	End 
 
 	Method clone:Vector() 
-		return New Vector(x,y)
+	Return New Vector(x,y)
 	End 
 	
 	Method set( px : Float, py : Float) 
@@ -50,31 +50,31 @@ class Vector
 	End 
 
 	Method dot:Float( v : Vector ) 
-		return x * v.x + y * v.y
+	Return x * v.x + y * v.y
 	End 
 
 	Method cross:Float( v : Vector ) 
-		return x * v.y - y * v.x
+	Return x * v.y - y * v.x
 	End 
 
 	Method plus:Vector( v : Vector ) 
-		return New Vector(x + v.x, y + v.y)
+	Return New Vector(x + v.x, y + v.y)
 	End 
 
 	Method minus : Vector  ( v : Vector )
-		return New Vector(x - v.x, y - v.y)
+	Return New Vector(x - v.x, y - v.y)
 	End 
 
 	Method mult:Vector( s : Float ) 
-		return New Vector(x * s, y * s)
+	Return New Vector(x * s, y * s)
 	End 
 	
 	Method length:Float() 
-		return Sqrt(x * x + y * y)
+	Return Sqrt(x * x + y * y)
 	End 
 
 	Method toString() 
-		return "("+(Round(x*100)/100)+","+(Round(y*100)/100)+")"
+	Return"("+(Round(x*100)/100)+","+(Round(y*100)/100)+")"
 	End 
 
 	Function normal:Vector( x : Float, y : Float ) 
@@ -85,7 +85,7 @@ class Vector
 		    k = 0 
 		End 
 
-		return New Vector( -y * k , x * k )
+	Return New Vector( -y * k , x * k )
 	End 
 End 
 

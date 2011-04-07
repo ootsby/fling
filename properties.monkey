@@ -34,36 +34,36 @@ class Properties
 		The amount the linear speed of the object is reduced by time
 	'**/
 #end
-	 Field linearFriction : Float
+	Field linearFriction : Float
 #rem
 '/**
 		The amount the angular speed of the object is reduced by time
 	'**/
 #end
-	 Field angularFriction : Float
+	Field angularFriction : Float
 #rem
 '/**
-		The percentage the object position will be modified if it is inside another object
+		The percentage the object position will be modified If it is inside another object
 	'**/
 #end
-	 Field biasCoef : Float
+	Field biasCoef : Float
 #rem
 '/**
 		The maximum movement of the object
 	'**/
 #end
-	 Field maxMotion : Float
+	Field maxMotion : Float
 #rem
 '/**
 		The maximum distance at which we can interpenerate another object without applying position bias
 	'**/
 #end
-	 Field maxDist : Float
+	Field maxDist : Float
 	'// internal
-	 Field id : Int
-	 Field count : Int
-	 Field lfdt : Float
-	 Field afdt : Float
+	Field id : Int
+	Field count : Int
+	Field lfdt : Float
+	Field afdt : Float
 	
 	 Method New( linearFriction : Float, angularFriction : Float, biasCoef : Float, maxMotion : Float, maxDist : Float ) 
 		PID += 1

@@ -29,8 +29,8 @@
 
 class DataHash 
 
-    Field total : Float
-    Field avg : Float
+	Field total : Float
+	Field avg : Float
     
 	Method New ( total: Float, avg:Float) 
         Self.total = total

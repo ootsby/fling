@@ -55,17 +55,17 @@ class Demo
 	End 
 
 	Method addRectangle:Body( x : Float, y : Float, w : Float, h :Float,  mat : Material = Null  ) 
-		return addBody(x,y, Shape.makeBox(w,h,Constants.NaN,Constants.NaN,mat))
+	Return addBody(x,y, Shape.makeBox(w,h,Constants.NaN,Constants.NaN,mat))
 	End 
 	
 	Method addBody:Body( x : Float, y : Float, shape : Shape,  props : Properties = Null  ) 
 		Local b  := New Body(x,y)
 		b.addShape(shape)
-		if( Not( props = null ) ) 
+		If( Not( props = null ) ) 
 			b.properties = props
 		End 
 		world.addBody(b)
-		return b
+	Return b
 	End 
 	
 	Method createWord : Void  ( str : String, xp : Float, yp : Float, size : Float, spacing : Float,  mat : Material = Null  )
@@ -93,8 +93,8 @@ class Demo
 			
 			For Local y := 0 Until FontArray.HEIGHT  
 				For Local x := 0 Until FontArray.WIDTH  
-					if( datas[ x + y * FontArray.WIDTH] = 1 ) 
-						if( x > xmax ) 
+					If( datas[ x + y * FontArray.WIDTH] = 1 ) 
+						If( x > xmax ) 
 						   xmax = x
 						End 
 						addRectangle( xp + x * (size + spacing), yp + y * (size + spacing), size, size, mat )
@@ -116,7 +116,7 @@ class Demo
 			vl.Push( New Vector(radius * haxetypes.Math.Cos(angle), radius * haxetypes.Math.Sin(angle)) )
 		End 
 
-		return New Polygon(vl,New Vector(0,0),mat)
+	Return New Polygon(vl,New Vector(0,0),mat)
 	End 
 
 	Method createPoly : Void( x : Float, y : Float, a : Float, shape : Polygon,  props : Properties = Null  ) 
@@ -145,7 +145,7 @@ class Demo
 	End 
 
 	Method rand : Float( min : Float, max : Float ) 
-		return haxetypes.Math.Round(Rnd() * (max - min + 1)) + min
+	Return haxetypes.Math.Round(Rnd() * (max - min + 1)) + min
 	End 
 End 
 
