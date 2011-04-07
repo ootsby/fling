@@ -74,7 +74,7 @@ class Collision
 	Method poly2poly :Bool( shape1 : Polygon, shape2 : Polygon, arb : Arbiter ) 
 
 		'// first, project shape 2 vertices onto shape 1 axes & find MSA
-		Local max1  : Float = -Constants.FMAX
+		Local max1  : Float = Constants.FMIN
 		Local axis1  : Axis = null
 		Local a  := shape1.tAxes
 		while( Not( a = null ) ) 
@@ -92,7 +92,7 @@ class Collision
 			a = a.nextItem
 		End 
 		'// Second, project shape 1 vertices onto shape 2 axes & find MSA
-		Local max2  := -Constants.FMAX
+		Local max2  := Constants.FMIN
 		Local axis2  : Axis = null
 		a = shape2.tAxes
 		while( Not( a = null ) ) 
@@ -291,7 +291,7 @@ class Collision
 		   return false
 		End 
 		Local a  := poly.tAxes
-		Local polyMin  := -Constants.FMAX
+		Local polyMin  := Constants.FMIN
 		Local axis  : Axis = null
 		while( Not( a = null ) ) 
 
@@ -334,7 +334,7 @@ class Collision
 		Local v0 : Vector = null
 		Local a  := poly.tAxes
 		Local v  := poly.tVerts
-		Local min  := -Constants.FMAX
+		Local min  := Constants.FMIN
 		while( Not( a = null ) ) 
 
 			Local dist  := a.n.dot(circle.tC) - a.d - circle.r

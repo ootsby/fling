@@ -31,20 +31,19 @@ import fling.allfling
 
 class Constants 
 	
-	Global PI  := 3.14159265
-	Global POSITIVE_INFINITY  := (Pow(10,1000))
-	Global NEGATIVE_INFINITY  := -POSITIVE_INFINITY
-	Global NaN : Float  = (-1*Pow(10,1001))
-	Global FMAX  := (Pow(10,99))
-	Global EPSILON  := (Pow(10,-99))
-	Global WORLD_BOUNDS_FREQ  := 120
+	Const POSITIVE_INFINITY := 3.401e38
+	Const NaN : Float  = 3.402e38'Sqrt(-1)
+	Const FMAX  := 3.4e38 'single precision float?
+	Const FMIN  := -FMAX
+	Const EPSILON  := 1e-30 'I have no reason for this specific value
+	Const WORLD_BOUNDS_FREQ  := 120
 	Global DEFAULT_MATERIAL  := New Material( 0.001, 0.81, 1 )
 	Global DEFAULT_PROPERTIES  := New Properties( 0.999, 0.999, 0.1, FMAX, 0.5 )
 	'// sleep
-	Global SLEEP_BIAS  := 0.95
-	Global DEFAULT_SLEEP_EPSILON  := 0.002
-	Global WAKEUP_FACTOR  := 2
-	Global ANGULAR_TO_LINEAR  := 30.0
+	Const SLEEP_BIAS  := 0.95
+	Const DEFAULT_SLEEP_EPSILON  := 0.002
+	Const WAKEUP_FACTOR  := 2
+	Const ANGULAR_TO_LINEAR  := 30.0
 	 '// 1 degree ~= 0.5 pix
 
 	Function XROT : Float( v : Vector, b : Body ) 

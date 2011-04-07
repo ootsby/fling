@@ -101,9 +101,9 @@ class Polygon extends Shape
 		Local aabb  := Self.aabb
 		'// reset bounding box
 		aabb.l = Constants.FMAX
-		aabb.t =  Constants.FMAX
-		aabb.r = -Constants.FMAX
-		aabb.b = -Constants.FMAX
+		aabb.t = Constants.FMAX
+		aabb.r = Constants.FMIN
+		aabb.b = Constants.FMIN
 		'// transform points
 		while( Not( v = null ) ) 
 
