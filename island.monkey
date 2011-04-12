@@ -40,12 +40,8 @@ Class Island
 	Field energy : Float
 	Field world : World
 	Field allocNext : Island
-	
-	Private
 	Field arbiters :  HaxeFastList< Arbiter > 
 	 
-	Public
-	
 	Method AddArbiter( a : Arbiter )
 		arbiters.Add(a)
 	End
