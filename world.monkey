@@ -99,7 +99,7 @@ Class World Extends BroadCallback
 	End 
 
 	Method BuildIslands() 
-		Local stack  := New  HaxeFastList< Body > ()
+		Local stack  := New HaxeFastList< Body > ()
 
 		For Local b := Eachin waitingBodies 
 			If( Not( b.island = null ) Or b.isStatic ) 

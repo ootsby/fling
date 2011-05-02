@@ -82,16 +82,15 @@ Class Quantize Extends BroadPhase
 		End 
 	End
 
-	Method Add( l :  HaxeFastList< AABB > , box : AABB ) 
+	Method Add( l:HaxeFastList< AABB > , box:AABB ) 
 
 		If( Not( box.shape.body = staticBody ) ) 
-
 			l.Add(box)
-		Return
+			Return
 		End 
 
-		Local b  := l.head
-		Local prev : HaxeFastCell<AABB> = null
+		Local b := l.FirstNode()
+		Local prev:HaxeFastCell<AABB> = null
 		While( Not( b = null ) ) 
 
 			If( b.elt.shape.body = staticBody ) 
@@ -103,9 +102,9 @@ Class Quantize Extends BroadPhase
 		End 
 
 		If( prev = null )
-			l.head = New HaxeFastCell<AABB>(box,b)
+			l.AddFirst(box)
 		Else  
-			prev.nextItem = New HaxeFastCell<AABB>(box,b)
+			New HaxeFastCell<AABB>(b,prev,box)
 		End 
 	End
 
@@ -222,15 +221,15 @@ Class Quantize Extends BroadPhase
 
 		For Local list := Eachin all 
 
-			Local box1  := list.head
+			Local box1 := list.FirstNode()
 			While( Not( box1 = null ) ) 
 
-				Local b  := box1.elt
+				Local b := box1.elt
 				If( b.shape.body = staticBody ) 
 				   Exit
 				End
 
-				Local box2  := list.head
+				Local box2 := list.FirstNode()
 				While( Not( box2 = null ) ) 
 
 					If( b.Intersects2(box2.elt) And Not( box1 = box2 ) ) 
@@ -291,3 +290,4 @@ Class Quantize Extends BroadPhase
 		Return true
 	End 
 End 
+

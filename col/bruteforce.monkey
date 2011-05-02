@@ -41,7 +41,7 @@ Class BruteForce Extends BroadPhase
 
 	Method Init : Void ( bounds : AABB, cb : BroadCallback, staticBody : Body ) 
 
-		Self.callb = callb
+		Self.callb = cb
 		shapes = New  HaxeFastList< Shape > ()
 	End
 
@@ -57,7 +57,8 @@ Class BruteForce Extends BroadPhase
 
 	Method Collide: Void() 
 
-		Local s1  := shapes.head
+		Local s1  := shapes.FirstNode()
+		
 		While( Not( s1 = null ) ) 
 
 			Local box1  := s1.elt.aabb
@@ -103,4 +104,5 @@ Class BruteForce Extends BroadPhase
 		Return true
 	End 
 End 
+
 

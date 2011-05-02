@@ -72,10 +72,17 @@ Public
 	Field length : Int = 0
 	
 	Method Get:T( index:Int)
-		Return arr[index]
+		If( index >=0 And arr.Length() > index )
+			Return arr[index]
+		Else
+			Return null
+		End
 	End
 	
 	Method Set( index:Int, item:T )
+		If( index >= arr.Length() )
+			arr = arr.Resize(index+1)
+		End
 		arr[index] = item
 	End
 	
@@ -100,7 +107,8 @@ End
 
 Class HaxeFastList<T>
 	
-	Field head := New HaxeFastCell<T>()
+	Field _head:HaxeFastCell<T> = null
+	Field _tail:HaxeFastCell<T> = null
 	
 	Method Add( item:T )
 		AddFirst(item)
@@ -115,12 +123,13 @@ Class HaxeFastList<T>
 	End
 	
 	Method Clear()
-		head=New HaxeFastCell<T>()
+		_head=null
+		_tail=null
 	End
 
 	Method Count()
-		Local n,node:=head.nextItem
-		While node<>head
+		Local n,node:=_head
+		While node<>null
 			node=node.nextItem
 			n+=1
 		Wend
@@ -128,23 +137,43 @@ Class HaxeFastList<T>
 	End
 	
 	Method IsEmpty?()
-		Return head.nextItem=head
+		Return _head = null
+	End
+	
+	Method FirstNode:HaxeFastCell<T>()
+		Return _head
 	End
 	
 	Method First:T()
-		Return head.nextItem.elt
+		If( _head <> null )
+			Return _head.elt
+		End
+		Return null
 	End
 
 	Method Last:T()
-		Return head._pred.elt
+		If( _tail <> null )
+			Return _tail.elt
+		End
+		Return null
 	End
 	
 	Method AddFirst:HaxeFastCell<T>( data:T )
-		Return New HaxeFastCell<T>( head.nextItem,head,data )
+		Local added := New HaxeFastCell<T>( _head,null,data )
+		_head = added
+		If( _tail = null )
+			_tail = added
+		End
+		Return added
 	End
 
 	Method AddLast:HaxeFastCell<T>( data:T )
-		Return New HaxeFastCell<T>( head,head._pred,data )
+		Local added := New HaxeFastCell<T>( null,_tail,data )
+		_tail = added
+		If( _head = null )
+			_head = added
+		End
+		Return added
 	End
 
 	'I think this should GO!
@@ -153,41 +182,66 @@ Class HaxeFastList<T>
 	End
 	
 	Method RemoveFirst : Bool( value:T )
-		Local node:=head.nextItem
-		While node<>head
-			node=node.nextItem
-			If Equals( node._pred.elt,value ) 
-				node._pred.Remove
-			Return True
+		Local node:=_head
+		While node<>null
+			If Equals( node.elt,value ) 
+				Remove(node)
+				Return True
 			End
-
+			node=node.nextItem
 		Wend
 		Return False
 	End
 
 	Method RemoveEach( value:T )
-		Local node:=head.nextItem
-		While node<>head
-			node=node.nextItem
-			If Equals( node._pred.elt,value ) node._pred.Remove
+		Local node:=_head
+		While node<>null
+			Local nextnode:=node.nextItem
+			If Equals( node.elt,value ) 
+				Remove(node)
+			End
+			node = nextNode
 		Wend
 	End
 
 	Method RemoveFirst:T()
-		Local data:T=head.nextItem.elt
-		head.nextItem.Remove
+		If( IsEmpty() )
+			Return null
+		End
+		Local data:T=_head.elt
+		Remove(_head)
 		Return data
 	End
 
 	Method RemoveLast:T()
-		Local data:T=head._pred.elt
-		head._pred.Remove
+		If( IsEmpty() )
+			Return null
+		End
+		Local data:T=_tail.elt
+		Remove(_tail)
 		Return data
 	End
 
+	
+	Method Remove(cell:HaxeFastCell<T>)
+		If( cell = _tail )
+			_tail = cell._pred
+		End
+		If( cell = _head )
+			_head = cell.nextItem
+		End
+		If( cell.nextItem <> null )
+			cell.nextItem._pred=cell._pred
+		End
+		If( cell._pred <> null )	
+			cell._pred.nextItem=cell.nextItem
+		End
+	End
+	
 	Method ObjectEnumerator:Enumerator<T>()
 		Return New Enumerator<T>( Self )
 	End
+	
 	
 End
 
@@ -195,15 +249,19 @@ Class HaxeFastCell<T>
 
 	'create a _head node
 	Method New()
-		nextItem=Self
-		_pred=Self
+		nextItem=null
+		_pred=null
 	End
 
 	Method New( data:T, succ:HaxeFastCell<T>)
 		nextItem=succ
 		_pred=succ._pred
-		nextItem._pred=Self
-		_pred.nextItem=Self
+		If( nextItem <> null )
+			nextItem._pred=Self
+		End
+		If( _pred <> null )
+			_pred.nextItem=Self
+		End
 		elt=data
 	End
 
@@ -211,19 +269,18 @@ Class HaxeFastCell<T>
 	Method New( succ:HaxeFastCell<T>,pred:HaxeFastCell<T>,data:T )
 		nextItem=succ
 		_pred=pred
-		nextItem._pred=Self
-		_pred.nextItem=Self
+		If( nextItem <> null )
+			nextItem._pred=Self
+		End
+		If( _pred <> null )
+			_pred.nextItem=Self
+		End
 		elt=data
 	End
 	
 	Method Value:T()
 		Return elt
 	End
-
-	Method Remove()
-		nextItem._pred=_pred
-		_pred.nextItem=nextItem
-	End Method
 
 	Field elt:T
 	Field nextItem:HaxeFastCell<T>
@@ -239,11 +296,11 @@ Class Enumerator<T>
 
 	Method New( list:HaxeFastList<T> )
 		_list=list
-		_curr=list.head.nextItem
+		_curr=list._head
 	End Method
 
 	Method HasNext:Bool()
-		Return _curr<>_list.head
+		Return _curr<>null
 	End 
 
 	Method NextObject:T()
@@ -258,3 +315,4 @@ Private
 	Field _curr:HaxeFastCell<T>
 
 End
+
