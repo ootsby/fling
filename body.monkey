@@ -176,6 +176,30 @@ Class Body
 		invInertia = 0
 	End 
 	
+	Method Activate()
+		If( island )
+			island.world.Activate(Self)
+		End	
+	End
+
+	Method ResetForces:Void()
+        Activate()
+        f.Set(0.0,0.0)
+        t = 0.0
+	End
+
+	Method ApplyForce:Void(force:Vector, r:Vector)
+        Activate()
+        f = f.Plus(force)
+        t += r.Cross(force)
+	End
+
+	Method ApplyImpulse(j:Vector, r:Vector)
+        Activate()
+        v = v.Plus(j.Mult(invMass))
+        w += invInertia*r.Cross(j)
+	End
+
 	Method SetAngle( a : Float ) 
 
 		Self.a = a
@@ -230,4 +254,5 @@ Class Body
 	Method OnDestroy() 
 	End 
 End 
+
 
