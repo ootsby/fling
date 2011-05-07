@@ -54,9 +54,11 @@ Class MainDemo Extends App
 		SetUpdateRate(20)
 		Print("Press 1-8 to change demo scene. Mouse click fires block.")
 	End 
+	Field updateTime:Int
 	
 	Method OnUpdate () 
 	
+		updateTime = Millisecs()
 		'// Update
 		Local Updates :=  demo.Updates
 		If(  stopped  )
@@ -74,6 +76,8 @@ Class MainDemo Extends App
 		   world.Update(0,1)
 		End
 
+		updateTime = Millisecs() - updateTime
+		'Print updateTime
 		If( MouseHit( MOUSE_LEFT) )
 			FireBlock( MouseX(), MouseY())
 		End
@@ -87,15 +91,18 @@ Class MainDemo Extends App
 		Cls 0,0,0
 		
 		If( debug ) 
-		
 			'fd.boundingBox.line = 0x000000
 			'fd.contact.line = 0xFF0000
 			'fd.sleepingContact.line = 0xFF00FF
-			fd.drawCircleRotation = true
+			'fd.drawCircleRotation = true
 		End
 
 		If( draw )
 		   fd.DrawWorld(world)
+		End
+		
+		If( debug ) 
+			DrawDebugInfo(10,10)
 		End
 	End 
 	
@@ -164,21 +171,29 @@ Class MainDemo Extends App
 		demo.Start(world)
 	End 
 	
-	Method BuildInfos : Void() 
+	Method DrawDebugInfo : String(x:Int, y:Int) 
 	 
 		Local t := world.timer
 		Local tot := t.total
-		Local log := [
-			"Stamp=" + world.stamp,
-			"Demo=" + Type.getClassName(Type.getClass(demo)),
-			"Bodies=" + Lambda.count(world.bodies),
+		Local linegap = 12
+		
+		
+		DrawText("Update(ms): " + updateTime,x,y)
+		y += linegap
+			'"Demo=" + demo + "/n" +
+		DrawText("Bodies=" + world.bodies.Count(),x,y)
+		y += linegap
 			'''"Arbit=" + Lambda.filter(world.arbiters,Method(a)Return Not a.sleeping).length + " / " + Lambda.count(world.arbiters),
-			"BF=" + Type.getClassName(Type.getClass(world.broadphase)),
-			"COLS=" + world.activeCollisions+ " / "+world.testedCollisions,
-			t.Format("all"),
-			t.Format("col"),
-			t.Format("island"),
-			t.Format("solve")]
+			'"BF=" + world.broadphase + "\n" +
+			'"COLS=" + world.activeCollisions+ " / "+world.testedCollisions + "\n" +
+		DrawText(t.Format("all"),x,y)
+		y += linegap
+		DrawText(t.Format("col"),x,y)
+		y += linegap
+		DrawText(t.Format("island"),x,y)
+		y += linegap
+		DrawText(t.Format("solve"),x,y)
+#rem
 		Local nislands := Lambda.count(world.islands)
 		If( nislands > 5 )
 			log.Push("Islands="+nislands)
@@ -197,8 +212,7 @@ Class MainDemo Extends App
 			str += " (" + Math.ceil(b.x) + "," + Math.ceil(b.y) + ")"
 			log.Push(str)
 		End
-
-		Return log
+#end
 	End 
 	
 	Method FireBlock( mouseX : Float, mouseY : Float ) 
@@ -220,3 +234,4 @@ End
 Function Main() 
 	new MainDemo
 End 
+

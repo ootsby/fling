@@ -36,9 +36,11 @@ Class Timer
 	Field times : HaxeArray<FloatObject>
 	Field curs : HaxeArray<StringObject>
 	Field datas : StringMap<DataHash>
+	Field count : Int
 	Field total : Float
 	
 	Method New() 
+		count = 0
 		total = 0.0
 		datas = New StringMap<DataHash>()
 		times = New HaxeArray<FloatObject>()
@@ -46,12 +48,13 @@ Class Timer
 	End 
 	
 	Method Start( phase : String ) 
-		times.Push((Millisecs()/1000.0))
+		times.Push(Millisecs())
 		curs.Push(phase)
 	End 
 
 	Method Stop() 
-		Local dt  := ((Millisecs()/1000.0) - times.Pop()) * 1000
+		count += 1
+		Local dt  := (Millisecs() - times.Pop())
 		Local name  := curs.Pop()
 		Local data  := datas.Get(name)
 
@@ -61,14 +64,14 @@ Class Timer
 		End 
 
 		data.total += dt
-		data.avg = data.avg * 0.99 + 0.01 * dt
+		data.avg = data.total/count
 		
 		If( curs.length = 0 ) 
 		   total += dt
 		End 
 	End 
 	
-	Method GetTotal( name : String ) 
+	Method GetTotal:Float( name : String ) 
 		Local data  := datas.Get(name)
 
 		If( data = null ) 
@@ -78,14 +81,16 @@ Class Timer
 		Return data.total
 	End 
 	
-	Method Format( name : String ) 
+	Method Format:String( name : String ) 
 		Local data  := datas.Get(name)
 
 		If( data = null ) 
 		  Return name + " ????"
 		End
-
-		Return name + " : "+Int(data.avg*1000) + " ("+(Int(data.total*1000/total)/10)+"Mod)"
+		Local percent := "" + ((data.total/total)*100)
+		percent = percent[..4]
+		Return name + " : "+Int(data.avg) + " ("+ percent +"%)"
 	End 
 	
 End 
+
