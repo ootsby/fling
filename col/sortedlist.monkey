@@ -30,7 +30,7 @@
 Import fling.col.allcol
 import fling.shape
 
-Class SortedList Extends BroadPhase 
+Class SortedList Extends BroadPhase
 	Field boxes : AABB
 	Field callb : BroadCallback
 	Method New() 
@@ -151,8 +151,26 @@ Class SortedList Extends BroadPhase
 			   nextItem.prev = prev
 			End
 
-			AddSort(b)
-		Else  If( Not( nextItem = null ) And nextItem.t < b.t ) 
+			'AddSort(b)
+			' Iterate backwards until we find our place.
+			While( prev <> null And prev.t > b.t)
+				nextItem = prev
+				prev = prev.prev
+			End
+			
+			'Insert back in
+			b.prev = prev
+			b.nextItem = nextItem
+			
+			If (prev = null)
+				boxes = b
+			Else 
+				prev.nextItem = b
+			End
+			
+			nextItem.prev = b
+			
+		Else  If( nextItem <> null And nextItem.t < b.t ) 
 
 			If( prev = null )
 				boxes = nextItem
@@ -161,7 +179,22 @@ Class SortedList Extends BroadPhase
 			End
 
 			nextItem.prev = prev
-			AddSort(b)
+			'AddSort(b)
+			
+			' Iterate forwards until we find our place.
+			While( nextItem <> null And nextItem.t < b.t)
+				prev = nextItem
+				nextItem = nextItem.nextItem
+			End
+			
+			'Insert back in
+			b.prev = prev
+			prev.nextItem = b
+			
+			b.nextItem = nextItem
+			If( nextItem <> null )
+				nextItem.prev = b
+			End
 		End 
 	End
 
@@ -186,3 +219,4 @@ Class SortedList Extends BroadPhase
 		Return true
 	End 
 End 
+
