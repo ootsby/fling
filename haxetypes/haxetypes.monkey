@@ -65,7 +65,7 @@ End
 Class HaxeArray<T>
 
 Private
-	Field arr : T[]
+	Field arr : T[100]
 	Const lengthInc : Int = 100
 	
 Public
@@ -315,4 +315,5 @@ Private
 	Field _curr:HaxeFastCell<T>
 
 End
+
 
